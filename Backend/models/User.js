@@ -24,6 +24,19 @@ class User {
     const [rows] = await db.execute("SELECT * FROM users WHERE email = ?", [email]);
     return rows;
   }
+
+  static async update(id, fieldNames, fieldValues) {
+    const sqlData = []
+    fieldNames.forEach((field, index) => {
+      sqlData.push(`${field} = '${fieldValues[index]}', `)
+    });
+    const [result] = await db.execute(
+      `UPDATE users SET ${sqlData.join("").slice(0, -2)} WHERE id = ?`,[id]
+    );
+    
+    return result;
+  }
+    
 }
 
 module.exports = User;

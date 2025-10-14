@@ -22,15 +22,19 @@ exports.login = async (req, res) => {
     try {
         userData = await User.findByEmail(email);
 
-        if (userData.length === 0) {return res.status(400).json({ error: "Invalid email or password" });}
+        if (userData.length === 0) {
+            return res.status(400).json({ error: "Invalid email or password" });
+        }  
         
         passwordMatch =await bcrypt.compare(password, userData[0].password_hash)
-
-        if (!passwordMatch) {return res.status(400).json({ error: "Invalid email or password" });}
+        
+        if (!passwordMatch) {
+            return res.status(400).json({ error: "Invalid email or password" });
+        }
 
         const token = jwt.sign({ id: userData[0].id, role: userData[0].name }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
-        res.status(200).json({ token });
+        res.status(200).json({ JWT: token, id: userData[0].id });
     } catch (error) {
-        res.send(400).json({ error: error.message });
+        res.json({ error: error.message });
     }
 }
