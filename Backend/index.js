@@ -6,9 +6,11 @@ app.use(express.urlencoded({extended: true}))
 
 const authRoute = require("./routes/authRoutes")
 const usersRoute = require("./routes/usersRoutes")
+const serviceRoute = require("./routes/serviceRoutes")
 
 app.use("/auth", authRoute)
 app.use("/users", usersRoute)
+app.use("/service", serviceRoute)
 
 
 const PORT = 3000;

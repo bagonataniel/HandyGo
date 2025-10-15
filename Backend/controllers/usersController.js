@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-
+// Profilok megtekintéséhez
 exports.getUserById = async (req, res) => {
     const userId = req.params.id;
     const userData = await User.findById(userId);
@@ -12,6 +12,7 @@ exports.getUserById = async (req, res) => {
     res.status(200).json({ user: userData });
 }
 
+// Felhasználói adatok frissítése
 exports.updateUser = async (req, res) => {
     const userToken = req.header("x-auth-token");
     const keys = Object.keys(req.body);
@@ -28,6 +29,20 @@ exports.updateUser = async (req, res) => {
     }
 }
 
+// Felhasználó törlése
+exports.deleteUser = async (req, res) => {
+    const userToken = req.header("x-auth-token");
+    const userId = jwt.decode(userToken).id;
+
+    try {
+        await User.removeAccount(userId);
+        return res.status(200).json({ message: "User account deleted successfully" });
+    } catch (error) {
+        return res.status(500).json({ error: "Failed to delete user account", errorDetails: error.message });
+    }
+}
+
+// Felhasználó foglalásainak lekérése
 exports.getUserBookings = async (req, res) => {
     const userToken = req.header("x-auth-token");
     const userId = jwt.decode(userToken).id;
@@ -40,6 +55,7 @@ exports.getUserBookings = async (req, res) => {
     }
 }
 
+// Felhasználó szolgáltatásainak lekérése
 exports.getUserServices = async (req, res) => {
     const userId = req.params.id;
 

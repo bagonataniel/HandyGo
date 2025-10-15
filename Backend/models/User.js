@@ -20,6 +20,11 @@ class User {
     return rows;
   }
 
+  static async removeAccount(id){
+    const [rows] = await db.execute("DELETE FROM users WHERE id = ?", [id]);
+    return rows;
+  }
+
   static async update(id, fieldNames, fieldValues) {
     const sqlData = []
     fieldNames.forEach((field, index) => {
