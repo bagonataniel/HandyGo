@@ -6,7 +6,7 @@ const auth = require("../middleware/auth");
 
 router.get("/:id", auth, authController.getUserById)
 router.put("/update", auth, authController.updateUser)
-// router.get("/:id/bookings", auth, authController.getUserBookings)
-// router.get("/:id/services", auth, authController.getUserServices)
+router.get("/bookings", auth, authController.getUserBookings)
+router.get("/:id/services", auth, authController.getUserServices)
 
 module.exports = router

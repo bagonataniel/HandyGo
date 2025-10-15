@@ -10,16 +10,6 @@ class User {
     return { id: result.insertId, name, email };
   }
 
-  static async findById(id) {
-    const [rows] = await db.execute("SELECT * FROM users WHERE id = ?", [id]);
-    return rows[0];
-  }
-
-  static async findByEmail(email) {
-    const [rows] = await db.execute("SELECT * FROM users WHERE email = ?", [email]);
-    return rows;
-  }
-
   static async update(id, fieldNames, fieldValues) {
     const sqlData = []
     fieldNames.forEach((field, index) => {
@@ -31,16 +21,7 @@ class User {
     
     return result;
   }
-
-  static async findBookings(id) {
-    const [rows] = await db.execute("SELECT * FROM bookings where client_id = ? OR worker_id = ?", [id, id]);
-    return rows;
-  }
-  
-  static async findWorkerServices(id) {
-    const [rows] = await db.execute("SELECT * FROM services where worker_id = ?", [id]);
-    return rows;
-  }
+    
 }
 
 module.exports = User;
