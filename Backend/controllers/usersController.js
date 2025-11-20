@@ -43,17 +43,17 @@ exports.deleteUser = async (req, res) => {
 }
 
 // Felhasználó foglalásainak lekérése
-exports.getUserBookings = async (req, res) => {
-    const userToken = req.header("x-auth-token");
-    const userId = jwt.decode(userToken).id;
+// exports.getUserBookings = async (req, res) => {
+//     const userToken = req.header("x-auth-token");
+//     const userId = jwt.decode(userToken).id;
 
-    try {
-        const bookings = await User.findClientBookings(userId);
-        return res.status(200).json({ bookings });
-    } catch (error) {
-        return res.status(500).json({ error: "Failed to retrieve bookings", errorDetails: error.message });
-    }
-}
+//     try {
+//         const bookings = await User.findClientBookings(userId);
+//         return res.status(200).json({ bookings });
+//     } catch (error) {
+//         return res.status(500).json({ error: "Failed to retrieve bookings", errorDetails: error.message });
+//     }
+// }
 
 // Felhasználó szolgáltatásainak lekérése
 exports.getUserServices = async (req, res) => {

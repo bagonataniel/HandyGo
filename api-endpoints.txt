@@ -1,0 +1,19 @@
+auth:
+auth/login: email, password bodyban
+auth/register: name, email, password bodyban
+
+users:
+users/:id : userId paraméterként
+users/update : változtatni való adatok a következő fomátumban: {"kulcs": "érték"}
+users/removeaccount: semmi a bodyba, tokenből veszi ki a userIdt
+users/:id/services: paraméterből id
+
+
+service
+service/ : POST esetén új szolgáltatás: title, description, category, price, location
+service/ : GET esetén összes szolgáltatás lekérése: semmilyen adat nem kell
+service/:id : Szolgáltatás IDje paraméterből
+service/update/:id : Szolgáltatás ID-je paraméterből, változtatni való adatok: kulcs, érték párokkal
+service/delete/:id : A felhasználó id-je tokenből, paraméterből szolg. id
+service/:id/review : A felhasználó id-je tokenből, szolgáltatás idje paraméterből, értékelés 1-5-ig bodyban
+
