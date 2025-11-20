@@ -26,6 +26,9 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `bookings`
 --
+CREATE DATABASE IF NOT EXISTS `handygo` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `handygo`;
+
 
 CREATE TABLE `bookings` (
   `id` char(36) NOT NULL DEFAULT uuid(),
