@@ -2,7 +2,7 @@ const Service = require("../models/Service");
 const jwt = require("jsonwebtoken");
 
 exports.addService = async (req, res) => {
-    const {title, description, category, price, location } = req.body;
+    const { title, description, category, price, location } = req.body;
     const userToken = req.header("x-auth-token");
     const userId = jwt.decode(userToken).id;
 
@@ -14,7 +14,7 @@ exports.addService = async (req, res) => {
     const data = await response.json();
 
     if (data.length === 0) {
-      return res.status(404).json({ error: 'Location not found' });
+        return res.status(404).json({ error: 'Location not found' });
     }
 
     // Extract lat and lon from the first result
@@ -24,7 +24,7 @@ exports.addService = async (req, res) => {
         const newService = await Service.create(userId, title, description, category, price, lat, lon);
         res.status(201).json(newService);
     }
-    catch(error){
+    catch (error) {
         res.json(error)
     }
 }
@@ -34,7 +34,7 @@ exports.getAllServices = async (req, res) => {
         const services = await Service.getAllService();
         res.status(200).json(services);
     }
-    catch(error){
+    catch (error) {
         res.json(error)
     }
 }
@@ -42,12 +42,12 @@ exports.getAllServices = async (req, res) => {
 exports.getServiceById = async (req, res) => {
     const id = req.params.id;
     console.log(id);
-    
+
     try {
         const service = await Service.getServiceById(id);
         res.status(200).json(service);
     }
-    catch(error){
+    catch (error) {
         res.json(error)
     }
 }
@@ -59,7 +59,23 @@ exports.updateService = async (req, res) => {
 
     const userId = jwt.decode(userToken).id;
     const serviceId = req.params.id;
-    
+
+    // Handle location update
+    if (Array.from(keys).includes("location")) {
+        const locationIndex = keys.indexOf("location")
+        keys.splice(locationIndex, 1)
+        values.splice(locationIndex, 1)
+        keys.push("latitude", "longitude");
+        const location = req.body.location;
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json`);
+        const data = await response.json();
+
+        if (data.length === 0) {
+            return res.status(404).json({ error: 'Location not found' });
+        }
+        values.push(data[0].lat, data[0].lon);
+    }
+
     try{
         const update = await Service.updateService(userId, serviceId, keys, values)
         if (update.affectedRows === 0) {
@@ -93,7 +109,7 @@ exports.createReview = async (req, res) => {
     const clientId = jwt.decode(userToken).id;
     const serviceId = req.params.id;
     const { rating } = req.body;
-
+    
     try {
         const newReview = await Service.createReview(serviceId, clientId, rating);
         res.status(201).json(newReview);

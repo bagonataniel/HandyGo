@@ -1,7 +1,9 @@
 const db = require("../db");
 
 class Booking {
-    static async create(service_id, client_id, worker_id) {
+    static async create(service_id, client_id) {
+        var worker_id = (await db.execute("SELECT worker_id FROM services WHERE id = ?", [service_id]))[0][0].worker_id
+
         const [result] = await db.execute(
             "INSERT INTO bookings (service_id, client_id, worker_id) VALUES (?, ?, ?)",
             [service_id, client_id, worker_id]

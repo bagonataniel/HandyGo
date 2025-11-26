@@ -25,13 +25,13 @@ class Service {
       sqlData.push(`${field} = '${fieldValues[index]}', `)
     });
     const [result] = await db.execute(
-      `UPDATE services SET ${sqlData.join("").slice(0, -2)} WHERE id = ? and worker_id = ?`,[service_id, id]
+      `UPDATE services SET ${sqlData.join("").slice(0, -2)} WHERE id = ? and worker_id = ?`, [service_id, id]
     );
-    
+
     return result;
   }
 
-  static async removeService(user_id, service_id){
+  static async removeService(user_id, service_id) {
     const [result] = await db.execute("DELETE FROM services WHERE id = ? and worker_id = ?", [service_id, user_id]);
     return result;
   }
@@ -43,11 +43,19 @@ class Service {
       throw new Error("Service not found");
     }
 
+    try {
+      var booking = (await db.execute("SELECT * FROM bookings WHERE service_id = ? AND client_id = ? AND worker_id = ?", [service_id, client_id, worker_id]))[0][0]
+      if (booking === undefined) {
+        throw new Error("Booking not found for this service and client");
+      }
+    } catch (error) {
+      throw new Error("Booking not found for this service and client");
+    }
+
     const [result] = await db.execute(
-      "INSERT INTO reviews (service_id, client_id, worker_id, rating) VALUES (?, ?, ?, ?)",[service_id, client_id, worker_id, rating]);
-    return { id: result.insertId, client_id, service_id, rating};
+      "INSERT INTO reviews (service_id, client_id, worker_id, rating) VALUES (?, ?, ?, ?)", [service_id, client_id, worker_id, rating]);
+    return { id: result.insertId, client_id, service_id, rating };
   }
-    
 }
 
 module.exports = Service;

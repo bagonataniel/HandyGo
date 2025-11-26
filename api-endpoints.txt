@@ -15,5 +15,11 @@ service/ : GET esetén összes szolgáltatás lekérése: semmilyen adat nem kel
 service/:id : Szolgáltatás IDje paraméterből
 service/update/:id : Szolgáltatás ID-je paraméterből, változtatni való adatok: kulcs, érték párokkal
 service/delete/:id : A felhasználó id-je tokenből, paraméterből szolg. id
-service/:id/review : A felhasználó id-je tokenből, szolgáltatás idje paraméterből, értékelés 1-5-ig bodyban
+service/:id/review : A felhasználó id-je tokenből, szolgáltatás idje paraméterből, értékelés 1-5-ig bodyban rating
 
+booking
+booking/ : Foglalás létrehozása: service_id; userId tokenből
+booking/:id : Foglalás részleteinek lekérése. A foglalás id-je paraméterből
+booking/bookings/client : A kliens id-t tokenből kapja meg
+booking/bookings/worker : A dolgozó id-t tokenből kapja meg
+booking/:id/status : foglalás státuszának módosítása. Foglalás id paraméterből, status bodyból. status = 'elfogadásra vár','folyamatban','kész'
