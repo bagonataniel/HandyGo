@@ -1,0 +1,13 @@
+
+.get-started {
+  background: #f5f9ff;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.big-btn {
+  padding: 15px 50px;
+  font-size: 20px;
+  border-radius: 30px;
+}

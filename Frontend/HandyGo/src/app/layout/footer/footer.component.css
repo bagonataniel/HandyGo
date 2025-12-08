@@ -1,0 +1,23 @@
+.footer {
+  background: #333;
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.footer-links li {
+  cursor: pointer;
+}
+
+.footer-links li:hover {
+  text-decoration: underline;
+}
