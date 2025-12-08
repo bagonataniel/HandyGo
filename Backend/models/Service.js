@@ -10,7 +10,7 @@ class Service {
   }
 
   static async getAllService() {
-    const [rows] = await db.execute("SELECT * FROM services");
+    const [rows] = await db.execute("SELECT * FROM services WHERE status = 'approved'");
     return rows;
   }
 
