@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `admin_users`
 --
+CREATE DATABASE IF NOT EXISTS `handygo` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `handygo`;
 
 CREATE TABLE `admin_users` (
   `id` int(10) UNSIGNED NOT NULL,
