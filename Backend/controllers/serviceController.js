@@ -39,6 +39,29 @@ exports.getAllServices = async (req, res) => {
     }
 }
 
+exports.filterServices = async (req, res) => {
+    const {lat, lon} = req.params;
+
+    try {
+        services = await Service.getAllService();
+        for (let index = 0; index < services.length; index++) {
+            coor1 = [parseFloat(lat) * Math.PI / 180, parseFloat(lon) * Math.PI / 180];
+            coor2 = [parseFloat(services[index].latitude) * Math.PI / 180, parseFloat(services[index].longitude) * Math.PI / 180];
+            
+            a = Math.sin((coor2[0]-coor1[0])/2) * Math.sin((coor2[0]-coor1[0])/2) + Math.cos(coor1[0]) * Math.cos(coor2[0]) * Math.sin((coor2[1]-coor1[1])/2) * Math.sin((coor2[1]-coor1[1])/2);
+            c = 2* Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            d = 6371 * c;
+            
+            services[index].distance = d;
+        }
+        // res.status(200).json(services.filter(service => service.distance <= distance));
+        res.status(200).json(services);
+    }
+    catch (error) {
+        res.json(error)
+    }
+}
+
 exports.getServiceById = async (req, res) => {
     const id = req.params.id;
     console.log(id);
