@@ -8,6 +8,18 @@
 }
 
 mat-icon{
-  align-items: center;
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: #0c4e91;
+  margin-bottom: 15px;
+  margin:auto
+}
+
+
+mat-card{
+  height: 100%;
+  background: #c5c5c5;
+  
 }
 
