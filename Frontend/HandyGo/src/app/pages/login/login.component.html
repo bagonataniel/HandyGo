@@ -1,1 +1,19 @@
-<p>login works!</p>
+<app-navbar></app-navbar>
+<div class="login-container">
+    <form [formGroup]="loginForm">
+        <h2>Üdvözlünk! Jelentkezz be a folytatáshoz.</h2>
+        <mat-form-field appearance="outline">
+            <mat-label>Email cím</mat-label>
+            <input matInput placeholder="Írd be az email címed" formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Jelszó</mat-label>
+            <input matInput placeholder="Írd be az email címed" formControlName="password" type="{{passwordVisible ? 'text' : 'password'}}">
+            <button matSuffix matIconButton (click)="passwordVisible = !passwordVisible" [attr.aria-pressed]="passwordVisible">
+            <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="onLogin()">Bejelentkezés</button>
+        <a [routerLink]="['']">Nincs még fiókja? Regisztráció</a>
+    </form>
+</div>

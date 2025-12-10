@@ -11,10 +11,19 @@ import { HeroComponent } from './sections/hero/hero.component';
 import { WhyChooseComponent } from './sections/why-choose/why-choose.component';
 import { OurServicesComponent } from './sections/our-services/our-services.component';
 import { GetStartedComponent } from './sections/get-started/get-started.component';
+import { LoginComponent } from './pages/login/login.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconButton } from '@angular/material/button';
+
+import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +35,7 @@ import { MatIconModule } from '@angular/material/icon';
     WhyChooseComponent,
     OurServicesComponent,
     GetStartedComponent,
-    
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +43,16 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconButton
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })

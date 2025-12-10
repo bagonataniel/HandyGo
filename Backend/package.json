@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "moduleInstall": "npm install express mysql2 dotenv bcrypt jsonwebtoken"
+    "moduleInstall": "npm install express mysql2 dotenv bcrypt jsonwebtoken cors"
   },
   "author": "",
   "license": "ISC",

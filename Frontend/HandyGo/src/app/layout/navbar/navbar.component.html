@@ -1,16 +1,17 @@
 <nav class="navbar">
   <div class="container navbar-content">
-    <div class="logo"> HandyGo</div>
+    <a [routerLink]="['']" class="logo">HandyGo</a>
+
     
     <ul class="nav-menu">
       <li>Kezdőlap</li>
-      <li>Rolunk</li>
+      <li>Rólunk</li>
       <li>Szolgáltatás</li>
       <li>Kapcsolat</li>
     </ul>
 
     <div class="nav-actions">
-      <button mat-stroked-button color="primary">Bejeletkezés</button>
+      <button mat-stroked-button color="primary" [routerLink]="['/login']">Bejeletkezés</button>
       <button mat-raised-button color="primary">Regisztráció</button>
     </div>
   </div>

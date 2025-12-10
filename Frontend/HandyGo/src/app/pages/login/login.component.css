@@ -1,0 +1,19 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100vh;
+    padding: 50px 0;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    text-align: center;
+    gap: 20px;
+}
+
+h2{
+    font-weight: 500;
+}
