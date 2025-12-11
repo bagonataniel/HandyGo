@@ -12,6 +12,7 @@
   animation: bgMove 15s ease-in-out infinite;
   display: flex;
   align-items: center;
+  color: white;
 }
 
 @keyframes bgMove {
@@ -26,7 +27,7 @@
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.26);
 }
 
 .hero-content {
@@ -55,7 +56,6 @@ p {
   background: transparent;
   border: none;
   position: relative;
-  color: #f0f0f0;
   cursor: pointer;
   z-index: 1;
   padding: 10px 20px;
@@ -67,6 +67,8 @@ p {
   -webkit-user-select: none;
   touch-action: manipulation;
   margin: auto;
+  border-radius: 10px;
+  color: #f0f0f0;
 }
 
 .hero-btn::before,
@@ -77,6 +79,7 @@ p {
   right: 0;
   z-index: -1;
   transition: all .4s;
+  
 }
 
 .hero-btn::before {
@@ -84,7 +87,8 @@ p {
   width: 100%;
   height: 100%;
   background: #333;
-  border-radius: 10px;
+  border-radius: 8px;
+  
 }
 
 .hero-btn::after {
@@ -94,12 +98,14 @@ p {
   background: #ffffff33;
   border-radius: 50px;
   opacity: 0;
+  
 }
 
 .hero-btn:hover::before {
   transform: translate(5%, 20%);
   width: 110%;
   height: 110%;
+  
 }
 
 .hero-btn:hover::after {
@@ -108,6 +114,7 @@ p {
   transform: translate(0, 0);
   width: 100%;
   height: 100%;
+  color: #f0f0f0;
 }
 
 .hero-btn:active::after {

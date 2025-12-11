@@ -21,3 +21,7 @@
 .footer-links li:hover {
   text-decoration: underline;
 }
+
+.footer-icons{
+  color: white
+}

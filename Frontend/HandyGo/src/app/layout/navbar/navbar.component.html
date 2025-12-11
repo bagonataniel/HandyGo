@@ -1,18 +1,34 @@
 <nav class="navbar">
   <div class="container navbar-content">
-    <a [routerLink]="['']" class="logo">HandyGo</a>
+    <a [routerLink]="['/']" class="logo">HandyGo</a>
 
-    
-    <ul class="nav-menu">
+    <ul class="nav-menu desktop-menu">
       <li>Kezdőlap</li>
       <li>Rólunk</li>
-      <li>Szolgáltatás</li>
+      <li>Szolgáltatások</li>
       <li>Kapcsolat</li>
     </ul>
 
-    <div class="nav-actions">
-      <button mat-stroked-button color="primary" [routerLink]="['/login']">Bejeletkezés</button>
+    <div class="nav-actions desktop-actions">
+      <button mat-stroked-button color="primary" [routerLink]="['/login']">Bejelentkezés</button>
       <button mat-raised-button color="primary">Regisztráció</button>
     </div>
+
+    <button mat-icon-button class="hamburger" (click)="toggleMobileMenu()" aria-label="Menü">
+      <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+    </button>
+  </div>
+
+  <div class="mobile-menu" [class.open]="isMobileMenuOpen">
+    <ul class="mobile-menu-list">
+      <li (click)="toggleMobileMenu()" >Kezdőlap</li>
+      <li (click)="toggleMobileMenu()" >Rólunk</li>
+      <li (click)="toggleMobileMenu()" >Szolgáltatások</li>
+      <li (click)="toggleMobileMenu()" >Kapcsolat</li>
+      <li class="mobile-buttons">
+        <button mat-stroked-button color="primary" [routerLink]="['/login']" class="w-100 mb-2">Bejelentkezés</button>
+        <button mat-raised-button color="primary"  class="w-100">Regisztráció</button>
+      </li>
+    </ul>
   </div>
 </nav>
