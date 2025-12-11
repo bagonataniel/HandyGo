@@ -9,7 +9,7 @@
         <mat-form-field appearance="outline">
             <mat-label>Jelszó</mat-label>
             <input matInput placeholder="Írd be az email címed" formControlName="password" type="{{passwordVisible ? 'text' : 'password'}}">
-            <button matSuffix matIconButton (click)="passwordVisible = !passwordVisible" [attr.aria-pressed]="passwordVisible">
+            <button matSuffix mat-icon-button (click)="passwordVisible = !passwordVisible" [attr.aria-pressed]="passwordVisible">
             <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>

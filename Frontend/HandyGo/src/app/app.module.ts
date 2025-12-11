@@ -13,17 +13,18 @@ import { OurServicesComponent } from './sections/our-services/our-services.compo
 import { GetStartedComponent } from './sections/get-started/get-started.component';
 import { LoginComponent } from './pages/login/login.component';
 
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatIconButton } from '@angular/material/button';
 
 import { HttpClientModule } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
+import { RegisterComponent } from './pages/register/register.component';
+import { TestComponent } from './test/test.component'; // TestComponent has to be removed later!
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { provideHttpClient } from '@angular/common/http';
     WhyChooseComponent,
     OurServicesComponent,
     GetStartedComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

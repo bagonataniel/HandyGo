@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="register-container">
+    <form [formGroup]="registerForm">
+        <h2>Regisztráció</h2>
+        <!-- Name -->
+        <mat-form-field appearance="outline">
+            <mat-label>Teljes név</mat-label>
+            <input matInput placeholder="Írd be a teljes neved" formControlName="name">
+        </mat-form-field>
+        <!-- Email -->
+        <mat-form-field appearance="outline">
+            <mat-label>Email cím</mat-label>
+            <input matInput placeholder="Írd be az email címed" formControlName="email">
+        </mat-form-field>
+        <!-- Password -->
+        <mat-form-field appearance="outline">
+            <mat-label>Jelszó</mat-label>
+            <input matInput placeholder="Írd be a jelszavad" formControlName="password"
+                type="{{passwordVisible ? 'text' : 'password'}}">
+            <button matSuffix mat-icon-button (click)="passwordVisible = !passwordVisible"
+                [attr.aria-pressed]="passwordVisible">
+                <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <!-- Confirm Password -->
+        <mat-form-field appearance="outline">
+            <mat-label>Jelszó megerősítése</mat-label>
+            <input matInput placeholder="Írd be a jelszó megerősítését"
+                type="{{passwordVisible ? 'text' : 'password'}}" [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}">
+            <button matSuffix mat-icon-button (click)="passwordVisible = !passwordVisible" [attr.aria-pressed]="passwordVisible">
+                <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="onRegister()">Regisztráció</button>
+        <a [routerLink]="['']">Nincs még fiókja? Regisztráció</a>
+    </form>
+</div>
