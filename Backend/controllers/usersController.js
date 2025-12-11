@@ -19,6 +19,17 @@ exports.updateUser = async (req, res) => {
     const values = Object.values(req.body);
 
     const userId = jwt.decode(userToken).id;
+        if (Array.from(keys).includes("location")) {
+        keys.push("latitude", "longitude");
+        const location = req.body.location;
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json`);
+        const data = await response.json();
+
+        if (data.length === 0) {
+            return res.status(404).json({ error: 'Location not found' });
+        }
+        values.push(data[0].lat, data[0].lon);
+    }
     
     try{
         User.update(userId, keys, values)

@@ -12,6 +12,7 @@ class User {
 
   static async findById(id) {
     const [rows] = await db.execute("SELECT * FROM users WHERE id = ?", [id]);
+    delete rows[0].password_hash;
     return rows[0];
   }
 
