@@ -42,7 +42,6 @@ mongoose.connect("mongodb://127.0.0.1:27017/HandyChat")
 var onlineUserMap = new Map();
 
 
-
 io.on("connection", (socket) => {
   socket.on("login", (login) => {
     onlineUserMap.set(socket.id,login.uID);
@@ -55,7 +54,10 @@ io.on("connection", (socket) => {
       });
   });
 
-
+  socket.on("get-messages", (selectedUser)=>{
+    chatModel.getMessagesBetween(onlineUserMap.get(socket.id),selectedUser)
+      .then((messages) => io.to(socket).emit("all-messages",messages));
+  });
 
 });
 

@@ -4,21 +4,23 @@ const connectionsSchema = mongoose.model(
     "user_connection",
     new mongoose.Schema({
         uID1: String,
-        uID2: String
+        uID2: String,
+        name1:String,
+        name2:String
     })
 );
 
 async function getAllConnections(User){
     var connections = [];
 
-    const results1 = await connectionsSchema.find({uID1:User}).select("uID2").lean();
+    const results1 = await connectionsSchema.find({uID1:User}).select("uID2 name2").lean();
     results1.forEach(d => {
-        connections.push(d.uID2);
+        connections.push({uID:d.uID2,name:d.name2});
     });
 
-    const results2 = await connectionsSchema.find({uID2:User}).select("uID1").lean();
+    const results2 = await connectionsSchema.find({uID2:User}).select("uID1 name1").lean();
     results2.forEach(d => {
-        connections.push(d.uID1);
+        connections.push({uID:d.uID1,name:d.name1});
     });
 
     return connections;
