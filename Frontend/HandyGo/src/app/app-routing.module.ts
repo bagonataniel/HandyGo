@@ -5,24 +5,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { TestComponent } from './test/test.component';
 import { MainComponent } from './pages/main/main.component';
-<<<<<<< Updated upstream
 import { authGuard } from './auth.guard';
 import { loginGuard } from './login.guard';
-=======
-import { AboutComponent } from './pages/about/about.component';
->>>>>>> Stashed changes
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [loginGuard]},
   { path: 'test', component: TestComponent },
-<<<<<<< Updated upstream
   { path: 'home', component: MainComponent, canActivate: [authGuard] },
-=======
-  { path: 'home', component: MainComponent},
-  { path: 'about', component: AboutComponent },
->>>>>>> Stashed changes
   { path: '**', redirectTo: '' }, // This has to be at the bottom, otherwise it would override all routes below it!
 ];
 

@@ -26,15 +26,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { RegisterComponent } from './pages/register/register.component';
 import { TestComponent } from './test/test.component';
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import { MainComponent } from './pages/main/main.component'; // TestComponent has to be removed later!
 import {MatMenuModule} from '@angular/material/menu';
 =======
 import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component'; // TestComponent has to be removed later!
->>>>>>> Stashed changes
-=======
-import { MainComponent } from './pages/main/main.component';
-import { AboutComponent } from './pages/about/about.component'; // TestComponent has to be removed later!
 >>>>>>> Stashed changes
 
 @NgModule({
@@ -51,14 +46,9 @@ import { AboutComponent } from './pages/about/about.component'; // TestComponent
     RegisterComponent,
     TestComponent,
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     MainComponent
 =======
     ChatSideNavComponent
->>>>>>> Stashed changes
-=======
-    MainComponent,
-    AboutComponent
 >>>>>>> Stashed changes
   ],
   imports: [

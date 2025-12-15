@@ -3,51 +3,25 @@
   color: white;
   padding: 40px 0;
   text-align: center;
-  border-top: 1px solid #444;
-  margin-top: auto;
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
 }
 
 .footer-links {
   list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0 0 20px 0;
   padding: 0;
-  flex-wrap: wrap;
+  display: flex;
   justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
 }
 
 .footer-links li {
-  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .footer-links li:hover {
   text-decoration: underline;
-  color: #1976d2;
 }
 
-.copyright {
-  color: #aaa;
-  font-size: 14px;
-  margin: 0;
-}
-
-.footer-icons {
-  color: white;
-}
-
-@media (max-width: 600px) {
-  .footer-links {
-    flex-direction: column;
-    gap: 16px;
-  }
+.footer-icons{
+  color: white
 }
