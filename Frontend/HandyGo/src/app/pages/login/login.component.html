@@ -4,11 +4,11 @@
         <h2>Üdvözlünk! Jelentkezz be a folytatáshoz.</h2>
         <mat-form-field appearance="outline">
             <mat-label>Email cím</mat-label>
-            <input matInput placeholder="Írd be az email címed" formControlName="email">
+            <input matInput placeholder="Email cím" formControlName="email">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Jelszó</mat-label>
-            <input matInput placeholder="Írd be az email címed" formControlName="password" type="{{passwordVisible ? 'text' : 'password'}}">
+            <input matInput placeholder="Jelszó" formControlName="password" type="{{passwordVisible ? 'text' : 'password'}}">
             <button matSuffix mat-icon-button (click)="passwordVisible = !passwordVisible" [attr.aria-pressed]="passwordVisible">
             <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>

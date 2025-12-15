@@ -9,9 +9,19 @@
       <li>Kapcsolat</li>
     </ul>
 
-    <div class="nav-actions desktop-actions">
+    <div class="nav-actions desktop-actions" *ngIf="!loggedIn">
       <button mat-stroked-button color="primary" [routerLink]="['/login']">Bejelentkezés</button>
       <button mat-raised-button color="primary" [routerLink]="['/register']">Regisztráció</button>
+    </div>
+
+    <div class="nav-actions desktop-actions" *ngIf="loggedIn">
+      <button mat-button [matMenuTriggerFor]="menu">
+        Profil <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Profil</button>
+        <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon> Kijelentkezés</button>
+      </mat-menu>
     </div>
 
     <button mat-icon-button class="hamburger" (click)="toggleMobileMenu()" aria-label="Menü">
@@ -21,13 +31,13 @@
 
   <div class="mobile-menu" [class.open]="isMobileMenuOpen">
     <ul class="mobile-menu-list">
-      <li (click)="toggleMobileMenu()" >Kezdőlap</li>
-      <li (click)="toggleMobileMenu()" >Rólunk</li>
-      <li (click)="toggleMobileMenu()" >Szolgáltatások</li>
-      <li (click)="toggleMobileMenu()" >Kapcsolat</li>
+      <li (click)="toggleMobileMenu()">Kezdőlap</li>
+      <li (click)="toggleMobileMenu()">Rólunk</li>
+      <li (click)="toggleMobileMenu()">Szolgáltatások</li>
+      <li (click)="toggleMobileMenu()">Kapcsolat</li>
       <li class="mobile-buttons">
         <button mat-stroked-button color="primary" [routerLink]="['/login']" class="w-100 mb-2">Bejelentkezés</button>
-        <button mat-raised-button color="primary"  class="w-100">Regisztráció</button>
+        <button mat-raised-button color="primary" class="w-100" [routerLink]="['/register']">Regisztráció</button>
       </li>
     </ul>
   </div>

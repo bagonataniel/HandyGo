@@ -8,6 +8,10 @@ export class AuthService {
 
   constructor(private _http: HttpClient) { }
 
+  public loggedIn(){
+    return !!localStorage.getItem('token');
+  }
+
   public login(data:any){
     return this._http.post('http://localhost:3000/auth/login', data);
   }

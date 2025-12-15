@@ -26,6 +26,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { RegisterComponent } from './pages/register/register.component';
 import { TestComponent } from './test/test.component';
 import { MainComponent } from './pages/main/main.component'; // TestComponent has to be removed later!
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MainComponent } from './pages/main/main.component'; // TestComponent ha
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconButton
+    MatIconButton,
+    MatMenuModule
   ],
   providers: [
     provideAnimationsAsync(),

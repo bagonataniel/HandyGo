@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,27 +9,29 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  loginForm : FormGroup;
+  loginForm: FormGroup;
   passwordVisible: boolean = false;
 
-  constructor(private auth:AuthService, private _fb: FormBuilder) { 
+  constructor(private auth: AuthService, private _fb: FormBuilder, private router: Router) {
     this.loginForm = this._fb.group({
       email: [''],
       password: ['']
     });
   }
 
-
-  onLogin(){
+  onLogin() {
     this.auth.login(this.loginForm.value).subscribe({
-      next(value) {
+      next: (value) => {
+        const res = value as any;
         console.log('Login successful', value);
-        localStorage.setItem('token', JSON.parse(JSON.stringify(value)).JWT);
-        localStorage.setItem('userId', JSON.parse(JSON.stringify(value)).id);
+        localStorage.setItem('token', res.JWT);
+        localStorage.setItem('userId', res.id);
+        this.router.navigate(['/home']);
       },
-      error(err) {
+      error: (err) => {
         console.error('Login failed', err.error);
       }
-    })
+    });
+
   }
 }

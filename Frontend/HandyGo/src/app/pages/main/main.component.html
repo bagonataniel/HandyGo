@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
 <div class="card-section">
-    <mat-card>
-        <mat-card-title>Főoldal</mat-card-title>
+    
+    <mat-card *ngFor="let item of services" class="service-card">
+        <mat-card-title>{{item.category}}</mat-card-title>
         <mat-card-content>
-            <p>Üdvözlünk a HandyGo alkalmazásban!</p>
-            <p>Itt kezdheted el felfedezni a szolgáltatásainkat.</p>
+            <p>{{item.description}}</p>
+            <p>{{item.price}}</p>
         </mat-card-content>
     </mat-card>
 </div>
