@@ -25,12 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
 import { RegisterComponent } from './pages/register/register.component';
 import { TestComponent } from './test/test.component';
-<<<<<<< Updated upstream
 import { MainComponent } from './pages/main/main.component'; // TestComponent has to be removed later!
 import {MatMenuModule} from '@angular/material/menu';
-=======
-import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component'; // TestComponent has to be removed later!
->>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -45,11 +41,7 @@ import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.compo
     LoginComponent,
     RegisterComponent,
     TestComponent,
-<<<<<<< Updated upstream
     MainComponent
-=======
-    ChatSideNavComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -63,11 +55,7 @@ import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.compo
     FormsModule,
     ReactiveFormsModule,
     MatIconButton,
-<<<<<<< Updated upstream
     MatMenuModule
-=======
-    MatSidenavModule
->>>>>>> Stashed changes
   ],
   providers: [
     provideAnimationsAsync(),
