@@ -54,12 +54,38 @@ io.on("connection", (socket) => {
       });
   });
 
+  socket.on("add-connection", (data)=>{
+    connectionModel.addConnection(data.uID1,data.uID2);
+  });
+
   socket.on("get-messages", (selectedUser)=>{
     chatModel.getMessagesBetween(onlineUserMap.get(socket.id),selectedUser)
       .then((messages) => io.to(socket).emit("all-messages",messages));
   });
 
+  socket.on("send-message", (data) => {
+    chatModel.saveMessage(data.from, data.message, data.to);
+    const toSocketId = getSocketIdByUser(data.to);
+    if(toSocketId){
+      io.to(toSocketId).emit("new-message", {from:data.from, message:data.message});
+    }
+  });
+
+  socket.on("disconnect", () => {
+    onlineUserMap.delete(socket.id);
+  });
+
 });
+
+function getSocketIdByUser(uID){
+  onlineUserMap.forEach((value, key) => {
+    if (value === uID) {
+      return key;
+    }
+  });
+  // Ha nem megy, hát nem megy
+  return null;
+}
 
 const PORT = 3000;
 app.listen(PORT, () => {

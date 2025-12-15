@@ -20,13 +20,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { HttpClientModule } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
 import { RegisterComponent } from './pages/register/register.component';
 import { TestComponent } from './test/test.component';
+<<<<<<< Updated upstream
 import { MainComponent } from './pages/main/main.component'; // TestComponent has to be removed later!
 import {MatMenuModule} from '@angular/material/menu';
+=======
+import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component'; // TestComponent has to be removed later!
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import {MatMenuModule} from '@angular/material/menu';
     LoginComponent,
     RegisterComponent,
     TestComponent,
+<<<<<<< Updated upstream
     MainComponent
+=======
+    ChatSideNavComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -55,7 +63,11 @@ import {MatMenuModule} from '@angular/material/menu';
     FormsModule,
     ReactiveFormsModule,
     MatIconButton,
+<<<<<<< Updated upstream
     MatMenuModule
+=======
+    MatSidenavModule
+>>>>>>> Stashed changes
   ],
   providers: [
     provideAnimationsAsync(),
