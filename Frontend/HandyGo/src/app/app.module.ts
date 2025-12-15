@@ -24,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
 import { RegisterComponent } from './pages/register/register.component';
-import { TestComponent } from './test/test.component'; // TestComponent has to be removed later!
+import { TestComponent } from './test/test.component';
+import { MainComponent } from './pages/main/main.component'; // TestComponent has to be removed later!
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TestComponent } from './test/test.component'; // TestComponent has to b
     GetStartedComponent,
     LoginComponent,
     RegisterComponent,
-    TestComponent
+    TestComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
