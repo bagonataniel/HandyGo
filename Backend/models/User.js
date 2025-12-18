@@ -47,6 +47,11 @@ class User {
     const [rows] = await db.execute("SELECT * FROM services where worker_id = ?", [id]);
     return rows;
   }
+
+  static async verifyUser(id){
+    const [result] = await db.execute("UPDATE users SET is_verified = 1 WHERE id = ?", [id]);
+    return result;
+  }
 }
 
 module.exports = User;

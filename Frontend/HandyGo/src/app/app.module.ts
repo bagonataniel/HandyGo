@@ -29,6 +29,8 @@ import { MainComponent } from './pages/main/main.component'; // TestComponent ha
 import {MatMenuModule} from '@angular/material/menu';
 import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component';
 import {MatListModule} from '@angular/material/list';
+import { VerificationComponent } from './pages/verification/verification.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {MatListModule} from '@angular/material/list';
     RegisterComponent,
     TestComponent,
     MainComponent,
-    ChatSideNavComponent
+    ChatSideNavComponent,
+    VerificationComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
