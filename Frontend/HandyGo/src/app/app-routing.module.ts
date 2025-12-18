@@ -11,6 +11,8 @@ import { isVerifiedGuard } from './guards/is-verified.guard';
 import { VerificationComponent } from './pages/verification/verification.component';
 
 
+import { AboutComponent } from './pages/about/about.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
@@ -18,11 +20,13 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'home', component: MainComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'verification', component: VerificationComponent, canActivate: [authGuard] },
+  { path: 'home', component: MainComponent, canActivate: [authGuard] },
+  { path: 'about', component: AboutComponent },
   { path: '**', redirectTo: '' }, // This has to be at the bottom, otherwise it would override all routes below it!
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ scrollPositionRestoration: 'top'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
