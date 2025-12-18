@@ -1,16 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public static isAuthenticated: boolean = false;
 
   constructor(private _http: HttpClient) { }
 
+  get isVerified() {
+    return localStorage.getItem('isVerified');
+  }
+
+  setVerified(value: boolean) {
+    return localStorage.setItem('isVerified', value.toString());
+  }
+
   public loggedIn(){
     return !!localStorage.getItem('token');
+  }
+
+  public logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('isVerified');
   }
 
   public login(data:any){
