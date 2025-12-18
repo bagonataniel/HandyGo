@@ -28,6 +28,8 @@ import { TestComponent } from './test/test.component';
 import { MainComponent } from './pages/main/main.component'; // TestComponent has to be removed later!
 import {MatMenuModule} from '@angular/material/menu';
 import { VerificationComponent } from './pages/verification/verification.component';
+import { AboutComponent } from './pages/about/about.component';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { VerificationComponent } from './pages/verification/verification.compone
     RegisterComponent,
     TestComponent,
     MainComponent,
-    VerificationComponent
+    VerificationComponent,
+    AboutComponent
+
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ import { VerificationComponent } from './pages/verification/verification.compone
     FormsModule,
     ReactiveFormsModule,
     MatIconButton,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule
   ],
   providers: [
     provideAnimationsAsync(),
