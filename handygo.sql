@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Dec 08. 12:03
+-- Létrehozás ideje: 2025. Dec 18. 12:25
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -26,8 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Tábla szerkezet ehhez a táblához `admin_users`
 --
-CREATE DATABASE IF NOT EXISTS `handygo` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
-USE `handygo`;
 
 CREATE TABLE `admin_users` (
   `id` int(10) UNSIGNED NOT NULL,
@@ -117,19 +115,21 @@ CREATE TABLE `users` (
   `latitude` decimal(10,7) DEFAULT NULL,
   `longitude` decimal(10,7) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_verified` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `role`, `bio`, `skills`, `latitude`, `longitude`, `location`, `created_at`) VALUES
-('8aa6a91c-d421-11f0-87dc-309c23b76b61', 'Kiss Anna', 'anna.kiss@example.com', '$2b$10$WAgLdnULnNqbhfMoZbIFIe1sQaAOU6GHj6dZz/oPharegWlQdlara', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:34:57'),
-('94e8623e-d421-11f0-87dc-309c23b76b61', 'Nagy Béla', 'bela.nagy@example.com', '$2b$10$aG.jVMFvBi5zZcL4OUQPpeQ0y0kPWLCnWPrNBSseBunoJI9xvAYmi', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:35:14'),
-('98f21112-d421-11f0-87dc-309c23b76b61', 'Szabó Csilla', 'csilla.szabo@example.com', '$2b$10$R1kYe0YwDS00/e9BTlvx6uZP6WdapLFp4KOdp.4jK41kcbhHGcqhC', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:35:21'),
-('9e8250e0-d421-11f0-87dc-309c23b76b61', 'Tóth Dániel', 'daniel.toth@example.com', '$2b$10$NfoCqd9M7tOGj5QVBue79eeA9AsUH0cUUw4GdvBo0ipcuXuwc5ycO', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:35:30'),
-('a20ce5d5-d421-11f0-87dc-309c23b76b61', 'Farkas Emese', 'emese.farkas@example.com', '$2b$10$wmLFoHXH0ef8YQzNBg1/2.dDzN1nV7cwIttlMO8idPPHOpXYkq7q.', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:35:36');
+INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `role`, `bio`, `skills`, `latitude`, `longitude`, `location`, `created_at`, `is_verified`) VALUES
+('94e8623e-d421-11f0-87dc-309c23b76b61', 'Nagy Béla', 'bela.nagy@example.com', '$2b$10$aG.jVMFvBi5zZcL4OUQPpeQ0y0kPWLCnWPrNBSseBunoJI9xvAYmi', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:35:14', 0),
+('a20ce5d5-d421-11f0-87dc-309c23b76b61', 'Farkas Emese', 'emese.farkas@example.com', '$2b$10$wmLFoHXH0ef8YQzNBg1/2.dDzN1nV7cwIttlMO8idPPHOpXYkq7q.', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:35:36', 0),
+('e1e4a94f-d5c3-11f0-beba-e0d55ed2c0f2', 'Kiss Bela - jelszó: Bela123', 'kiss.bela@example.com', '$2b$10$rM/6NGLWjhAAtLuMke9in.6AtKenScP8fHEqC4wLHAr.KPcC9.YPa', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-10 12:29:33', 0),
+('eb3e3ead-d5c3-11f0-beba-e0d55ed2c0f2', 'Nagy Anna - jelszó: Anna1', 'anna.nagy@example.com', '$2b$10$9LnuRqSy6U.7vqer5ublkuVGGiydz47vhk5I3vm9r.qMCMfD8lNlm', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-10 12:29:49', 0),
+('eefae026-d5c3-11f0-beba-e0d55ed2c0f2', 'Szabo Peter - jelszó: Peter123', 'szabo.peter@example.com', '$2b$10$zT7SX6FVY3aW7hGi975nGe/6IvZWtpwMzBxXeQ2hru1xNqGF6iABW', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-10 12:29:55', 0),
+('f252ec70-d5c3-11f0-beba-e0d55ed2c0f2', 'Horvath Lilla - jelszó: Lilla99', 'lilla.horvath@example.com', '$2b$10$ComKLKqfQqzXVlXgK80.aOPequ37R1vzah2XRbkBGkAFavEivt6U2', 'user', NULL, NULL, NULL, NULL, NULL, '2025-12-10 12:30:00', 0);
 
 --
 -- Indexek a kiírt táblákhoz
