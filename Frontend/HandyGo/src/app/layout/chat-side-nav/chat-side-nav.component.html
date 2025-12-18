@@ -1,13 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer mode="over" [(opened)]="sidenav?.opened">
+  <mat-sidenav #drawer mode="over" [(opened)]="sidenavOpened" >
     <h3>Contacts</h3>
     <mat-nav-list>
-      <mat-list-item *ngFor="let contact of contacts">
-        {{ contact.name }}
+      <mat-list-item *ngFor="let connection of connections">
+        {{ connection.name }}
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-
   <mat-sidenav-content>
     <ng-content></ng-content>
   </mat-sidenav-content>

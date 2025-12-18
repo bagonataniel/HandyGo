@@ -25,4 +25,6 @@ export class MessageService {
     this.socket.on('new-message', (message:any) => { callback(message); });
   }
 
+  
+
 }

@@ -13,10 +13,11 @@ export class ConnectionService {
   }
   
   login(): void {
-    this.socket.emit('login', {uID:localStorage.getItem('id')});
+    console.log("Logging in user with ID:", localStorage.getItem('userId'));
+    this.socket.emit('login', {uID:localStorage.getItem('userId')});
   }
   createConnection(uID2:String): void {
-    this.socket.emit('create-connection',{uID1:localStorage.getItem('id'),uID2:uID2});
+    this.socket.emit('create-connection',{uID1:localStorage.getItem('userId'),uID2:uID2});
   }
   getConnections(uID2:String,callback : (connections:any[]) => void){
     this.socket.emit("get-connections", uID2);

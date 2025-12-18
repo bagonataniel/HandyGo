@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const cors = require('cors');
 require('dotenv').config();
+const mysql = require('mysql2/promise');
 
 //A chat cuccai
 const http = require("http");
@@ -45,6 +46,7 @@ var onlineUserMap = new Map();
 io.on("connection", (socket) => {
   socket.on("login", (login) => {
     onlineUserMap.set(socket.id,login.uID);
+    console.log("User logged in: " + login.uID);
   });
 
   socket.on("get-connections", ()=>{

@@ -27,6 +27,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { TestComponent } from './test/test.component';
 import { MainComponent } from './pages/main/main.component'; // TestComponent has to be removed later!
 import {MatMenuModule} from '@angular/material/menu';
+import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {MatMenuModule} from '@angular/material/menu';
     LoginComponent,
     RegisterComponent,
     TestComponent,
-    MainComponent
+    MainComponent,
+    ChatSideNavComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,9 @@ import {MatMenuModule} from '@angular/material/menu';
     FormsModule,
     ReactiveFormsModule,
     MatIconButton,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync(),
