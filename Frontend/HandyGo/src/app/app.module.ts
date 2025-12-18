@@ -27,6 +27,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { TestComponent } from './test/test.component';
 import { MainComponent } from './pages/main/main.component'; // TestComponent has to be removed later!
 import {MatMenuModule} from '@angular/material/menu';
+import { VerificationComponent } from './pages/verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatMenuModule} from '@angular/material/menu';
     LoginComponent,
     RegisterComponent,
     TestComponent,
-    MainComponent
+    MainComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
+  public static isAuthenticated: boolean = false;
 
   constructor(private _http: HttpClient) { }
 
