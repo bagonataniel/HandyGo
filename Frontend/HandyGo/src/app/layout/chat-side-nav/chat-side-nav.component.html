@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer mode="over" [(opened)]="sidenav?.opened">
+  <mat-sidenav #drawer mode="over" [(opened)]="opened">
     <h3>Contacts</h3>
     <mat-nav-list>
       <mat-list-item *ngFor="let contact of contacts">
@@ -12,3 +12,4 @@
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<button mat-raised-button (click)="opened = !opened">Toggle Contacts</button>

@@ -29,6 +29,9 @@ import { MainComponent } from './pages/main/main.component'; // TestComponent ha
 import {MatMenuModule} from '@angular/material/menu';
 import { VerificationComponent } from './pages/verification/verification.component';
 import { AboutComponent } from './pages/about/about.component';
+import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component';
+import { CommonModule } from '@angular/common';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -46,7 +49,9 @@ import { AboutComponent } from './pages/about/about.component';
     TestComponent,
     MainComponent,
     VerificationComponent,
-    AboutComponent
+    AboutComponent,
+    ChatSideNavComponent,
+
 
   ],
   imports: [
@@ -62,7 +67,9 @@ import { AboutComponent } from './pages/about/about.component';
     ReactiveFormsModule,
     MatIconButton,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    CommonModule,
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync(),
