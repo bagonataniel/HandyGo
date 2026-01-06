@@ -35,6 +35,11 @@
   transition: color .3s;
 }
 
+.desktop-menu li a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .desktop-menu li:hover { color: #1976d2; }
 
 .desktop-actions button {
