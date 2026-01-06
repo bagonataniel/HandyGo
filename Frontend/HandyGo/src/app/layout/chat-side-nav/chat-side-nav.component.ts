@@ -11,12 +11,19 @@ export class ChatSideNavComponent {
   opened: boolean = false;
 
   constructor(private connectionService: ConnectionService) {
+    this.connectionService.login();
+    console.log('fetching contacts...');
     this.loadContacts();
   }
 
   loadContacts() {
     this.connectionService.getConnections((connections:any)=>{
+      console.log('Received contacts:', connections);
       this.contacts = connections;
     });
+  }
+  openChat(contact:any) {
+    // Logic to open chat with the selected contact
+    console.log('Opening chat with:', contact);
   }
 }

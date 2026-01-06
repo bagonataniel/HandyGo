@@ -1,0 +1,17 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.chat-drawer {
+    width: 30rem;
+    max-width: 80%;
+    text-align: center;
+}
+.toggle-button {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    padding-right: 0.5rem;
+}

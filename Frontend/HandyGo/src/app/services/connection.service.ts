@@ -13,13 +13,14 @@ export class ConnectionService {
   }
   
   login(): void {
-    this.socket.emit('login', {uID:localStorage.getItem('id')});
+    this.socket.emit('login', {uID:localStorage.getItem('userId')});
   }
   createConnection(uID2:String): void {
-    this.socket.emit('create-connection',{uID1:localStorage.getItem('id'),uID2:uID2});
+    this.socket.emit('create-connection',{uID1:localStorage.getItem('userId'),uID2:uID2});
   }
-  getConnections(callback : (connections:any[]) => void){
+  getConnections(callback:(connections:any[]) => void){
     this.socket.emit("get-connections");
-    this.socket.once('all-connections', (connections:any[]) => { callback(connections); });
+    console.log('Requesting connections from server...');
+    this.socket.once('all-connections', (connections:any[]) => { callback(connections); console.log('Connections received from server.'); } );
   }
 }

@@ -50,7 +50,8 @@ io.on("connection", (socket) => {
   socket.on("get-connections", ()=>{
     connectionModel.getAllConnections(onlineUserMap.get(socket.id))
       .then((connections) => {
-        io.to(socket).emit("all-connections", connections);
+        io.to(socket.id).emit("all-connections", connections);
+        console.log(`Sent connections to user ${onlineUserMap.get(socket.id)}:`, connections);
       });
   });
 
@@ -83,11 +84,10 @@ function getSocketIdByUser(uID){
       return key;
     }
   });
-  // Ha nem megy, hát nem megy
   return null;
 }
 
 const PORT = 3000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

@@ -16,6 +16,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +32,7 @@ const routes: Routes = [
   { path: 'services/:id', component: ServicesComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'users/:id', component: UsersComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard, isVerifiedGuard] },
+  { path: 'chat-test', component: ChatSideNavComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: '**', redirectTo: '' }, // This has to be at the bottom, otherwise it would override all routes below it!
 ];
 
