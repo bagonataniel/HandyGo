@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<section class="page-content">
+  <div class="container">
+    <h1>Kapcsolat</h1>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Kapcsolatfelvétel</h2>
+        <p><strong>Email:</strong> info&#64;handygo.hu</p>
+        <p><strong>Telefon:</strong> +36 30 123 4567</p>
+        <p><strong>Cím:</strong> 6300 Kalocsa, Kossuth Lajos utca 15.</p>
+        <p><strong>Nyitvatartás:</strong> H–P: 8:00–18:00</p>
+
+        <h2>Kövess minket</h2>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><mat-icon>facebook</mat-icon></a>
+          <a href="#" aria-label="Instagram"><mat-icon>photo_camera</mat-icon></a>
+          <a href="#" aria-label="LinkedIn"><mat-icon>linkedin</mat-icon></a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Írj nekünk</h2>
+        <form (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Neved</mat-label>
+            <input matInput placeholder="Pl. Kovács János" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email címed</mat-label>
+            <input matInput type="email" placeholder="pelda@email.hu" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Tárgy</mat-label>
+            <input matInput placeholder="Pl. Kérdés a szolgáltatásokról">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Üzenet</mat-label>
+            <textarea matInput rows="6" placeholder="Írd ide az üzeneted..." required></textarea>
+          </mat-form-field>
+
+          <div class="form-actions">
+            <button mat-raised-button color="primary" type="submit" class="submit-btn">
+              Küldés
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="back-button-container">
+      <button mat-stroked-button color="primary" [routerLink]="['/']" class="back-to-home-btn">
+        Vissza a főoldalra
+      </button>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

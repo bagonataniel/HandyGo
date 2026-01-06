@@ -32,6 +32,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component';
 import { CommonModule } from '@angular/common';
 import {MatListModule} from '@angular/material/list';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import {MatListModule} from '@angular/material/list';
     VerificationComponent,
     AboutComponent,
     ChatSideNavComponent,
+    ContactComponent,
 
 
   ],

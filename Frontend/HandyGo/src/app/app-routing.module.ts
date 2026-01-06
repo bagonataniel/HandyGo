@@ -9,6 +9,7 @@ import { loginGuard } from './guards/login.guard';
 import { authGuard } from './guards/auth.guard';
 import { isVerifiedGuard } from './guards/is-verified.guard';
 import { VerificationComponent } from './pages/verification/verification.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 import { AboutComponent } from './pages/about/about.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'verification', component: VerificationComponent, canActivate: [authGuard] },
   { path: 'home', component: MainComponent, canActivate: [authGuard] },
   { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
   { path: '**', redirectTo: '' }, // This has to be at the bottom, otherwise it would override all routes below it!
 ];
 
