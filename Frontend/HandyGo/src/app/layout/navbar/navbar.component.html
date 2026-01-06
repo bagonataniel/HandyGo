@@ -3,10 +3,10 @@
     <a [routerLink]="['/']" class="logo">HandyGo</a>
 
     <ul class="nav-menu desktop-menu">
-      <li>Kezdőlap</li>
-      <li>Rólunk</li>
-      <li>Szolgáltatások</li>
-      <li>Kapcsolat</li>
+      <li><a [routerLink]="['/home']">Kezdőlap</a></li>
+      <li><a [routerLink]="['/about']">Rólunk</a></li>
+      <li><a [routerLink]="['/services']">Szolgáltatások</a></li>
+      <li><a [routerLink]="['/contact']">Kapcsolat</a></li>
     </ul>
 
     <div class="nav-actions desktop-actions" *ngIf="!loggedIn">
@@ -19,7 +19,7 @@
         Profil <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Profil</button>
+        <button mat-menu-item [routerLink]="['/profile']">Profil</button>
         <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon> Kijelentkezés</button>
       </mat-menu>
     </div>

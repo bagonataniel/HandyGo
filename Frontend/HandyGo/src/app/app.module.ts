@@ -33,6 +33,9 @@ import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.compo
 import { CommonModule } from '@angular/common';
 import {MatListModule} from '@angular/material/list';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ServicesComponent } from './pages/services/services.component';
+import { UsersComponent } from './pages/users/users.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -53,8 +56,9 @@ import { ContactComponent } from './pages/contact/contact.component';
     AboutComponent,
     ChatSideNavComponent,
     ContactComponent,
-
-
+    ServicesComponent,
+    UsersComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
