@@ -1,9 +1,15 @@
+.page-content{
+  background-color: #66656507;
+}
+
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
   margin: 40px 0;
   align-items: start;
+  
 }
 
 .contact-info h2,
@@ -36,6 +42,7 @@
 .full-width {
   width: 100%;
   margin-bottom: 16px;
+
 }
 
 .form-actions {
@@ -47,6 +54,29 @@
   border-radius: 25px;
   font-size: 16px;
 }
+
+.back-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.back-to-home-btn {
+  padding: 14px 40px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 17px;
+  min-width: 220px;
+  border-color: #1976d2;
+  color: #1976d2;
+  transition: all 0.3s ease;
+}
+
+.back-to-home-btn:hover {
+  background-color: #1976d2;
+  color: white;
+}
+
 
 @media (max-width: 992px) {
   .contact-grid {

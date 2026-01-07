@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<section class="page-content">
+  <div class="container">
+    <h1>Felhasználói jogok és adatvédelem</h1>
+
+    <h2>1. Milyen adatokat gyűjtünk?</h2>
+    <p>
+        Csak a szolgáltatás nyújtásához szükséges adatokat kérjük: név, email cím, telefonszám (opcionális),
+        valamint a megrendelésekhez kapcsolódó információkat (pl. cím, szolgáltatás típusa).
+    </p>
+
+    <h2>2. Miért gyűjtjük ezeket?</h2>
+    <p>
+        Az adatokat kizárólag arra használjuk, hogy összeköthessünk a megfelelő szakemberrel,
+        és segítsük a kommunikációt köztetek. Nem adunk el adatokat harmadik félnek, és nem küldünk reklámot a beleegyezésed nélkül.
+    </p>
+
+    <h2>3. Meddig tároljuk az adataidat?</h2>
+    <p>
+        Amíg aktív felhasználó vagy, vagy amíg kéred az adatok törlését. Ha törölni szeretnéd a fiókodat, kattinst a "Fiók törlése" gobra a profilon belül,
+        és 30 napon belül teljesítjük a kérést.
+    </p>
+
+    <h2>4. Milyen jogaid vannak?</h2>
+    <p>
+        Bármikor hozzáférhetsz, módosíthatod vagy törölheted az adataidat. Kérheted az adatkezelés korlátozását,
+        vagy tiltakozhatsz az ellen, hogy bizonyos adatokat kezeljünk. Ezeket a kéréseket az <a [routerLink]="['/contact']"><strong>info&#64;handygo.hu</strong></a> email címen fogadjuk.
+    </p>
+    <h2>5. Hogyan védjük az adataidat?</h2>
+    <p>
+        Modern titkosítással (HTTPS), biztonságos szerverekkel és rendszeres biztonsági ellenőrzésekkel védjük az információidat.
+        Csak azok férnek hozzá az adatokhoz, akiknek feltétlenül szükségük van rá a munkájukhoz.
+    </p>
+
+    <h2>6. Sütik (cookies)</h2>
+    <p>
+        Az oldal alapvető működéséhez szükséges sütiket használunk (pl. bejelentkezés megjegyzése). Elemzéshez (pl. Google Analytics) csak a beleegyezéseddel helyezünk el sütiket.
+    </p>
+
+    <h2>7. Kapcsolat az adatvédelemmel kapcsolatban</h2>
+    <p>
+        Ha kérdésed van, vagy gyakorolni szeretnéd a jogaidat, írj nekünk bátran:  
+        <a [routerLink]="['/contact']"><strong>info&#64;handygo.hu</strong></a>
+    </p>
+
+    <p>
+        Utolsó frissítés: 2025. január
+    </p>
+
+    <div class="back-button-container">
+      <button mat-stroked-button color="primary" [routerLink]="['/']" class="back-to-home-btn">
+            Vissza a főoldalra
+      </button>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

@@ -2,6 +2,7 @@
   padding: 100px 20px 60px;
   min-height: calc(100vh - 70px - 200px);
   text-align: justify;
+  background-color: #66656507;
 }
 
 .page-content h1 {

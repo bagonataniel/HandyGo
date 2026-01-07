@@ -22,12 +22,14 @@
   padding: 0;
   flex-wrap: wrap;
   justify-content: center;
+  
 }
 
 .footer-links li {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  color: white ;
 }
 
 .footer-links li:hover {

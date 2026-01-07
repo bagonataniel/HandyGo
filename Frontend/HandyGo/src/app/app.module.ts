@@ -36,6 +36,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { TermsComponent } from './pages/terms/terms.component';
+import { RightsComponent } from './pages/rights/rights.component';
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ServicesComponent,
     UsersComponent,
     ProfileComponent,
+    TermsComponent,
+    RightsComponent,
   ],
   imports: [
     BrowserModule,

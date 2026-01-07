@@ -1,19 +1,117 @@
 .login-container{
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    height: 100vh;
-    padding: 50px 0;
+  min-height: calc(100vh - 70px); 
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(2, 2, 196, 0.699), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(2, 2, 131, 0.7), transparent 50%),
+    linear-gradient(135deg, #000000, #001144);
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  animation: bgMove 15s ease-in-out infinite;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    text-align: center;
-    gap: 20px;
+@keyframes bgMove {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
 }
 
-h2{
+.login-container form {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+}
+
+.login-container h2{
+    color: #1976d2;
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+::ng-deep .login-container .mat-mdc-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+::ng-deep .login-container .mat-mdc-form-field-outline {
+  color: #bbb !important;
+}
+
+::ng-deep .login-container .mat-mdc-form-field:hover .mat-mdc-form-field-outline-thick {
+  color: #1976d2 !important;
+}
+
+.login-container button[matSuffix] {
+  color: #666;
+}
+.login-container button[matSuffix]:hover {
+  color: #1976d2;
+}
+
+.login-container button[mat-raised-button] {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 12px 0 15px;
+  border-radius: 30px;
+  background: #1976d2;
+  color: white;
+}
+
+.login-container button[mat-raised-button]:hover {
+  background: #155a9c;
+}
+
+.login-container a {
+    display: block;
+    margin-top: 20px;
+    color: #1976d2;
+    text-decoration: none;
     font-weight: 500;
+    font-size: 16px;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+    color: #0d47a1;
+}
+
+@media (max-width: 600px) {
+  .login-container form {
+    padding: 30px 25px;
+    border-radius: 12px;
+  }
+
+  .login-container h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+
+  .login-container button[mat-raised-button] {
+    font-size: 17px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+    .login-container form {
+      padding: 25px 20px;
+    }
+
+    .login-container h2 {
+      font-size: 24px;
+    }
 }

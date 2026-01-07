@@ -1,0 +1,136 @@
+.register-container {
+  min-height: calc(100vh - 70px); 
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(2, 2, 196, 0.699), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(2, 2, 131, 0.7), transparent 50%),
+    linear-gradient(135deg, #000000, #001144);
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;  
+  animation: bgMove 15s ease-in-out infinite; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+@keyframes bgMove {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
+
+.register-container form {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.39);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.register-container h2 {
+  color: #1976d2;
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+
+::ng-deep .register-container .mat-mdc-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+::ng-deep .register-container .mat-mdc-form-field-outline {
+  color: #bbb !important;
+}
+
+::ng-deep .register-container .mat-mdc-form-field:hover .mat-mdc-form-field-outline-thick {
+  color: #1976d2 !important;
+}
+
+::ng-deep .register-container .mat-mdc-form-field-focus-overlay {
+  background: transparent !important;
+}
+
+::ng-deep .register-container .mat-mdc-form-field .mat-mdc-input-element {
+  color: #333;
+}
+
+
+.register-container button[matSuffix] {
+  color: #666;
+}
+
+.register-container button[matSuffix]:hover {
+  color: #1976d2;
+}
+
+.register-container button[mat-raised-button] {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 30px;
+  margin: 20px 0 15px;
+  background-color: #1976d2;
+  color: white;
+}
+
+.register-container button[mat-raised-button]:hover {
+  background-color: #1565c0;
+}
+
+
+.register-container a {
+  display: block;
+  margin-top: 20px;
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.register-container a:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
+
+
+@media (max-width: 600px) {
+  .register-container form {
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .register-container h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  ::ng-deep .register-container .mat-mdc-form-field {
+    margin-bottom: 18px;
+  }
+
+  .register-container button[mat-raised-button] {
+    padding: 16px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 400px) {
+  .register-container form {
+    padding: 25px 20px;
+  }
+
+  .register-container h2 {
+    font-size: 26px;
+  }
+}
