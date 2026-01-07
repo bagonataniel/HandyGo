@@ -1,0 +1,40 @@
+<div class="chat-container">
+  <!-- Messages area -->
+  <div class="messages" #messagesContainer>
+    <!-- @for (msg of messages(); track $index) {
+      <div 
+        class="message" 
+        [ngClass]="{'user-message': msg.isUser, 'bot-message': !msg.isUser}">
+ 
+        <div class="message-content">
+          {{ msg.text }}
+        </div>
+ 
+        <div class="timestamp">
+          {{ formatTime(msg.timestamp) }}
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-chat">
+        <p>No messages yet...</p>
+      </div>
+    } -->
+  </div>
+<!--  
+  
+  <div class="input-area">
+    <input 
+      type="text" 
+      placeholder="Type your message..." 
+      [(ngModel)]="newMessage"
+      (keyup.enter)="sendMessage()"
+      autofocus
+    >
+ 
+    <button 
+      (click)="sendMessage()"
+      [disabled]="!newMessage().trim()">
+      Send
+    </button>
+  </div> -->
+</div>

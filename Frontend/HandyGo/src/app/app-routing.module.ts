@@ -19,6 +19,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component';
 import { TermsComponent } from './pages/terms/terms.component';
 import { RightsComponent } from './pages/rights/rights.component';
+import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +38,7 @@ const routes: Routes = [
   { path: 'chat-test', component: ChatSideNavComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'terms', component: TermsComponent },
   { path: 'rights', component: RightsComponent },
+  { path: 'chat-test', component: ChatPanelComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: '**', redirectTo: '' }, // This has to be at the bottom, otherwise it would override all routes below it!
 ];
 

@@ -1,11 +1,11 @@
 <mat-drawer-container class="example-container" [hasBackdrop]="true">
   
   <mat-drawer #drawer mode="over" position="end" class="chat-drawer">
-    <h2>Contacts</h2>
+    <h2>Kapcsolatok</h2>
     <br>
     <mat-list>
       @if (contacts.length === 0) {
-        <p>No contacts available.</p>
+        <p>Nincs elérhető kapcsolatod.</p>
       }
       <mat-list-item *ngFor="let contact of contacts" (click)="openChat(contact)" class="contact-item">
         <mat-icon matListItemIcon>person</mat-icon>

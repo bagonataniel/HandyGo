@@ -39,7 +39,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { TermsComponent } from './pages/terms/terms.component';
 import { RightsComponent } from './pages/rights/rights.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
 
 
 @NgModule({
@@ -65,6 +65,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ProfileComponent,
     TermsComponent,
     RightsComponent,
+    ChatPanelComponent,
+    
   ],
   imports: [
     BrowserModule,
