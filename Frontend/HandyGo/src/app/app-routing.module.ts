@@ -18,7 +18,6 @@ import { UsersComponent } from './pages/users/users.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component';
 
-
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
