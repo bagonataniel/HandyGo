@@ -36,6 +36,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     MatMenuModule,
     MatSidenavModule,
     CommonModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [
     provideAnimationsAsync(),
