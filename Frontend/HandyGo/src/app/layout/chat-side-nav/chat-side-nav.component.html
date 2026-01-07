@@ -1,19 +1,22 @@
 <mat-drawer-container class="example-container" [hasBackdrop]="true">
-  <mat-drawer #drawer mode="over" position="end" class="chat-drawer">
+  
+  <mat-drawer #drawer mode="over" position="end" class="chat-drawer" style="pointer-events: auto;">
     <h2>Contacts</h2>
-    <br>
     <mat-list>
       @if (contacts.length === 0) {
         <p>No contacts available.</p>
       }
-      <mat-list-item *ngFor="let contact of contacts" (click)="openChat(contact)" class="contact-item">
-        <mat-icon matListIcon> person</mat-icon>
-        <h4 matLine><mat-icon> contacts</mat-icon> {{ contact.name}}</h4>
+      <mat-list-item *ngFor="let contact of contacts" (click)="openChat(contact)">
+        <mat-icon matListItemIcon>person</mat-icon>
+        <div matListItemTitle>{{ contact.name }}</div>
       </mat-list-item>
     </mat-list>
-
   </mat-drawer>
+
   <mat-drawer-content>
-    <button class="toggle-button" mat-flat-button (click)="drawer.toggle()"><mat-icon class="icon">chat</mat-icon></button>
+    <button class="toggle-button" mat-fab color="primary" (click)="drawer.toggle()">
+      <mat-icon>chat</mat-icon>
+    </button>
   </mat-drawer-content>
+
 </mat-drawer-container>

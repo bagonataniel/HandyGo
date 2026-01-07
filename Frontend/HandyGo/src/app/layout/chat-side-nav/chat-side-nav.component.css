@@ -1,17 +1,44 @@
+/* This container now floats over your entire app */
 .example-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9000;
+  background: transparent; /* Allow main app to show through */
+  pointer-events: none;    /* Allow clicks to pass through to the app below */
+}
+
+mat-drawer {
+  pointer-events: auto;    /* Make sure the sidebar itself is clickable */
+  z-index: 8000;
+  width: 30rem;
+  max-width: 80%;
+}
+
+mat-drawer-content {
+  /* We don't want the content area to block the screen */
+  background: transparent !important;
+  overflow: visible !important;
+  z-index: 9000;
+}
+
+.toggle-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  pointer-events: auto;    /* Make sure the button is clickable */
+  z-index: 1002;
 }
 .chat-drawer {
-    width: 30rem;
-    max-width: 80%;
-    text-align: center;
+  text-align: center;
 }
-.toggle-button {
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 1000;
-    padding-right: 0.5rem;
+mat-list-item {
+  justify-content: center;
+  background-color: rgb(219, 238, 255);
+  border-radius: 20px;
+  width: 80%;
+  margin: auto;
+  margin-top: 0.5rem;
 }
