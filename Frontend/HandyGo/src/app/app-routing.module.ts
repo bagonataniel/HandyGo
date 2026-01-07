@@ -20,7 +20,6 @@ import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.compo
 import { TermsComponent } from './pages/terms/terms.component';
 import { RightsComponent } from './pages/rights/rights.component';
 
-
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },

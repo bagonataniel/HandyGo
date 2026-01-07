@@ -30,6 +30,7 @@ export class LoginComponent {
         this.auth.setVerified(Boolean(res.is_verified));
         this.router.navigate(['/home']);
         this.connectionService.login();
+        window.location.reload();
       },
       error: (err) => {
         console.error('Login failed', err.error);

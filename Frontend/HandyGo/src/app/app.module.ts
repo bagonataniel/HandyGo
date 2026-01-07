@@ -38,6 +38,8 @@ import { UsersComponent } from './pages/users/users.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TermsComponent } from './pages/terms/terms.component';
 import { RightsComponent } from './pages/rights/rights.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -79,7 +81,8 @@ import { RightsComponent } from './pages/rights/rights.component';
     MatMenuModule,
     MatSidenavModule,
     CommonModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [
     provideAnimationsAsync(),

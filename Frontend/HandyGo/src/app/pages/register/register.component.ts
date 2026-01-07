@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -8,6 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  private _snackBar = inject(MatSnackBar);
   registerForm: FormGroup;
   passwordVisible: boolean = false;
   confirmPassword: string = '';
@@ -28,13 +30,13 @@ export class RegisterComponent {
     }
     
     this.auth.register(this.registerForm.value).subscribe({
-      next(value) {
+      next: (value) => {
         console.log('Registration successful', value);
-        localStorage.setItem('token', JSON.parse(JSON.stringify(value)).JWT);
-        localStorage.setItem('userId', JSON.parse(JSON.stringify(value)).id);
+        this._snackBar.open("✅ Regisztráció sikeres! Kattints az e-mailben lévő linkre a fiók aktiválásához. 📧", 'Close', { duration: 3000 });
       },
-      error(err) {
+      error: (err) => {
         console.error('Login failed', err.error);
+        this._snackBar.open(`❌ Hiba a regisztráció során: ${err.error.error}`, 'Close', { duration: 3000 });
       }
     })
   }
