@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Dec 18. 12:25
+-- Létrehozás ideje: 2026. Jan 08. 10:32
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `handygo`
 --
+CREATE DATABASE IF NOT EXISTS `handygo` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `handygo`;
 
 -- --------------------------------------------------------
 
