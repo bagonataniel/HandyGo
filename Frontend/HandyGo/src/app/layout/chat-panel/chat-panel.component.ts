@@ -29,11 +29,10 @@ export class ChatPanelComponent {
           if (!data) return;
           this.otherUserId = data.uID;
           this.otherUserName = data.name;
-        console.log('Chat opened with:', this.otherUserName);
 
         this.messageService.GetMessages(this.otherUserId,(messages) => {
           this.messages = messages;
-          console.log('Messages loaded:', messages);
+          console.log('Loaded messages:', this.messages);
         });
       },
       error: (error) => {
@@ -42,6 +41,11 @@ export class ChatPanelComponent {
     }));
   }
   
+  sendMessage(content: string){
+    this.messageService.sendMessage(this.otherUserId, content);
+  }
+
+
   ngOnDestroy() {
   this.subscriptions.forEach(sub => sub.unsubscribe());
   }

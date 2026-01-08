@@ -27,6 +27,7 @@ export class LoginComponent {
         console.log('Login successful', value);
         localStorage.setItem('token', res.JWT);
         localStorage.setItem('userId', res.id);
+        localStorage.setItem('username', res.username);
         this.auth.setVerified(Boolean(res.is_verified));
         this.router.navigate(['/home']);
         this.connectionService.login();

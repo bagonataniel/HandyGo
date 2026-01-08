@@ -35,6 +35,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('isVerified');
+    localStorage.removeItem('username');
   }
 
   public login(data:any){

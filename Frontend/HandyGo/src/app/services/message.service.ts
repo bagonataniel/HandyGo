@@ -13,11 +13,11 @@ export class MessageService {
 
 
   sendMessage(uID2:String, content:String): void {
-    this.socket.emit('send-message',{from:localStorage.getItem('id'),message:content,to:uID2});
+    this.socket.emit('send-message',{from:localStorage.getItem('userId'),message:content,to:uID2});
   }
 
   GetMessages(uID2:String,callback:(messages:any[])=>void){
-    this.socket.emit('get-messages',uID2);
+    this.socket.emit('get-messages',uID2,localStorage.getItem('userId'));
     this.socket.once('all-messages', (messages:any[]) => { callback(messages); });
   }
 

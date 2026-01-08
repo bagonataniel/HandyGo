@@ -51,7 +51,7 @@ io.on("connection", (socket) => {
     connectionModel.getAllConnections(onlineUserMap.get(socket.id))
       .then((connections) => {
         io.to(socket.id).emit("all-connections", connections);
-        console.log(`Sent connections to user ${onlineUserMap.get(socket.id)}:`, connections);
+        //console.log(`Sent connections to user ${onlineUserMap.get(socket.id)}:`, connections);
       });
   });
 
@@ -59,10 +59,10 @@ io.on("connection", (socket) => {
     connectionModel.addConnection(data.uID1,data.uID2);
   });
 
-  socket.on("get-messages", (selectedUser)=>{
-    console.log(`Getting messages between ${onlineUserMap.get(socket.id)} and ${selectedUser}`);
-    chatModel.getMessagesBetween(onlineUserMap.get(socket.id),selectedUser)
-      .then((messages) => io.to(socket).emit("all-messages",messages));
+  socket.on("get-messages", (selectedUser,user)=>{
+    //console.log(`Getting messages between ${user} and ${selectedUser}`);
+    chatModel.getMessagesBetween(user,selectedUser)
+      .then((messages) => io.to(socket.id).emit("all-messages",messages));
   });
 
   socket.on("send-message", (data) => {
