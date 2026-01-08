@@ -20,7 +20,6 @@ export class ConnectionService {
   }
   getConnections(callback:(connections:any[]) => void){
     this.socket.emit("get-connections");
-    console.log('Requesting connections from server...');
-    this.socket.once('all-connections', (connections:any[]) => { callback(connections); console.log('Connections received from server.'); } );
+    this.socket.once('all-connections', (connections:any[]) => { callback(connections);} );
   }
 }

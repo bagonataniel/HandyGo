@@ -23,6 +23,7 @@ export class AppComponent {
   onStorageChange(event: StorageEvent) {
     if (event.key === 'token') {
       this.isLoggedIn = event.newValue !== null;
+      window.location.reload();
     }
   }
 }

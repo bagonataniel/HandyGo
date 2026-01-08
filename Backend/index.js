@@ -60,6 +60,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("get-messages", (selectedUser)=>{
+    console.log(`Getting messages between ${onlineUserMap.get(socket.id)} and ${selectedUser}`);
     chatModel.getMessagesBetween(onlineUserMap.get(socket.id),selectedUser)
       .then((messages) => io.to(socket).emit("all-messages",messages));
   });
