@@ -1,20 +1,26 @@
 <nav class="navbar">
   <div class="container navbar-content">
-    <a [routerLink]="['/']" class="logo">HandyGo</a>
-
-    <ul class="nav-menu desktop-menu">
-      <li><a [routerLink]="['/home']">Kezdőlap</a></li>
-      <li><a [routerLink]="['/about']">Rólunk</a></li>
-      <li><a [routerLink]="['/services']">Szolgáltatások</a></li>
-      <li><a [routerLink]="['/contact']">Kapcsolat</a></li>
-    </ul>
+    <a routerLink="/" class="logo">HandyGo</a>
 
     <div class="nav-actions desktop-actions" *ngIf="!loggedIn">
+      <ul class="nav-menu desktop-menu">
+        <li><a [routerLink]="['/']">Kezdőlap</a></li>
+        <li><a [routerLink]="['/about']">Rólunk</a></li>
+        <li><a [routerLink]="['/contact']">Kapcsolat</a></li>
+      </ul>
+
       <button mat-stroked-button color="primary" [routerLink]="['/login']">Bejelentkezés</button>
       <button mat-raised-button color="primary" [routerLink]="['/register']">Regisztráció</button>
     </div>
 
+
     <div class="nav-actions desktop-actions" *ngIf="loggedIn">
+      <ul class="nav-menu desktop-menu">
+        <li><a [routerLink]="['/home']">Kezdőlap</a></li>
+        <li><a [routerLink]="['/yourservices']">Szolgáltatásaid</a></li>
+        <li><a [routerLink]="['/yourjobs']">Foglalásaid</a></li>
+      </ul>
+
       <button mat-button [matMenuTriggerFor]="menu">
         Profil <mat-icon>account_circle</mat-icon>
       </button>
@@ -24,6 +30,7 @@
       </mat-menu>
     </div>
 
+
     <button mat-icon-button class="hamburger" (click)="toggleMobileMenu()" aria-label="Menü">
       <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
     </button>
@@ -31,14 +38,30 @@
 
   <div class="mobile-menu" [class.open]="isMobileMenuOpen">
     <ul class="mobile-menu-list">
-      <li (click)="toggleMobileMenu()">Kezdőlap</li>
-      <li (click)="toggleMobileMenu()">Rólunk</li>
-      <li (click)="toggleMobileMenu()">Szolgáltatások</li>
-      <li (click)="toggleMobileMenu()">Kapcsolat</li>
-      <li class="mobile-buttons">
-        <button mat-stroked-button color="primary" [routerLink]="['/login']" class="w-100 mb-2">Bejelentkezés</button>
-        <button mat-raised-button color="primary"  [routerLink]="['/register']" class="w-100">Regisztráció</button>
-      </li>
+
+      <ng-container *ngIf="!loggedIn">
+        <li (click)="toggleMobileMenu()" [routerLink]="['/']">Kezdőlap</li>
+        <li (click)="toggleMobileMenu()" [routerLink]="['/about']">Rólunk</li>
+        <li (click)="toggleMobileMenu()" [routerLink]="['/contact']">Kapcsolat</li>
+        <li class="mobile-buttons">
+          <button mat-stroked-button color="primary" [routerLink]="['/login']" class="w-100 mb-2" (click)="toggleMobileMenu()">
+            Bejelentkezés
+          </button>
+          <button mat-raised-button color="primary" [routerLink]="['/register']" class="w-100" (click)="toggleMobileMenu()">
+            Regisztráció
+          </button>
+        </li>
+      </ng-container>
+
+      <ng-container *ngIf="loggedIn">
+        <li (click)="toggleMobileMenu()" [routerLink]="['/home']">Kezdőlap</li>
+        <li (click)="toggleMobileMenu()" [routerLink]="['/yourservices']">Szolgáltatásaid</li>
+        <li (click)="toggleMobileMenu()" [routerLink]="['/yourjobs']">Foglalásaid</li>
+        <li (click)="toggleMobileMenu()" [routerLink]="['/profile']">Profil</li>
+        <li (click)="toggleMobileMenu(); logout()" class="logout-item">
+          <mat-icon>logout</mat-icon> Kijelentkezés
+        </li>
+      </ng-container>
     </ul>
   </div>
 </nav>
