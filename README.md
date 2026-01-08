@@ -49,14 +49,14 @@ Olyan kisebb munkákra készült, mint:
 
 ## 🧱 Projekt felépítése
 
-HandyGo/
-│
-├── Backend/ ⚙️ Node.js + Express API
-├── Frontend/
+HandyGo/  
+│  
+├── Backend/ ⚙️ Node.js + Express API  
+├── Frontend/  
 │ └── HandyGo/ 🎨 Frontend alkalmazás
-│
-├── API_endpoint_list.xlsx 📊 API dokumentáció (Excel)
-├── handygotest.sql 🗄 Teszt adatbázis
+│  
+├── API_endpoint_list.xlsx 📊 API dokumentáció (Excel)  
+├── handygo.sql 🗄 Teszt adatbázis  
 └── README.md
 
 
@@ -80,26 +80,26 @@ HandyGo/
 
 ## 📥 Telepítés & futtatás
 
-### 1️⃣ Repo klónozása
-git clone https://github.com/bagonataniel/HandyGo.git
+### 1️⃣ Repo klónozása  
+git clone https://github.com/bagonataniel/HandyGo.git  
 cd HandyGo
 
-2️⃣ MongoDB telepítés
-MongoDB Community Server letöltés és telepítése (chat működéséhez)
+2️⃣ MongoDB telepítés  
+MongoDB Community Server letöltés és telepítése (chat működéséhez)  
 MongoDB Compass az adatbázis egyszerű megtekintéséhez
 
-3️⃣ Adatbázis
-Importáld a handygotest.sql fájlt MySQL-be
+3️⃣ Adatbázis  
+Importáld a handygotest.sql fájlt MySQL-be  
 Állítsd be az adatbázis elérést (.env)
 
-4️⃣ Backend indítása
-cd Backend
-npm install
+4️⃣ Backend indítása  
+cd Backend  
+npm install  
 npm start
 
-5️⃣ Frontend indítása
-cd Frontend/HandyGo
-npm install
+5️⃣ Frontend indítása  
+cd Frontend/HandyGo  
+npm install  
 ng serve -o
 
 🔌 API dokumentáció
