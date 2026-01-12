@@ -1,4 +1,4 @@
-import { Component , OnInit ,ViewChild} from '@angular/core';
+import { Component , ElementRef, OnInit ,ViewChild} from '@angular/core';
 import { MessageService } from '../../services/message.service';
 import { ModalService } from '../../services/modal.service';
 import { MatDialogContent } from '@angular/material/dialog';
@@ -15,10 +15,6 @@ export class ChatPanelComponent {
   otherUserName: string = '';
   messages: any[] = [];
   subscriptions: any[] = [];
-  dialogContent:HTMLDivElement = document.querySelector('.content') as HTMLDivElement;
-
-  defaultData = {from: '', to: '', message: 'asdasdasd'};
-
 
   constructor(private messageService: MessageService, private modalService: ModalService) {}
 

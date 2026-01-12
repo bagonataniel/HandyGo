@@ -2,8 +2,8 @@
 <button mat-icon-button mat-dialog-close class="close-button">
   <mat-icon>close</mat-icon>
 </button>
-<mat-dialog-content class="mat-typography">
-  <div class="content">
+<mat-dialog-content class="mat-typography" #scrollContainer>
+  <div class="content" >
     @if (messages.length == 0) {
       <p>nincsenek üzenetek még</p>
     }
@@ -13,5 +13,5 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  
+
 </mat-dialog-actions>
