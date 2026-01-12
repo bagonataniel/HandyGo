@@ -10,5 +10,8 @@ router.get("/services/pending", adminAuth, adminController.getPendingServices);
 router.post("/services/:id/approve", adminAuth, adminController.approveService);
 router.post("/services/:id/reject", adminAuth, adminController.rejectService);
 router.get("/users", adminAuth, adminController.getAllUsers);
+router.get("/stats", adminAuth, adminController.getStats);
+router.delete("/users/:id", adminAuth, adminController.deleteUser);
+router.get("/bookings", adminAuth, adminController.getBookings);
 
 module.exports = router;

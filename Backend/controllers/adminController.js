@@ -77,3 +77,32 @@ exports.getAllServices = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
+
+exports.deleteUser = async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        await Admin.DeleteUser(userId);
+        res.status(200).json({ message: "User deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+exports.getStats = async (req, res) => {
+    try {
+        const stats = await Admin.getStats();
+        res.status(200).json(stats[0]);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+exports.getBookings = async (req, res) => {
+    try {
+        const bookings = await Admin.getBookings();
+        res.status(200).json(bookings);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
