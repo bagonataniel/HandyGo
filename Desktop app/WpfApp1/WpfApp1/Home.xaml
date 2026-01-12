@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="WpfApp1.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1000">
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"></RowDefinition>
+            <RowDefinition Height="70*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Stretch" Margin="10" Grid.Row="0" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"></ColumnDefinition>
+                <ColumnDefinition Width="25*"></ColumnDefinition>
+                <ColumnDefinition Width="25*"></ColumnDefinition>
+                <ColumnDefinition Width="25*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" CornerRadius="20" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#16212C">
+                <StackPanel>
+                    <Border HorizontalAlignment="Left" Background="#182948" Width="40" Height="40" CornerRadius="10" Padding="5" Margin="10 10 0 0">
+                        <Path Data="M40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q36 20 55 44.5t19 53.5v120H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-28-2.5t-28-5.5q27-32 41.5-71t14.5-81q0-42-14.5-81T544-792q14-5 28-6.5t28-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 320Zm0-400Z" Fill="#60A5FA" Stretch="Uniform" ></Path>
+                    </Border>
+                    <TextBlock Foreground="#839CB6" FontSize="20" Margin="10 0 0 0">Felhasználók</TextBlock>
+                    <Label x:Name="userCount" Foreground="White" FontSize="30" Margin="10 0 0 0">0</Label>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" CornerRadius="20" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#16212C">
+                <StackPanel>
+                    <Border HorizontalAlignment="Left" Background="#1E2545" Width="40" Height="40" CornerRadius="10" Padding="5" Margin="10 10 0 0">
+                        <Path Data="M160-120q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v440q0 33-23.5 56.5T800-120H160Zm0-80h160v-120q-26-6-43-27.5T260-397v-163h40v151h30v-151h40v151h30v-151h40v163q0 28-17 49.5T380-320v120h200v-88q-26-15-43-50.5T520-420q0-58 26-99t64-41q37 0 63.5 41t26.5 99q0 47-17 82.5T640-288v88h160v-440H160v440Zm240-520h160v-80H400v80ZM160-200v-440 440Z" Fill="#818CF8" Stretch="Uniform" ></Path>
+                    </Border>
+                    <TextBlock Foreground="#839CB6" FontSize="20" Margin="10 0 0 0">Szolgáltatások</TextBlock>
+                    <Label x:Name="servicesCount" Foreground="White" FontSize="30" Margin="10 0 0 0">0</Label>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="2" CornerRadius="20" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#16212C">
+                <StackPanel>
+                    <Border HorizontalAlignment="Left" Background="#342523" Width="40" Height="40" CornerRadius="10" Padding="5" Margin="10 10 0 0">
+                        <Path Data="M680-80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80Zm67-105 28-28-75-75v-112h-40v128l87 87Zm-547 65q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h167q11-35 43-57.5t70-22.5q40 0 71.5 22.5T594-840h166q33 0 56.5 23.5T840-760v250q-18-13-38-22t-42-16v-212h-80v120H280v-120h-80v560h212q7 22 16 42t22 38H200Zm280-640q17 0 28.5-11.5T520-800q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800q0 17 11.5 28.5T480-760Z" Fill="#FC933C" Stretch="Uniform" ></Path>
+                    </Border>
+                    <TextBlock Foreground="#839CB6" FontSize="20" Margin="10 0 0 0" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" >Elfogadásra váró szolgáltatások</TextBlock>
+                    <Label x:Name="pendingServicesCount" Foreground="White" FontSize="30" Margin="10 0 0 0">0</Label>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="3" CornerRadius="20" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#16212C">
+                <StackPanel>
+                    <Border HorizontalAlignment="Left" Background="#2A1F47" Width="40" Height="40" CornerRadius="10" Padding="5" Margin="10 10 0 0">
+                        <Path Data="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v255l-80 80v-175H200v400h248l80 80H200Zm0-560h560v-80H200v80Zm0 0v-80 80ZM662-60 520-202l56-56 85 85 170-170 56 57L662-60Z" Fill="#C084FC" Stretch="Uniform" ></Path>
+                    </Border>
+                    <TextBlock Foreground="#839CB6" FontSize="20" Margin="10 0 0 0">Foglalások</TextBlock>
+                    <Label x:Name="bookingCount" Foreground="White" FontSize="30" Margin="10 0 0 0">0</Label>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*"></ColumnDefinition>
+                <ColumnDefinition Width="40*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Label>Diagram</Label>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Label>Kördiagram</Label>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
