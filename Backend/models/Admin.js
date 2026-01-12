@@ -43,6 +43,20 @@ class Admin {
         return rows;
     }
 
+    static async DeleteUser(id) {
+        const [result] = await db.execute("DELETE FROM users WHERE id = ?", [id]);
+        return result;
+    }
+
+    static async getStats(){
+        const [result] = await db.execute("SELECT (SELECT COUNT(*) FROM users) AS users_count, (SELECT COUNT(*) FROM services WHERE services.status = 'pending')  AS pending_services, (SELECT COUNT(*) FROM services WHERE services.status = 'rejected')  AS rejected_services, (SELECT COUNT(*) FROM services WHERE services.status = 'approved')  AS approved_services, (SELECT COUNT(*) FROM bookings)  AS bookings_count;")
+        return result;
+    }
+
+    static async getBookings(){
+        const [rows] = await db.execute("SELECT * FROM bookings");
+        return rows
+    }
 }
 
 module.exports = Admin;
