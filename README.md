@@ -90,7 +90,8 @@ MongoDB Compass az adatbázis egyszerű megtekintéséhez
 
 3️⃣ Adatbázis  
 Importáld a handygotest.sql fájlt MySQL-be  
-Állítsd be az adatbázis elérést (.env)
+Állítsd be az adatbázis elérést (.env), valamint a belépési adatokat
+Fontos! Lehetséges, hogy a smtp 25-ös port nem működik (pl. otthoni hálózatoknál), így ebben az esetben a 587-es port működhet!
 
 4️⃣ Backend indítása  
 cd Backend  
