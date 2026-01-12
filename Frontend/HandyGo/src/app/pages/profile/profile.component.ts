@@ -4,21 +4,45 @@ import { UsersService } from '../../services/users.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profileData: any[] = [];
+  user: any = null;
+  isLoading = true;
+  errorMessage: string | null = null;
 
-  constructor(private users: UsersService) { }
+  constructor(private usersService: UsersService) {}
+
   ngOnInit(): void {
-    this.users.getUserDetails(localStorage.getItem("userId")).subscribe({
+    this.loadUserProfile();
+  }
+
+  loadUserProfile() {
+    const userId = localStorage.getItem('userId');
+
+    if (!userId) {
+      this.errorMessage = 'Nincs bejelentkezve felhasználó.';
+      this.isLoading = false;
+      return;
+    }
+
+    this.usersService.getUserDetails(userId).subscribe({
       next: (data: any) => {
-        this.profileData = data;
-        console.log(data);
+        this.user = data.user || data;
+        this.isLoading = false;
       },
-      error: (error: any) => {
-        console.error('Error fetching profile data:', error);
+      error: (err) => {
+        this.errorMessage = 'Nem sikerült betölteni a profilodat.';
+        this.isLoading = false;
+        console.error('Hiba:', err);
       }
-    })
+    });
+  }
+
+  getSkillsArray(): string[] {
+    if (!this.user?.skills || this.user.skills.trim() === '') {
+      return [];
+    }
+    return this.user.skills.split(',').map((s: string) => s.trim()).filter((s: string) => s.length > 0);
   }
 }
