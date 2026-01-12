@@ -35,10 +35,9 @@ const routes: Routes = [
   { path: 'services/:id', component: ServicesComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'users/:id', component: UsersComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard, isVerifiedGuard] },
-  { path: 'chat-test', component: ChatSideNavComponent, canActivate: [authGuard, isVerifiedGuard] },
+  { path: 'chat-test', component: ChatPanelComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'terms', component: TermsComponent },
   { path: 'rights', component: RightsComponent },
-  { path: 'chat-test', component: ChatSideNavComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: '**', redirectTo: '' }, // This has to be at the bottom, otherwise it would override all routes below it!
 ];
 

@@ -1,8 +1,17 @@
-<div class="main-panel">
-  <div class="chat-container">
-
+<h2 mat-dialog-title>{{otherUserName}}</h2>
+<button mat-icon-button mat-dialog-close class="close-button">
+  <mat-icon>close</mat-icon>
+</button>
+<mat-dialog-content class="mat-typography">
+  <div class="content">
+    @if (messages.length == 0) {
+      <p>nincsenek üzenetek még</p>
+    }
+    @for (message of messages; track $index) {
+      <p class="{{message.from == otherUserId ? 'his-message' : 'my-message'}}">{{message.message}}</p>
+    }
   </div>
-  <div class="input-area">
-    
-  </div>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  
+</mat-dialog-actions>

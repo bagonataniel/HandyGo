@@ -40,6 +40,8 @@ import { TermsComponent } from './pages/terms/terms.component';
 import { RightsComponent } from './pages/rights/rights.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
+import { MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -84,8 +86,10 @@ import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
     MatSidenavModule,
     CommonModule,
     MatListModule,
-    MatSnackBarModule
-  ],
+    MatSnackBarModule,
+    MatDialogTitle,
+    MatDialogModule
+],
   providers: [
     provideAnimationsAsync(),
     provideHttpClient()
