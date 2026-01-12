@@ -6,14 +6,14 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9000;
+  z-index: 13;
   background: transparent; /* Allow main app to show through */
   pointer-events: none;    /* Allow clicks to pass through to the app below */
 }
 
 mat-drawer {
   pointer-events: auto;    /* Make sure the sidebar itself is clickable */
-  z-index: 8000;
+  z-index: 10;
   width: 30rem;
   max-width: 80%;
 }
@@ -22,15 +22,15 @@ mat-drawer-content {
   /* We don't want the content area to block the screen */
   background: transparent !important;
   overflow: visible !important;
-  z-index: 9000;
+  z-index: 12;
 }
 
-.toggle-button {
+#toggle-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   pointer-events: auto;    /* Make sure the button is clickable */
-  z-index: 1002;
+  z-index: 12;
 }
 .chat-drawer {
   text-align: center;

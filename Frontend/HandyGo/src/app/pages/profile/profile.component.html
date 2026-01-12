@@ -1,2 +1,66 @@
 <app-navbar></app-navbar>
-<p>profile works!</p>
+<div class="profile-page">
+  <div class="container">
+    <h1>Profilom</h1>
+
+    <div class="loading" *ngIf="isLoading">
+      <p>Profil betöltése...</p>
+    </div>
+
+    <div class="error" *ngIf="errorMessage && !isLoading">
+      {{ errorMessage }}
+    </div>
+
+    <ng-container *ngIf="user && !isLoading && !errorMessage">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="avatar">
+            {{ user.name?.charAt(0) || '?' }}
+          </div>
+
+          <div class="user-info">
+            <h2>{{ user.name || 'Név nincs megadva' }}</h2>
+            <p class="email">{{ user.email || 'Email nincs megadva' }}</p>
+            <p class="location" *ngIf="user.location">
+              <mat-icon>location_on</mat-icon> {{ user.location }}
+            </p>
+
+            <p class="coordinates" *ngIf="user.latitude && user.longitude">
+              <mat-icon>my_location</mat-icon>
+              Szélesség: {{ user.latitude | number:'1.6-6' }} | Hosszúság: {{ user.longitude | number:'1.6-6' }}
+            </p>
+          </div>
+        </div>
+
+
+        <div class="profile-section">
+          <h3>Rólam</h3>
+          <p>{{ user.bio || 'Nincs bemutatkozás megadva.' }}</p>
+        </div>
+
+        <div class="profile-section">
+          <h3>Készségek / Szakterületek</h3>
+          <div class="skills">
+            <span class="skill-chip" *ngFor="let skill of getSkillsArray()">
+              {{ skill }}
+            </span>
+            <span class="no-skills" *ngIf="!user.skills || user.skills.trim() === ''">
+              Nincs megadott készség.
+            </span>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <button mat-raised-button color="primary">
+            Profil szerkesztése
+          </button>
+
+          <button mat-stroked-button color="warn">
+            Profil törlése
+          </button>
+        </div>
+
+      </div>
+    </ng-container>
+  </div>
+</div>
