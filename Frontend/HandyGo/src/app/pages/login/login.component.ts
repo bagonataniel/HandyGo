@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConnectionService } from '../../services/connection.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { ConnectionService } from '../../services/connection.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  private _snackBar = inject(MatSnackBar);
   loginForm: FormGroup;
   passwordVisible: boolean = false;
 
@@ -35,6 +37,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error('Login failed', err.error);
+        this._snackBar.open(`❌ Hiba a bejelentkezés során: ${err.error.error}`, 'Close', { duration: 3000 });
       }
     });
 
