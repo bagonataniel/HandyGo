@@ -39,9 +39,9 @@ exports.login = async (req, res) => {
         }
 
         const token = jwt.sign({ id: userData[0].id, role: userData[0].name, email: userData[0].email }, process.env.JWT_SECRET_KEY, { expiresIn: '24h' });
-        res.status(200).json({ JWT: token, id: userData[0].id, is_verified: userData[0].is_verified, username: userData[0].name });
+        return res.status(200).json({ JWT: token, id: userData[0].id, is_verified: userData[0].is_verified, username: userData[0].name });
     } catch (error) {
-        res.json({ error: error.message });
+        return res.status(500).json({ error: "Internal server error" });
     }
 }
 

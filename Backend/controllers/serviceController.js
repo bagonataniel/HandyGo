@@ -25,7 +25,7 @@ exports.addService = async (req, res) => {
         res.status(201).json(newService);
     }
     catch (error) {
-        res.json(error)
+        res.status(400).json({ error: error.message });
     }
 }
 
@@ -35,7 +35,7 @@ exports.getAllServices = async (req, res) => {
         res.status(200).json(services);
     }
     catch (error) {
-        res.json(error)
+        res.status(400).json({ error: error.message });
     }
 }
 
@@ -58,7 +58,7 @@ exports.filterServices = async (req, res) => {
         res.status(200).json(services);
     }
     catch (error) {
-        res.json(error)
+        res.status(400).json({ error: error.message });
     }
 }
 
@@ -71,7 +71,7 @@ exports.getServiceById = async (req, res) => {
         res.status(200).json(service);
     }
     catch (error) {
-        res.json(error)
+        res.status(400).json({ error: error.message });
     }
 }
 
