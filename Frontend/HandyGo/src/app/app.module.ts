@@ -41,6 +41,7 @@ import { RightsComponent } from './pages/rights/rights.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
 import { MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
+import { Error404Component } from './pages/error404/error404.component';
 
 
 
@@ -68,6 +69,7 @@ import { MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
     TermsComponent,
     RightsComponent,
     ChatPanelComponent,
+    Error404Component,
     
   ],
   imports: [

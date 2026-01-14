@@ -20,6 +20,7 @@ import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.compo
 import { TermsComponent } from './pages/terms/terms.component';
 import { RightsComponent } from './pages/rights/rights.component';
 import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
   { path: 'chat-test', component: ChatPanelComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'terms', component: TermsComponent },
   { path: 'rights', component: RightsComponent },
-  { path: '**', redirectTo: '' }, // This has to be at the bottom, otherwise it would override all routes below it!
+  { path: 'error', component: Error404Component },
+  { path: '**', redirectTo: 'error' }, // This has to be at the bottom, otherwise it would override all routes below it!
 ];
 
 @NgModule({
