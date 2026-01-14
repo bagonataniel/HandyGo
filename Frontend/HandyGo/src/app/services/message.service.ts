@@ -23,6 +23,7 @@ export class MessageService {
 
   RecieveNewMessage(callback:(mesage:any)=> void){
     this.socket.on('new-message', (message:any) => { callback(message); });
+    console.log('Listening for new messages');
   }
 
 }

@@ -1,8 +1,7 @@
 import { Component , ElementRef, OnInit ,ViewChild} from '@angular/core';
 import { MessageService } from '../../services/message.service';
 import { ModalService } from '../../services/modal.service';
-import { MatDialogContent } from '@angular/material/dialog';
-import { from } from 'rxjs';
+import { ConnectionService } from '../../services/connection.service';
 
 @Component({
   selector: 'app-chat-panel',
@@ -15,11 +14,12 @@ export class ChatPanelComponent {
   otherUserName: string = '';
   messages: any[] = [];
   subscriptions: any[] = [];
+  newMessage:string='';
 
-  constructor(private messageService: MessageService, private modalService: ModalService) {}
+  constructor(private messageService: MessageService, private modalService: ModalService, private connectionService: ConnectionService) {}
 
   ngOnInit() {
-
+    this.connectionService.login();
     this.subscriptions.push(
       this.modalService.open$.subscribe(open => {
         this.isOpen = open;
@@ -34,17 +34,24 @@ export class ChatPanelComponent {
 
         this.messageService.GetMessages(this.otherUserId,(messages) => {
           this.messages = messages;
-          console.log('Loaded messages:', this.messages);
         });
       },
       error: (error) => {
         console.error('Error loading chat data:', error);
       }
     }));
+    this.messageService.RecieveNewMessage((message) => {
+      console.log('New message received:', message);
+      if (message.from !== this.otherUserId) return;
+      this.messages.push(message);
+    })
   }
   
   sendMessage(content: string){
+    if(!content || content.trim() === '') return;
     this.messageService.sendMessage(this.otherUserId, content);
+    this.messages.push({from:localStorage.getItem('userID'),message:content, to:this.otherUserId});
+    this.newMessage = '';
   }
 
 

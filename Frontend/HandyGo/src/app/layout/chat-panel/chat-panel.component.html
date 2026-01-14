@@ -13,5 +13,9 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-
+  <mat-form-field class="message-input" appearance="fill">
+    <mat-label>Üzenet</mat-label>
+    <input matInput [(ngModel)]="newMessage" (keydown.enter)="sendMessage(newMessage)" id="message-input"/>
+  </mat-form-field>
+  <button mat-raised-button (click)="sendMessage(newMessage)">Send</button>
 </mat-dialog-actions>

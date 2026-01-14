@@ -40,7 +40,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/HandyChat")
   .catch((err)=>{console.log(`MongoDB connection error:${err}`)});
 
 var onlineUserMap = new Map();
-
+let isLoggedIn = false;
 
 io.on("connection", (socket) => {
   socket.on("login", (login) => {
@@ -67,9 +67,12 @@ io.on("connection", (socket) => {
 
   socket.on("send-message", (data) => {
     chatModel.saveMessage(data.from, data.message, data.to);
+    console.log('Message to:', data.to);
     const toSocketId = getSocketIdByUser(data.to);
+    console.log('toSocketId:', toSocketId);
     if(toSocketId){
       io.to(toSocketId).emit("new-message", {from:data.from, message:data.message});
+      console.log('Message sent to user:', toSocketId);
     }
   });
 
@@ -80,11 +83,11 @@ io.on("connection", (socket) => {
 });
 
 function getSocketIdByUser(uID){
-  onlineUserMap.forEach((value, key) => {
+  for (const [key, value] of onlineUserMap.entries()) {
     if (value === uID) {
       return key;
     }
-  });
+  }
   return null;
 }
 
