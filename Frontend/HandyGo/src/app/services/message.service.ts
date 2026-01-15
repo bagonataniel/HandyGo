@@ -21,9 +21,22 @@ export class MessageService {
     this.socket.once('all-messages', (messages:any[]) => { callback(messages); });
   }
 
-  RecieveNewMessage(callback:(mesage:any)=> void){
-    this.socket.on('new-message', (message:any) => { callback(message); });
-    console.log('Listening for new messages');
+  private newMessageListener: ((message: any) => void) | null = null;
+
+  ReceiveNewMessage(callback: (message: any) => void) {
+    
+    if (this.newMessageListener) {
+      this.socket.off('new-message', this.newMessageListener);
+    }
+    this.newMessageListener = (message: any) => { callback(message); console.log('New message listener triggered'); };
+    this.socket.on('new-message', this.newMessageListener);
   }
 
+  RemoveNewMessageListener() {
+    if (this.newMessageListener) {
+      this.socket.off('new-message', this.newMessageListener);
+      this.newMessageListener = null;
+      console.log('Stopped listening for new messages');
+    }
+  }
 }

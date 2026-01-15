@@ -40,11 +40,11 @@ export class ChatPanelComponent {
         console.error('Error loading chat data:', error);
       }
     }));
-    this.messageService.RecieveNewMessage((message) => {
+    this.messageService.ReceiveNewMessage((message) => {
       console.log('New message received:', message);
       if (message.from !== this.otherUserId) return;
       this.messages.push(message);
-    })
+    });
   }
   
   sendMessage(content: string){

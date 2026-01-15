@@ -40,11 +40,12 @@ mongoose.connect("mongodb://127.0.0.1:27017/HandyChat")
   .catch((err)=>{console.log(`MongoDB connection error:${err}`)});
 
 var onlineUserMap = new Map();
-let isLoggedIn = false;
+
 
 io.on("connection", (socket) => {
   socket.on("login", (login) => {
     onlineUserMap.set(socket.id,login.uID);
+    console.log('User logged in:',socket.id, login.uID);
   });
 
   socket.on("get-connections", ()=>{
@@ -65,19 +66,23 @@ io.on("connection", (socket) => {
       .then((messages) => io.to(socket.id).emit("all-messages",messages));
   });
 
-  socket.on("send-message", (data) => {
-    chatModel.saveMessage(data.from, data.message, data.to);
-    console.log('Message to:', data.to);
+  socket.on("send-message", async (data) => {
+    await chatModel.saveMessage(data.from, data.message, data.to);
     const toSocketId = getSocketIdByUser(data.to);
-    console.log('toSocketId:', toSocketId);
     if(toSocketId){
-      io.to(toSocketId).emit("new-message", {from:data.from, message:data.message});
+      io.to(toSocketId).emit("new-message", {
+        from: data.from,
+        message: data.message,
+        to: data.to
+      });
       console.log('Message sent to user:', toSocketId);
+      console.log('Message content:', data);
     }
   });
 
   socket.on("disconnect", () => {
     onlineUserMap.delete(socket.id);
+    console.log('User disconnected:', socket.id);
   });
 
 });
