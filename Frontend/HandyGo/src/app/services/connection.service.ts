@@ -19,7 +19,7 @@ export class ConnectionService {
     this.socket.emit('create-connection',{uID1:localStorage.getItem('userId'),uID2:uID2});
   }
   getConnections(callback:(connections:any[]) => void){
-    this.socket.emit("get-connections");
+    this.socket.emit("get-connections", {uID:localStorage.getItem('userId')});
     this.socket.once('all-connections', (connections:any[]) => { callback(connections);} );
   }
 }

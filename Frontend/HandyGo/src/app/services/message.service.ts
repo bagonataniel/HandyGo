@@ -9,8 +9,14 @@ export class MessageService {
 
   constructor() { 
     this.socket = io('http://localhost:3000');
+    this.socket.on("room-status", (data)=>{
+      console.log('Room status received:', data);
+    });
   }
 
+  checkRoom(){
+    this.socket.emit("check-room",{uID:localStorage.getItem('userId')});
+  }
 
   sendMessage(uID2:String, content:String): void {
     this.socket.emit('send-message',{from:localStorage.getItem('userId'),message:content,to:uID2});
@@ -21,22 +27,8 @@ export class MessageService {
     this.socket.once('all-messages', (messages:any[]) => { callback(messages); });
   }
 
-  private newMessageListener: ((message: any) => void) | null = null;
-
   ReceiveNewMessage(callback: (message: any) => void) {
-    
-    if (this.newMessageListener) {
-      this.socket.off('new-message', this.newMessageListener);
-    }
-    this.newMessageListener = (message: any) => { callback(message); console.log('New message listener triggered'); };
-    this.socket.on('new-message', this.newMessageListener);
+    this.socket.on('new-message', (message: any) => { callback(message); console.log('New message listener triggered'); });
   }
 
-  RemoveNewMessageListener() {
-    if (this.newMessageListener) {
-      this.socket.off('new-message', this.newMessageListener);
-      this.newMessageListener = null;
-      console.log('Stopped listening for new messages');
-    }
-  }
 }

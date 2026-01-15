@@ -39,20 +39,26 @@ mongoose.connect("mongodb://127.0.0.1:27017/HandyChat")
   .then(() => { console.log("MongoDB connected")})
   .catch((err)=>{console.log(`MongoDB connection error:${err}`)});
 
-var onlineUserMap = new Map();
 
 
 io.on("connection", (socket) => {
-  socket.on("login", (login) => {
-    onlineUserMap.set(socket.id,login.uID);
-    console.log('User logged in:',socket.id, login.uID);
-  });
+    // Join the room IMMEDIATELY if the ID is available in the handshake
+    const userId = socket.handshake.auth.token ? getUserIdFromToken(socket.handshake.auth.token) : null;
+    
+    if (userId) {
+        socket.join(`user_${userId}`);
+    }
 
-  socket.on("get-connections", ()=>{
-    connectionModel.getAllConnections(onlineUserMap.get(socket.id))
+    // Keep your manual login as a fallback if needed
+    socket.on("login", (login) => {
+        socket.join(`user_${login.uID}`);
+        //console.log('User joined room manually:', login.uID);
+    });
+
+  socket.on("get-connections", (data)=>{
+    connectionModel.getAllConnections(data.uID)
       .then((connections) => {
         io.to(socket.id).emit("all-connections", connections);
-        //console.log(`Sent connections to user ${onlineUserMap.get(socket.id)}:`, connections);
       });
   });
 
@@ -68,33 +74,32 @@ io.on("connection", (socket) => {
 
   socket.on("send-message", async (data) => {
     await chatModel.saveMessage(data.from, data.message, data.to);
-    const toSocketId = getSocketIdByUser(data.to);
-    if(toSocketId){
-      io.to(toSocketId).emit("new-message", {
+
+    const room = io.sockets.adapter.rooms.get(`user_${data.to}`);
+
+    if(room && room.size > 0) {
+      io.to(`user_${data.to}`).emit("new-message", {
         from: data.from,
         message: data.message,
         to: data.to
       });
-      console.log('Message sent to user:', toSocketId);
-      console.log('Message content:', data);
+      console.log('active rooms:', io.sockets.adapter.rooms);
+      console.log('Message sent to user:', data.to);
+    } else {
+      console.log('User is offline, message saved to DB only');
     }
+  });
+
+  socket.on("check-room", (data)=>{
+    io.to(socket.id).emit("room-status", {room: io.sockets.adapter.rooms.get(`user_${data.uID}`)});
+    console.log('Checked room for user:', data.uID);
   });
 
   socket.on("disconnect", () => {
-    onlineUserMap.delete(socket.id);
-    console.log('User disconnected:', socket.id);
+    //console.log('User disconnected:', socket.id);
   });
 
 });
-
-function getSocketIdByUser(uID){
-  for (const [key, value] of onlineUserMap.entries()) {
-    if (value === uID) {
-      return key;
-    }
-  }
-  return null;
-}
 
 const PORT = 3000;
 server.listen(PORT, () => {
