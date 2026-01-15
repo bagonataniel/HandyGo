@@ -36,3 +36,11 @@
     flex-direction: column;
     overflow-y: auto;
 }
+.message-input {
+    width: 50%;
+    box-sizing: border-box;
+    margin-right: 4em;
+}
+#send-button {
+    margin-bottom: 1.0em;
+}
