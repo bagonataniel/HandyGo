@@ -5,23 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="871" Width="1438" MinHeight="700">
+        Title="MainWindow" Height="871" Width="1438" MinHeight="700" MinWidth="1000">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"></ColumnDefinition>
-            <ColumnDefinition Width="80*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical" DockPanel.Dock="Top" Background="#16212C">
-                <Button Content="Home" Margin="5" Click="Button_Click" />
-                <Button Content="Szolgáltatások" Margin="5" Click="Button_Click_1" />
-                <Button Content="Felhasználók" Margin="5" Click="Button_Click_2" />
-                <Button Content="Foglalások" Margin="5" Click="Button_Click_3" />
-                <Button Content="Settings" Margin="5" />
-                <Button Content="Profil" Margin="5"/>
-            </StackPanel>
-        <Grid Grid.Column="1" Background="#101922">
-            <ContentControl x:Name="control"
-                        Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        </Grid>
+        <ContentControl x:Name="rootContent" />
     </Grid>
 </Window>

@@ -26,3 +26,37 @@ D:\Munka\13C_info2\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\home.baml
 D:\Munka\13C_info2\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\users.baml
 D:\Munka\13C_info2\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Login.g.cs
 D:\Munka\13C_info2\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Login.baml
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Home.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Login.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Services.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Users.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\App.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1_MarkupCompile.cache
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1_MarkupCompile.lref
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.dll
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\refint\WpfApp1.dll
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.pdb
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.exe
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.deps.json
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.runtimeconfig.json
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.dll
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\WpfApp1.pdb
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Home.baml
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Login.baml
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\MainWindow.baml
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Services.baml
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Users.baml
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.g.resources
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.AssemblyInfoInputs.cache
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.AssemblyInfo.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.CoreCompileInputs.cache
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.sourcelink.json
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.genruntimeconfig.cache
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\LoginView.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\LoginView.baml
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\MainLayout.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\MainLayout.baml

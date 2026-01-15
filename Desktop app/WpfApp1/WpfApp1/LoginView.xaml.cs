@@ -13,17 +13,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class LoginView : UserControl
     {
         public string Result { get; private set; }
-        public Login()
+        public event Action LoginSucceeded;
+        public LoginView()
         {
             InitializeComponent();
         }
@@ -54,7 +56,7 @@ namespace WpfApp1
                 JsonNode node = JsonNode.Parse(query_result);
                 TOKEN = node["JWT"]!.ToString();
                 Result = TOKEN;
-                DialogResult = true;
+                LoginSucceeded?.Invoke();
 
             }
             catch (Exception ex)

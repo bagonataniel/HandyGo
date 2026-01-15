@@ -6,24 +6,21 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="loginWindow" Height="250" Width="560">
-    <Grid>
-        <StackPanel>
-            <WrapPanel>
-                <Label Margin="10">Felhasználónév</Label>
-                <TextBox Width="100" x:Name="username" Text="bagonataniel"></TextBox>
-            </WrapPanel>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <WrapPanel>
-                <Label Margin="10">Jelszó</Label>
-                <TextBox Width="100" x:Name="password" Text="1234"></TextBox>
-            </WrapPanel>
+        <TextBlock Text="Username"/>
+        <TextBox Grid.Row="1" x:Name="username" Text="bagonataniel" />
 
-            <Button Width="100" Click="Button_Click">Login</Button>
+        <TextBlock Grid.Row="2" Text="Password" Margin="0,10,0,0"/>
+        <PasswordBox Grid.Row="3"
+                     x:Name="password"/>
 
-            <Grid>
-                <Label x:Name="result"></Label>
-            </Grid>
-        </StackPanel>
-
+        <Button Content="Login" Grid.Row="4" Margin="0,15,0,0" Height="35" Click="Button_Click" HorizontalAlignment="Stretch"/>
     </Grid>
 </Window>

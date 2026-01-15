@@ -23,34 +23,21 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private LoginView _loginView;
         string TOKEN;
         public MainWindow()
         {
             InitializeComponent();
-            Login window = new Login();
-            window.ShowDialog();
-            TOKEN = window.Result;
-            control.Content = new Home(TOKEN);
+            _loginView = new LoginView();
+            _loginView.LoginSucceeded += OnLoginSuccess;
+            rootContent.Content = _loginView;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OnLoginSuccess()
         {
-            control.Content = new Home(TOKEN);
+            TOKEN = _loginView.Result;
+            rootContent.Content = new MainLayout(TOKEN);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            control.Content = new Services(TOKEN);
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            control.Content = new Users(TOKEN);
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
