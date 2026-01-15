@@ -4,6 +4,11 @@ class Booking {
     static async create(service_id, client_id) {
         var worker_id = (await db.execute("SELECT worker_id FROM services WHERE id = ?", [service_id]))[0][0].worker_id
 
+        var checkExistingBooking = (await db.execute("SELECT * FROM bookings WHERE service_id = ? AND client_id = ?", [service_id, client_id]))[0]
+        if (checkExistingBooking.length > 0) {
+            throw new Error("Booking already exists");
+        }
+
         const [result] = await db.execute(
             "INSERT INTO bookings (service_id, client_id, worker_id) VALUES (?, ?, ?)",
             [service_id, client_id, worker_id]

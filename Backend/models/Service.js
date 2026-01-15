@@ -56,6 +56,11 @@ class Service {
       "INSERT INTO reviews (service_id, client_id, worker_id, rating) VALUES (?, ?, ?, ?)", [service_id, client_id, worker_id, rating]);
     return { id: result.insertId, client_id, service_id, rating };
   }
+
+  static async getMyServices(userId) {
+    const [rows] = await db.execute("SELECT * FROM services WHERE worker_id = ?", [userId]);
+    return rows;
+  }
 }
 
 module.exports = Service;

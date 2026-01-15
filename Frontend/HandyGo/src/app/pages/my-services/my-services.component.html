@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<h2>Szolgáltatásaid</h2>
+<mat-card *ngFor="let serviceData of myServices">
+    <p>{{serviceData?.title}}</p>
+    <p>{{serviceData?.availability}}</p>
+    <p>{{serviceData?.category}}</p>
+    <p>{{serviceData?.description}}</p>
+    <p>{{serviceData?.id}}</p>
+    <p>{{serviceData?.latitude}}</p>
+    <p>{{serviceData?.longitude}}</p>
+    <p>{{serviceData?.price}}</p>
+    <p>{{serviceData?.status}}</p>
+    <p>{{serviceData?.worker_id}}</p>
+</mat-card>

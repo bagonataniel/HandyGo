@@ -1,7 +1,6 @@
 <app-navbar></app-navbar>
 <div class="card-section">
-    
-    <mat-card *ngFor="let item of services" class="service-card">
+    <mat-card *ngFor="let item of services" class="service-card" (click)="onServiceSelect(item.id)" style="cursor: pointer;">
         <mat-card-title>{{item.category}}</mat-card-title>
         <mat-card-content>
             <p>{{item.description}}</p>

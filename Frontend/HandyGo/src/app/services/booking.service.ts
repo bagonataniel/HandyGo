@@ -9,7 +9,7 @@ export class BookingService {
   constructor(private _http: HttpClient) { }
 
   public createBooking(id:any){
-    return this._http.post('http://localhost:3000/booking', id, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+    return this._http.post('http://localhost:3000/booking', {"service_id":id}, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
   }
   
   public getBookingDetails(id:any){

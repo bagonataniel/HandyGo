@@ -12,6 +12,10 @@ export class ServiceService {
       return this._http.post(`http://localhost:3000/service`, data, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
     }
 
+    public getMyServices(){
+      return this._http.get(`http://localhost:3000/service/my-services`, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+    }
+
     public filterServices(lat: number, lon: number){
       return this._http.get(`http://localhost:3000/service/${lat}/${lon}`, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
     }

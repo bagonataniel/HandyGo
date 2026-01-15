@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -8,6 +9,7 @@ import { ServiceService } from '../../services/service.service';
 })
 export class MainComponent implements OnInit{
   services: any[] = [];
+  router: Router = inject(Router);
 
   constructor(private service: ServiceService) { }
 
@@ -22,5 +24,11 @@ export class MainComponent implements OnInit{
         console.error('Error fetching services:', error);
       }
     })
+  }
+
+  onServiceSelect(serviceId: number): void {
+    // Handle service selection, e.g., navigate to service details page
+    console.log('Selected service ID:', serviceId);
+    this.router.navigate(['/services', serviceId]);
   }
 }

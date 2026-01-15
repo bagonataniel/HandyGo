@@ -64,7 +64,6 @@ exports.filterServices = async (req, res) => {
 
 exports.getServiceById = async (req, res) => {
     const id = req.params.id;
-    console.log(id);
 
     try {
         const service = await Service.getServiceById(id);
@@ -136,6 +135,18 @@ exports.createReview = async (req, res) => {
     try {
         const newReview = await Service.createReview(serviceId, clientId, rating);
         res.status(201).json(newReview);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
+
+exports.getMyServices = async (req, res) => {
+    const userToken = req.header("x-auth-token");
+    const uId = jwt.decode(userToken).id;
+
+    try {
+        const userServices = await Service.getMyServices(uId);
+        res.status(200).json(userServices);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

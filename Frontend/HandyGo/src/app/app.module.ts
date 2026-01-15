@@ -42,6 +42,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
 import { MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
 import { Error404Component } from './pages/error404/error404.component';
+import { MyServicesComponent } from './pages/my-services/my-services.component';
 
 
 
@@ -70,6 +71,7 @@ import { Error404Component } from './pages/error404/error404.component';
     RightsComponent,
     ChatPanelComponent,
     Error404Component,
+    MyServicesComponent,
     
   ],
   imports: [

@@ -21,6 +21,7 @@ import { TermsComponent } from './pages/terms/terms.component';
 import { RightsComponent } from './pages/rights/rights.component';
 import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { MyServicesComponent } from './pages/my-services/my-services.component';
 
 
 const routes: Routes = [
@@ -30,10 +31,11 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'home', component: MainComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'verification', component: VerificationComponent, canActivate: [authGuard] },
-  { path: 'home', component: MainComponent, canActivate: [authGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'services/:id', component: ServicesComponent, canActivate: [authGuard, isVerifiedGuard] },
+  { path: 'services', component: ServicesComponent, canActivate: [authGuard, isVerifiedGuard] },
+  { path: 'my-services', component: MyServicesComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'users/:id', component: UsersComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'chat-test', component: ChatPanelComponent, canActivate: [authGuard, isVerifiedGuard] },

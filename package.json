@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "start:backend": "cd Backend && npm run start",
+    "start:frontend": "cd Frontend/HandyGo && npm start",
+    "start:all": "start cmd /k \"cd Backend && npm run start\" && start cmd /k \"cd Frontend/HandyGo && npm start\""
+  }
+}
