@@ -5,9 +5,6 @@
     <Compile Update="Home.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Login.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -7,31 +7,42 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <DataGrid x:Name="ServicesGrid"
-          AutoGenerateColumns="False"
-          CanUserAddRows="False"
-          IsReadOnly="True"
-          Margin="10">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="id" Binding="{Binding id}" />
-            <DataGridTextColumn Header="worker_id" Binding="{Binding worker_id}" />
-            <DataGridTextColumn Header="Cím" Binding="{Binding title}" />
-            <DataGridTextColumn Header="Leírás" Binding="{Binding description}" />
-            <DataGridTextColumn Header="Kategória" Binding="{Binding category}" />
-            <DataGridTextColumn Header="Ár" Binding="{Binding price}" />
-            <DataGridTextColumn Header="Szélesség" Binding="{Binding latitude}" />
-            <DataGridTextColumn Header="Hosszúság" Binding="{Binding longitude}" />
-            <DataGridTextColumn Header="Elérhetőség" Binding="{Binding availability}" />
-            <DataGridTemplateColumn Header="Státusz">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <ComboBox x:Name="statusChange" SelectedValue="{Binding status, Mode=TwoWay}" DropDownClosed="statusChange_DropDownClosed">
-                            <sys:String>approved</sys:String>
-                            <sys:String>rejected</sys:String>
-                        </ComboBox>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-        </DataGrid.Columns>
-    </DataGrid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <Label>Home / Services</Label>
+            <Label>Services management</Label>
+            <Label></Label>
+        </StackPanel>
+        <DataGrid x:Name="ServicesGrid"
+      AutoGenerateColumns="False"
+      CanUserAddRows="False"
+      IsReadOnly="True"
+      Margin="20" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" Binding="{Binding id}" />
+                <DataGridTextColumn Header="worker_id" Binding="{Binding worker_id}" />
+                <DataGridTextColumn Header="Cím" Binding="{Binding title}" />
+                <DataGridTextColumn Header="Leírás" Binding="{Binding description}" />
+                <DataGridTextColumn Header="Kategória" Binding="{Binding category}" />
+                <DataGridTextColumn Header="Ár" Binding="{Binding price}" />
+                <DataGridTextColumn Header="Szélesség" Binding="{Binding latitude}" />
+                <DataGridTextColumn Header="Hosszúság" Binding="{Binding longitude}" />
+                <DataGridTextColumn Header="Elérhetőség" Binding="{Binding availability}" />
+                <DataGridTemplateColumn Header="Státusz">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox x:Name="statusChange" SelectedValue="{Binding status, Mode=TwoWay}" DropDownClosed="statusChange_DropDownClosed">
+                                <sys:String>approved</sys:String>
+                                <sys:String>rejected</sys:String>
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
 </UserControl>

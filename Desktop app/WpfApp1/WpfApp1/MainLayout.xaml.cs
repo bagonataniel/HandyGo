@@ -21,28 +21,31 @@ namespace WpfApp1
     public partial class MainLayout : UserControl
     {
         string TOKEN;
-        Brush brush;
+        Brush fontcolor;
         Brush background;
         Brush defaultText;
+        Brush transparentBackground;
         Path[] paths;
         Label[] labels;
+        Border[] borders;
         public MainLayout(string token)
         {
             InitializeComponent();
             TOKEN = token;
-            brush = (Brush)this.FindResource("ActiveNav");
+            fontcolor = (Brush)this.FindResource("ActiveNav");
             background = (Brush)this.FindResource("ActiveNavBg");
             defaultText = (Brush)this.FindResource("TextLight2");
-            paths = new Path[] { homeLogo, serviceLogo, usersLogo, bookingsLogo};
-            labels = new Label[] { homeText, servicesText, usersText, bookingsText };
+            paths = new Path[] { homeLogo, serviceLogo, usersLogo, bookingsLogo, settingsLogo, profileLogo};
+            labels = new Label[] { homeText, servicesText, usersText, bookingsText, settingsText, profileText };
+            borders = new Border[] { homeElement, servicesElement, usersElement, bookingsElement, settingsElement, profileElement };
             Button_Click(null,null);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             control.Content = new Home(TOKEN);
-            homeLogo.Fill = brush;
-            homeText.Foreground = brush;
+            homeLogo.Fill = fontcolor;
+            homeText.Foreground = fontcolor;
             homeElement.Background = background;
             foreach (Path path in paths) {
                 if (path != homeLogo)
@@ -57,13 +60,20 @@ namespace WpfApp1
                     label.Foreground = defaultText;
                 }
             }
+            foreach (Border element in borders)
+            {
+                if (element != homeElement)
+                {
+                    element.Background = transparentBackground;
+                }
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             control.Content = new Services(TOKEN);
-            serviceLogo.Fill = brush;
-            servicesText.Foreground = brush;
+            serviceLogo.Fill = fontcolor;
+            servicesText.Foreground = fontcolor;
             servicesElement.Background = background;
             foreach (Path path in paths)
             {
@@ -79,13 +89,20 @@ namespace WpfApp1
                     label.Foreground = defaultText;
                 }
             }
+            foreach (Border element in borders)
+            {
+                if (element != servicesElement)
+                {
+                    element.Background = transparentBackground;
+                }
+            }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             control.Content = new Users(TOKEN);
-            usersLogo.Fill = brush;
-            usersText.Foreground = brush;
+            usersLogo.Fill = fontcolor;
+            usersText.Foreground = fontcolor;
             usersElement.Background = background;
             foreach (Path path in paths)
             {
@@ -101,13 +118,20 @@ namespace WpfApp1
                     label.Foreground = defaultText;
                 }
             }
+            foreach (Border element in borders)
+            {
+                if (element != usersElement)
+                {
+                    element.Background = transparentBackground;
+                }
+            }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             control.Content = new Users(TOKEN);
-            bookingsLogo.Fill = brush;
-            bookingsText.Foreground = brush;
+            bookingsLogo.Fill = fontcolor;
+            bookingsText.Foreground = fontcolor;
             bookingsElement.Background = background;
             foreach (Path path in paths)
             {
@@ -121,6 +145,71 @@ namespace WpfApp1
                 if (label != bookingsText)
                 {
                     label.Foreground = defaultText;
+                }
+            }
+            foreach (Border element in borders)
+            {
+                if (element != bookingsElement)
+                {
+                    element.Background = transparentBackground;
+                }
+            }
+        }
+
+        private void settingsElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //control.Content = new Users(TOKEN);
+            settingsLogo.Fill = fontcolor;
+            settingsText.Foreground = fontcolor;
+            settingsElement.Background = background;
+            foreach (Path path in paths)
+            {
+                if (path != settingsLogo)
+                {
+                    path.Fill = defaultText;
+                }
+            }
+            foreach (Label label in labels)
+            {
+                if (label != settingsText)
+                {
+                    label.Foreground = defaultText;
+                }
+            }
+            foreach (Border element in borders)
+            {
+                if (element != settingsElement)
+                {
+                    element.Background = transparentBackground;
+                }
+            }
+        }
+
+        private void profileElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //control.Content = new Users(TOKEN);
+            profileLogo.Fill = fontcolor;
+            profileText.Foreground = fontcolor;
+            profileElement.Background = background;
+            foreach (Path path in paths)
+            {
+                if (path != profileLogo)
+                {
+                    path.Fill = defaultText;
+                }
+            }
+            foreach (Label label in labels)
+            {
+                if (label != profileText)
+                {
+                    label.Foreground = defaultText;
+                }
+            }
+            foreach (Border element in borders)
+            {
+                if (element != profileElement)
+                {
+                    element.Background = transparentBackground;
                 }
             }
         }
