@@ -35,24 +35,22 @@ const io = new Server(server , {
   }
 });
 
-mongoose.connect("mongodb://127.0.0.1:27017/HandyChat")
+mongoose.connect(MONGO_URI)
   .then(() => { console.log("MongoDB connected")})
   .catch((err)=>{console.log(`MongoDB connection error:${err}`)});
 
 
 
 io.on("connection", (socket) => {
-    // Join the room IMMEDIATELY if the ID is available in the handshake
+   
     const userId = socket.handshake.auth.token ? getUserIdFromToken(socket.handshake.auth.token) : null;
     
     if (userId) {
         socket.join(`user_${userId}`);
     }
 
-    // Keep your manual login as a fallback if needed
     socket.on("login", (login) => {
         socket.join(`user_${login.uID}`);
-        //console.log('User joined room manually:', login.uID);
     });
 
   socket.on("get-connections", (data)=>{
@@ -75,20 +73,24 @@ io.on("connection", (socket) => {
   socket.on("send-message", async (data) => {
     await chatModel.saveMessage(data.from, data.message, data.to);
 
-    const room = io.sockets.adapter.rooms.get(`user_${data.to}`);
+    
+    setImmediate(() => {
+      const roomName = `user_${data.to}`;
+      const room = io.sockets.adapter.rooms.get(roomName);
 
-    if(room && room.size > 0) {
-      io.to(`user_${data.to}`).emit("new-message", {
-        from: data.from,
-        message: data.message,
-        to: data.to
-      });
-      console.log('active rooms:', io.sockets.adapter.rooms);
-      console.log('Message sent to user:', data.to);
-    } else {
-      console.log('User is offline, message saved to DB only');
-    }
+      if(room?.size > 0) {
+        io.in(roomName).emit("new-message", {from: data.from, message: data.message, to: data.to, recivedFrom: roomName});
+      } else {
+        // console.log('User is offline, message saved to DB only');
+      }
+    });
   });
+
+  // setInterval(()=>{
+  //   io.sockets.adapter.rooms.forEach((room, roomName) => {
+  //     io.to(roomName).emit("new-message", {from: "system", message: "This is a periodic update.", to: roomName.replace('user_', '')});
+  //   });
+  // }, 3000);
 
   socket.on("check-room", (data)=>{
     io.to(socket.id).emit("room-status", {room: io.sockets.adapter.rooms.get(`user_${data.uID}`)});
@@ -96,7 +98,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    //console.log('User disconnected:', socket.id);
+    socket.leaveAll();
   });
 
 });

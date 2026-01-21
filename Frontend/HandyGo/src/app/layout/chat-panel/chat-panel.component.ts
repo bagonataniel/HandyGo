@@ -15,21 +15,26 @@ export class ChatPanelComponent {
   messages: any[] = [];
   subscriptions: any[] = [];
   newMessage:string='';
+  @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
 
   constructor(private messageService: MessageService, private modalService: ModalService, private connectionService: ConnectionService) {}
 
   ngOnInit() {
+    this.messageService.registerChat();
+    this.messageService.ReceiveNewMessage().subscribe((message) => {
+      if (message.from === this.otherUserId) {
+        this.messages.push(message);
+      }
+      this.scrollToBottom();
+    });
+
     this.connectionService.login();
     this.subscriptions.push(
       this.modalService.open$.subscribe(open => {
         this.isOpen = open;
       })
     );
-    this.messageService.ReceiveNewMessage((message) => {
-      console.log('New message received:', message);
-      if (message.from !== this.otherUserId) return;
-      this.messages.push(message);
-    });
+
     this.subscriptions.push(
       this.modalService.data$.subscribe({
         next: (data) => {
@@ -47,13 +52,23 @@ export class ChatPanelComponent {
     }));
   }
   
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
   sendMessage(content: string){
     if(!content || content.trim() === '') return;
     this.messageService.sendMessage(this.otherUserId, content);
     this.messages.push({from:localStorage.getItem('userID'),message:content, to:this.otherUserId});
     this.newMessage = '';
+    this.scrollToBottom();
   }
 
+  private scrollToBottom(): void {
+    try {
+      this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+    } catch(err) {console.error('Scroll to bottom failed:', err);}
+  }
 
   ngOnDestroy() {
   this.subscriptions.forEach(sub => sub.unsubscribe());
