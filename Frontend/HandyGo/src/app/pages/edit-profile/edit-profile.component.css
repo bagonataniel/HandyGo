@@ -22,7 +22,6 @@ h1 {
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease;
 }
 
 .profile-header {
@@ -50,32 +49,14 @@ h1 {
   box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
 }
 
-.user-info h2 {
-  margin: 0 0 12px;
-  font-size: 36px;
-  color: #333;
+.user-info {
+  flex: 1;
 }
 
-.email {
-  color: #555;
-  font-size: 18px;
-  margin: 0 0 16px;
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
 }
-
-.location, .coordinates {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #666;
-  font-size: 16px;
-  margin: 8px 0;
-}
-
-.location mat-icon, .coordinates mat-icon {
-  color: #1976d2;
-  font-size: 22px;
-}
-
 
 .profile-actions {
     float: right;
@@ -131,34 +112,6 @@ h1 {
   margin: 0 0 20px;
   color: #1976d2;
   font-size: 28px;
-}
-
-.profile-section p {
-  line-height: 1.7;
-  color: #444;
-  font-size: 20px;
-}
-
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.skill-chip {
-  background: #e3f2fd;
-  color: #1976d2;
-  padding: 8px 20px;
-  border-radius: 30px;
-  font-size: 18px;
-  font-weight: 500;
-  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.1);
-}
-
-.no-skills {
-  color: #888;
-  font-style: italic;
-  font-size: 18px;
 }
 
 .loading, .error {

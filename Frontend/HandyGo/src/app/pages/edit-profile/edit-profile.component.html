@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+
+<div class="profile-page">
+    <div class="container">
+        <h1>Profil szerkesztése</h1>
+
+        <div class="loading" *ngIf="isLoading">
+        Adatok betöltése...
+        </div>
+
+        <div class="error" *ngIf="errorMessage && !isLoading">
+        {{ errorMessage }}
+        </div>
+
+        <ng-container *ngIf="!isLoading && !errorMessage">
+            <div class="profile-card">
+                <div class="profile-header">
+                <div class="avatar">
+                    {{ originalData?.name?.charAt(0) || '?' }}
+                </div>
+
+                <div class="user-info">
+                    <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Név</mat-label>
+                    <input matInput [(ngModel)]="formData.name" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Email (nem módosítható)</mat-label>
+                    <input matInput [value]="originalData?.email" disabled>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Helyszín</mat-label>
+                    <input matInput [(ngModel)]="formData.location">
+                    </mat-form-field>
+                </div>
+                </div>
+
+                <div class="profile-section">
+                <h3>Rólam</h3>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Bemutatkozás</mat-label>
+                    <textarea matInput rows="6" [(ngModel)]="formData.bio"></textarea>
+                </mat-form-field>
+                </div>
+
+                <div class="profile-section">
+                <h3>Készségek / Szakterületek</h3>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Készségek (vesszővel elválasztva)</mat-label>
+                    <input matInput [(ngModel)]="formData.skills">
+                    <mat-hint>Példa: Vízszerelés, Festés, Takarítás, Villanyszerelés</mat-hint>
+                </mat-form-field>
+                </div>
+                <div class="profile-actions">
+                    <button mat-raised-button color="primary" (click)="saveProfile()" [disabled]="isSaving">
+                    {{ isSaving ? 'Mentés...' : 'Mentés' }}
+                    </button>
+
+                    <button mat-stroked-button (click)="cancel()">
+                    Mégse
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<app-footer></app-footer>

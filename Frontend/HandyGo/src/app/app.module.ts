@@ -43,6 +43,7 @@ import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
 import { MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
 import { Error404Component } from './pages/error404/error404.component';
 import { MyServicesComponent } from './pages/my-services/my-services.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 
 
@@ -72,6 +73,7 @@ import { MyServicesComponent } from './pages/my-services/my-services.component';
     ChatPanelComponent,
     Error404Component,
     MyServicesComponent,
+    EditProfileComponent,
     
   ],
   imports: [
