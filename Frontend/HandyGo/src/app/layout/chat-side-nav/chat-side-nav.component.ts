@@ -1,9 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, viewChild, ViewChild } from '@angular/core';
 import { ConnectionService } from '../../services/connection.service';
 import { ModalService } from '../../services/modal.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ChatPanelComponent } from '../chat-panel/chat-panel.component';
-import { MatDrawer } from '@angular/material/sidenav';
+import { MatDrawer, MatDrawerContent } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-chat-side-nav',
@@ -14,7 +14,9 @@ export class ChatSideNavComponent {
   contacts: any[] = [];
   opened: boolean = false;
   isButtonDisabled: boolean = false;
-  @ViewChild('drawer') drawer!: MatDrawer;
+  readonly drawer = viewChild.required<MatDrawer>('drawer');
+  @ViewChild('drawerContent') drawerContent!: MatDrawerContent;
+
 
   constructor(private connectionService: ConnectionService, private modalService: ModalService, private dialog: MatDialog) {
     this.connectionService.login();
@@ -29,7 +31,7 @@ export class ChatSideNavComponent {
   }
   openChat(contact:any) {
     this.isButtonDisabled = true;
-    this.drawer.close();
+    this.drawer().close();
     const dialogRef = this.dialog.open(ChatPanelComponent, {
       width: '35em',
       height: '40em',
@@ -39,11 +41,24 @@ export class ChatSideNavComponent {
 
     dialogRef.afterClosed().subscribe(() => {
       this.isButtonDisabled = false;
-      this.drawer.open();
+      this.drawer().open();
     });
   }
 
-  
+  @HostListener('document:click', ['$event'])
+  onClick(event: Event) {
+    const drawerContent = this.drawerContent;
+
+    const clickedInside = (drawerContent as any)._elementRef.nativeElement.contains(event.target);
+    if (!clickedInside && this.opened) {
+      this.opened = false;
+      console.log("clicked outside");
+    }
+    else{
+      console.log("clicked inside");
+    }
+    event.stopPropagation();
+  }
 
 }
 
