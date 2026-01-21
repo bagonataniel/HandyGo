@@ -40,6 +40,11 @@ class Admin {
 
     static async GetAllServices() {
         const [rows] = await db.execute("SELECT * FROM services");
+        for (let index = 0; index < rows.length; index++) {
+            const element = rows[index];
+            const worker_name = await db.execute("SELECT name FROM users WHERE id = ?", [element.worker_id]);
+            rows[index].worker_name = worker_name[0][0].name;
+        }
         return rows;
     }
 

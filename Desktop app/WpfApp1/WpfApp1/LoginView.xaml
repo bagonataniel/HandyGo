@@ -76,11 +76,11 @@
                     <Label HorizontalAlignment="Center" Foreground="{StaticResource TextLight1}" Margin="0 0 0 20" FontSize="17">Üdv újra! A folytatáshoz jelentkezz be!</Label>
                     <Label FontSize="20" Foreground="{StaticResource TextLight0}">Felhasználónév</Label>
                     <Border Style="{StaticResource FocusBorderStyle}" Background="#192633" CornerRadius="5" BorderThickness="1">
-                        <TextBox Margin="5" Foreground="{StaticResource TextLight1}" Background="Transparent" BorderThickness="0" FontSize="25" x:Name="username"></TextBox>
+                        <TextBox Margin="5" Foreground="{StaticResource TextLight1}" Background="Transparent" BorderThickness="0" FontSize="25" x:Name="username">bagonataniel</TextBox>
                     </Border>
                     <Label FontSize="20" Foreground="{StaticResource TextLight0}">Jelszó</Label>
                     <Border Style="{StaticResource FocusBorderStyle}" Background="#192633" CornerRadius="5" BorderThickness="1">
-                        <PasswordBox Margin="5" Foreground="{StaticResource TextLight1}" Background="Transparent" BorderThickness="0" FontSize="25" x:Name="password"></PasswordBox>
+                        <PasswordBox Margin="5" Foreground="{StaticResource TextLight1}" Background="Transparent" BorderThickness="0" FontSize="25" x:Name="password" Password="1234"></PasswordBox>
                     </Border>
                     <Border MouseLeftButtonDown="Button_Click" Cursor="Hand" Background="#137fec" Margin="0 20" Padding="0 5" CornerRadius="7">
                         <Label Foreground="{StaticResource Text}" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="20">Bejelentkezés</Label>

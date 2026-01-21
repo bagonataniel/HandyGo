@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -27,6 +29,7 @@ namespace WpfApp1
     {
         public string id {  get; set; }
         public string worker_id { get; set; }
+        public string worker_name { get; set; }
         public string title { get; set; }
         public string description { get; set; }
         public decimal price { get; set; }
@@ -41,9 +44,13 @@ namespace WpfApp1
     {
         private string token;
         HttpClient client = new HttpClient();
+        public ObservableCollection<ServiceDto> ServicesData { get; } = new ObservableCollection<ServiceDto>();
+        List<ServiceDto> services;
+        public string selectedFilter = "Összes";
         public Services(string TOKEN)
         {
             InitializeComponent();
+            DataContext = this;
             token = TOKEN;
             client.DefaultRequestHeaders.Add("x-admin-auth-token", token);
             _ = apiCall();
@@ -60,10 +67,12 @@ namespace WpfApp1
 
                 string responseBody = await response.Content.ReadAsStringAsync();
 
-                List<ServiceDto> services = await response.Content.ReadFromJsonAsync<List<ServiceDto>>();
-                
-
-                ServicesGrid.ItemsSource = services;
+                services = await response.Content.ReadFromJsonAsync<List<ServiceDto>>();
+                ServicesData.Clear();
+                foreach (var item in services)
+                {
+                    ServicesData.Add(item);
+                }
 
             }
             catch (Exception e)
@@ -72,43 +81,132 @@ namespace WpfApp1
             }
         }
 
-        private async void statusChange_DropDownClosed(object sender, EventArgs e)
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
-
-            var combo = sender as ComboBox;
-            var selected = combo.SelectedValue;
-            var rowData = combo.DataContext;
-            string id = "";
-            if (ServicesGrid.Items.Count > 0)
+            RadioButton button = sender as RadioButton;
+            if (button.Content.ToString() == "Összes")
             {
-                var firstRow = ServicesGrid.Items[0] as ServiceDto;
-                if (firstRow != null)
+                ServicesData.Clear();
+                foreach (var item in services)
                 {
-                    id = firstRow.id;
+                    ServicesData.Add(item);
+                }
+
+            }
+            else if (button.Content.ToString() == "Elfogadott")
+            {
+                ServicesData.Clear();
+                foreach (var item in services)
+                {
+                    if (item.status == "approved")
+                    {
+                        ServicesData.Add(item);
+                    }
                 }
             }
-
-
-            try
+            else if (button.Content.ToString() == "Elutasított")
             {
-                if (selected.ToString() == "approved")
+                ServicesData.Clear();
+                foreach (var item in services)
                 {
-                    HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{id}/approve", null);
-                    response.EnsureSuccessStatusCode();
-                    MessageBox.Show(response.ToString());
-                }
-                else if(selected.ToString() == "rejected")
-                {
-                    HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{id}/reject", null);
-                    response.EnsureSuccessStatusCode();
+                    if (item.status == "rejected")
+                    {
+                        ServicesData.Add(item);
+                    }
                 }
             }
-            catch (Exception err)
+            else if (button.Content.ToString() == "Függő")
             {
-                MessageBox.Show(err.Message);
-                throw;
+                ServicesData.Clear();
+                foreach (var item in services)
+                {
+                    if (item.status == "pending")
+                    {
+                        ServicesData.Add(item);
+                    }
+                }
+            }
+            selectedFilter = button.Content.ToString();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string search = searchbox.Text;
+            List<int> matchingIndexes = new List<int>();
+
+            for (int i = 0; i < services.Count; i++)
+            {
+                var s = services[i];
+
+                bool match =
+                    (!string.IsNullOrEmpty(s.id) && s.id.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.worker_id) && s.worker_id.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.worker_name) && s.worker_name.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.title) && s.title.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.description) && s.description.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.category) && s.category.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.availability) && s.availability.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.status) && s.status.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    s.price.ToString().Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                    s.latitude.ToString().Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                    s.longitude.ToString().Contains(search, StringComparison.OrdinalIgnoreCase);
+
+                if (match)
+                    matchingIndexes.Add(i);
+            }
+
+            Console.WriteLine($"Found {matchingIndexes.Count} matches at indexes: {string.Join(", ", matchingIndexes)}");
+
+            ServicesData.Clear();
+            foreach (var i in matchingIndexes)
+            {
+                ServicesData.Add(services[i]);
             }
 
         }
+
+        private async void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            if (comboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                var tag = selectedItem.Tag;
+                try
+                {
+                    if (selectedItem.Content.ToString() == "Elfogadás")
+                    {
+                        HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{tag}/approve", null);
+                        response.EnsureSuccessStatusCode();
+                        foreach (var item in ServicesData)
+                        {
+                            if (item.id == tag)
+                            {
+                                item.status = "approved";
+                            }
+                        }
+                    }
+                    else if (selectedItem.Content.ToString() == "Elutasítás")
+                    {
+                        HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{tag}/reject", null);
+                        response.EnsureSuccessStatusCode();
+                        foreach (var item in ServicesData)
+                        {
+                            if (item.id == tag)
+                            {
+                                item.status = "rejected";
+                            }
+                        }
+                    }
+
+                    CollectionViewSource.GetDefaultView(ServicesData).Refresh();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                    throw;
+                }
+            }
+        }
+
     }
 }

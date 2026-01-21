@@ -7,42 +7,215 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="tableBg" Color="#1e293b"/>
+        <SolidColorBrush x:Key="darkBg" Color="#0f172a"/>
+        <SolidColorBrush x:Key="Border" Color="#354458"/>
+        <SolidColorBrush x:Key="primaryText" Color="#ffffff"/>
+        <SolidColorBrush x:Key="secondaryText" Color="#7f97b0"/>
+        <SolidColorBrush x:Key="pending" Color="#f69e0b"/>
+        <SolidColorBrush x:Key="pendingBorder" Color="#f69e0b" Opacity="1"/>
+        <SolidColorBrush x:Key="pendingBg" Color="#f69e0b" Opacity="0.5"/>
+        <SolidColorBrush x:Key="approved" Color="#10b981"/>
+        <SolidColorBrush x:Key="approvedBorder" Color="#10b981" Opacity="1"/>
+        <SolidColorBrush x:Key="approvedBg" Color="#10b981" Opacity="0.5"/>
+        <SolidColorBrush x:Key="rejected" Color="#f43f5e"/>
+        <SolidColorBrush x:Key="rejectedBorder" Color="#f43f5e" Opacity="1"/>
+        <SolidColorBrush x:Key="rejectedBg" Color="#f43f5e" Opacity="0.5"/>
+        <Style x:Key="NoCircleRadioButton" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="{StaticResource secondaryText}" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Padding" Value="6" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="border"
+                        Background="{StaticResource darkBg}"
+                        CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#1e293b" />
+                                <Setter Property="Foreground" Value="#137fec"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#2f3847" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="8*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
-            <Label>Home / Services</Label>
-            <Label>Services management</Label>
+            <Label Foreground="{StaticResource primaryText}">Home / Services</Label>
+            <Label Foreground="{StaticResource primaryText}">Services management</Label>
             <Label></Label>
         </StackPanel>
-        <DataGrid x:Name="ServicesGrid"
-      AutoGenerateColumns="False"
-      CanUserAddRows="False"
-      IsReadOnly="True"
-      Margin="20" Grid.Row="1">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="id" Binding="{Binding id}" />
-                <DataGridTextColumn Header="worker_id" Binding="{Binding worker_id}" />
-                <DataGridTextColumn Header="Cím" Binding="{Binding title}" />
-                <DataGridTextColumn Header="Leírás" Binding="{Binding description}" />
-                <DataGridTextColumn Header="Kategória" Binding="{Binding category}" />
-                <DataGridTextColumn Header="Ár" Binding="{Binding price}" />
-                <DataGridTextColumn Header="Szélesség" Binding="{Binding latitude}" />
-                <DataGridTextColumn Header="Hosszúság" Binding="{Binding longitude}" />
-                <DataGridTextColumn Header="Elérhetőség" Binding="{Binding availability}" />
-                <DataGridTemplateColumn Header="Státusz">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ComboBox x:Name="statusChange" SelectedValue="{Binding status, Mode=TwoWay}" DropDownClosed="statusChange_DropDownClosed">
-                                <sys:String>approved</sys:String>
-                                <sys:String>rejected</sys:String>
-                            </ComboBox>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+
+        <Border Background="#1e293b" Grid.Row="1" Margin="20" CornerRadius="15" BorderThickness="1" BorderBrush="#354458">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*" MaxHeight="50"></RowDefinition>
+                    <RowDefinition Height="1*" MaxHeight="50"></RowDefinition>
+                    <RowDefinition Height="7.5*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="{StaticResource Border}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="4.5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Border Background="{StaticResource darkBg}" Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="5">
+                            <UniformGrid Rows="1" Columns="4" VerticalAlignment="Center" Margin="10 0 10 0">
+                                <RadioButton x:Name="allFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Összes" Checked="RadioButton_Click"/>
+                                <RadioButton x:Name="approvedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Elfogadott" Checked="RadioButton_Click"/>
+                                <RadioButton x:Name="pendingFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Függő" Checked="RadioButton_Click"/>
+                                <RadioButton x:Name="rejectedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Elutasított" Checked="RadioButton_Click"/>
+                            </UniformGrid>
+                        </Border>
+
+                        <Border CornerRadius="5" Grid.Column="1" Background="{StaticResource darkBg}" Padding="4" VerticalAlignment="Center">
+                            <TextBox BorderThickness="0" FontSize="15" Background="Transparent" Foreground="{StaticResource primaryText}" x:Name="searchbox" TextChanged="TextBox_TextChanged"></TextBox>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" BorderBrush="{StaticResource Border}" BorderThickness="0 0 0 1">
+                    <Grid x:Name="tableFieldContainer">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="1.4*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="0" FontWeight="Bold" Foreground="{StaticResource secondaryText}">SZOLGÁLTATÁS NEVE</Label>
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="1" FontWeight="Bold" Foreground="{StaticResource secondaryText}">KÉSZÍTŐ</Label>
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="2" FontWeight="Bold" Foreground="{StaticResource secondaryText}">ÁR</Label>
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="3" FontWeight="Bold" Foreground="{StaticResource secondaryText}">Hely</Label>
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="4" FontWeight="Bold" Foreground="{StaticResource secondaryText}">STÁTUSZ</Label>
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="5" FontWeight="Bold" Foreground="{StaticResource secondaryText}">TEVÉKENYSÉG</Label>
+                    </Grid>
+                </Border>
+
+                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <ItemsControl ItemsSource="{Binding ServicesData}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Height="50"
+                        HorizontalAlignment="Stretch"
+                        BorderThickness="0 1 0 1"
+                        BorderBrush="#354458">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="0.7*" />
+                                            <ColumnDefinition Width="1.4*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                            <Label Foreground="{StaticResource primaryText}"
+                                   Content="{Binding title}" />
+                                            <Label Foreground="{StaticResource secondaryText}"
+                                   Content="{Binding id, StringFormat=id: {0}}" />
+                                        </StackPanel>
+
+                                        <Label Grid.Column="1"
+                               VerticalAlignment="Center"
+                               Foreground="{StaticResource primaryText}"
+                               FontSize="15"
+                               Content="{Binding worker_name}" />
+
+                                        <Label Grid.Column="2"
+                               VerticalAlignment="Center"
+                               FontSize="15"
+                               Foreground="{StaticResource primaryText}"
+                               Content="{Binding price}" />
+
+                                        <StackPanel Grid.Column="3" VerticalAlignment="Center">
+                                            <Label Foreground="{StaticResource secondaryText}"
+                                   Content="{Binding latitude}" />
+                                            <Label Foreground="{StaticResource secondaryText}"
+                                   Content="{Binding longitude}" />
+                                        </StackPanel>
+
+                                        <Border Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Stretch" CornerRadius="10" Padding="1" Margin="5">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <!-- Default (Pending) -->
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="BorderBrush" Value="{StaticResource pendingBorder}"/>
+                                                    <Setter Property="Background" Value="{StaticResource pendingBg}"/>
+
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding status}" Value="approved">
+                                                            <Setter Property="BorderBrush" Value="{StaticResource approvedBorder}"/>
+                                                            <Setter Property="Background" Value="{StaticResource approvedBg}"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding status}" Value="rejected">
+                                                            <Setter Property="BorderBrush" Value="{StaticResource rejectedBorder}"/>
+                                                            <Setter Property="Background" Value="{StaticResource rejectedBg}"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding status}" Value="pending">
+                                                            <Setter Property="BorderBrush" Value="{StaticResource pendingBorder}"/>
+                                                            <Setter Property="Background" Value="{StaticResource pendingBg}"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+
+                                            <Label Content="{Binding status}" HorizontalAlignment="Center">
+                                                <Label.Style>
+                                                    <Style TargetType="Label">
+                                                        <Setter Property="Foreground" Value="{StaticResource pending}"/>
+
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding status}" Value="approved">
+                                                                <Setter Property="Foreground" Value="{StaticResource approved}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding status}" Value="rejected">
+                                                                <Setter Property="Foreground" Value="{StaticResource rejected}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding status}" Value="pending">
+                                                                <Setter Property="Foreground" Value="{StaticResource pending}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Label.Style>
+                                            </Label>
+                                        </Border>
+
+
+                                        <Grid Grid.Column="5" Width="25" Height="25" HorizontalAlignment="Right" Margin="0 0 20 0">
+                                            <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem Tag="{Binding id}">Elfogadás</ComboBoxItem>
+                                                <ComboBoxItem Tag="{Binding id}">Elutasítás</ComboBoxItem>
+                                                <ComboBoxItem Tag="{Binding id}">Törlés</ComboBoxItem>
+                                            </ComboBox>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
