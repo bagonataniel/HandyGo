@@ -15,7 +15,8 @@
 <mat-dialog-actions>
   <mat-form-field class="message-input" appearance="fill">
     <mat-label>küldj üzenetet</mat-label>
-    <input matInput [(ngModel)]="newMessage" (keydown.enter)="sendMessage(newMessage)"/>
+    <input matInput [(ngModel)]="newMessage" (keydown.enter)="sendMessage(newMessage)" maxlength="512"/>
+    <mat-hint>{{newMessage.length}}/512</mat-hint>
   </mat-form-field>
   <button mat-raised-button (click)="sendMessage(newMessage)" id="send-button">Send</button>
 </mat-dialog-actions>

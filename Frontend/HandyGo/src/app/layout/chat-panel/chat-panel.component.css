@@ -17,7 +17,11 @@
     margin: 5px;
     max-width: fit-content;
     align-self: flex-start;
-    text-align: left;
+    text-align: justify;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
+    width: 22em;
+
 }
 .my-message {
     background-color: #0b93f6;
@@ -29,7 +33,10 @@
     float: right;
     max-width: fit-content;
     align-self: flex-end;
-    text-align: right;
+    text-align: justify;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
+    width: 22em;
 }
 .content{
     display: flex;

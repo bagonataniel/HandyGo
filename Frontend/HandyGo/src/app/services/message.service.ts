@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {io, Socket} from 'socket.io-client';
+import { Observable } from 'rxjs';
+import { fromEvent } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,10 @@ export class MessageService {
     this.socket.on("room-status", (data)=>{
       console.log('Room status received:', data);
     });
+  }
+
+  registerChat(){
+    this.socket.emit('login', {uID:localStorage.getItem('userId')});
   }
 
   checkRoom(){
@@ -27,8 +33,8 @@ export class MessageService {
     this.socket.once('all-messages', (messages:any[]) => { callback(messages); });
   }
 
-  ReceiveNewMessage(callback: (message: any) => void) {
-    this.socket.on('new-message', (message: any) => { callback(message); console.log('New message listener triggered'); });
+  ReceiveNewMessage(): Observable<any> {
+    return fromEvent(this.socket, 'new-message');
   }
 
 }
