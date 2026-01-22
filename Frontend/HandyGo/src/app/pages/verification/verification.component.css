@@ -1,0 +1,118 @@
+.verification-page {
+  padding: 100px 20px 80px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9f2ff 100%);
+  min-height: calc(100vh - 70px - 100px);
+}
+
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.verification-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  padding: 48px 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  color: #1976d2;
+  font-size: 42px;
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
+.status-message {
+  margin-bottom: 40px;
+}
+
+.warning-icon {
+  font-size: 64px;
+  height: 64px;
+  width: 64px;
+  color: #f57c00;
+  margin-bottom: 16px;
+}
+
+.status-message p {
+  font-size: 20px;
+  color: #333;
+  margin: 0 0 12px;
+}
+
+.subtext {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.actions {
+  margin: 32px 0;
+}
+
+.actions button {
+  padding: 14px 48px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 30px;
+  background-color: #1976d2;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: #1565c0;
+  transform: translateY(-2px);
+}
+
+.info {
+  font-size: 15px;
+  color: #777;
+  line-height: 1.6;
+}
+
+.info p {
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .verification-card {
+    padding: 40px 32px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .verification-page {
+    padding: 80px 15px 60px;
+  }
+
+  .verification-card {
+    padding: 32px 20px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+
+  .warning-icon {
+    font-size: 56px;
+    height: 56px;
+    width: 56px;
+  }
+
+  .actions button {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+  }
+}

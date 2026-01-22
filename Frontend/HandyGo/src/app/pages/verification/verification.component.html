@@ -1,2 +1,23 @@
-<p>A fiókod nincs megerősítve.</p>
-<button (click)="verifyAccount()">Fiók megerősítése (teszteléshez!)</button>
+<div class="verification-page">
+  <div class="container">
+    <div class="verification-card">
+      <h1>Fiók megerősítés</h1>
+
+      <div class="status-message">
+        <mat-icon class="warning-icon">warning_amber</mat-icon>
+        <p>A fiókod nincs megerősítve.</p>
+        <p class="subtext">Kérjük, erősítsd meg az email címedet, hogy teljes hozzáférést kapj a szolgáltatásokhoz.</p>
+      </div>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="verifyAccount()">
+          Fiók megerősítése
+        </button>
+      </div>
+
+      <div class="info">
+        <p>Ha nem kapsz emailt, ellenőrizd a spam mappát, vagy próbáld újra később.</p>
+      </div>
+    </div>
+  </div>
+</div>
