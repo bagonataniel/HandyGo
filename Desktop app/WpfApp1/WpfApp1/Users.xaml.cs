@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -44,6 +45,8 @@ namespace WpfApp1
     {
         private string token;
         HttpClient client = new HttpClient();
+        public ObservableCollection<UserDto> UsersData { get; } = new ObservableCollection<UserDto>();
+        List<UserDto> users;
         public Users(string TOKEN)
         {
             InitializeComponent();
@@ -58,20 +61,57 @@ namespace WpfApp1
             Table table = new Table();
             try
             {
-                var response = await client.GetAsync("http://localhost:3000/admin/Users");
+                var response = await client.GetAsync("http://localhost:3000/admin/users");
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();
 
-                List<UserDto> services = await response.Content.ReadFromJsonAsync<List<UserDto>>();
-
-                ServicesGrid.ItemsSource = services;
+                users = await response.Content.ReadFromJsonAsync<List<UserDto>>();
+                UsersData.Clear();
+                foreach (var item in users)
+                {
+                    UsersData.Add(item);
+                }
 
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Error");
             }
+        }
+
+        private void searchbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string search = searchbox.Text;
+            List<int> matchingIndexes = new List<int>();
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                var s = users[i];
+
+                bool match =
+                    (!string.IsNullOrEmpty(s.id) && s.id.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.name) && s.name.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.bio) && s.bio.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.skills) && s.skills.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.location) && s.location.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    //(!string.IsNullOrEmpty(s.is_verified) && s.is_verified.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.email) && s.email.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    s.latitude.ToString().Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                    s.longitude.ToString().Contains(search, StringComparison.OrdinalIgnoreCase);
+
+                if (match)
+                    matchingIndexes.Add(i);
+            }
+
+            Console.WriteLine($"Found {matchingIndexes.Count} matches at indexes: {string.Join(", ", matchingIndexes)}");
+
+            UsersData.Clear();
+            foreach (var i in matchingIndexes)
+            {
+                UsersData.Add(users[i]);
+            }
+
         }
     }
 }

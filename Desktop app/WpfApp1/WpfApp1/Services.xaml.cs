@@ -53,10 +53,10 @@ namespace WpfApp1
             DataContext = this;
             token = TOKEN;
             client.DefaultRequestHeaders.Add("x-admin-auth-token", token);
-            _ = apiCall();
+            _ = getServices();
         }
 
-        public async Task apiCall()
+        public async Task getServices()
         {
 
             Table table = new Table();
@@ -81,7 +81,7 @@ namespace WpfApp1
             }
         }
 
-        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
             RadioButton button = sender as RadioButton;
             if (button.Content.ToString() == "Összes")
@@ -129,7 +129,7 @@ namespace WpfApp1
             selectedFilter = button.Content.ToString();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void searchbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string search = searchbox.Text;
             List<int> matchingIndexes = new List<int>();
@@ -165,48 +165,43 @@ namespace WpfApp1
 
         }
 
-        private async void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void setApprovalStatus(object sender, MouseButtonEventArgs e)
         {
-            var comboBox = sender as ComboBox;
-            if (comboBox.SelectedItem is ComboBoxItem selectedItem)
+            Border button = sender as Border;
+            string tag = button.Tag.ToString();
+            try
             {
-                var tag = selectedItem.Tag;
-                try
+                if (button.Name.Contains("approve"))
                 {
-                    if (selectedItem.Content.ToString() == "Elfogadás")
+                    HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{tag}/approve", null);
+                    response.EnsureSuccessStatusCode();
+                    foreach (var item in ServicesData)
                     {
-                        HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{tag}/approve", null);
-                        response.EnsureSuccessStatusCode();
-                        foreach (var item in ServicesData)
+                        if (item.id == tag)
                         {
-                            if (item.id == tag)
-                            {
-                                item.status = "approved";
-                            }
+                            item.status = "approved";
                         }
                     }
-                    else if (selectedItem.Content.ToString() == "Elutasítás")
+                }
+                else if (button.Name.Contains("reject"))
+                {
+                    HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{tag}/reject", null);
+                    response.EnsureSuccessStatusCode();
+                    foreach (var item in ServicesData)
                     {
-                        HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{tag}/reject", null);
-                        response.EnsureSuccessStatusCode();
-                        foreach (var item in ServicesData)
+                        if (item.id == tag)
                         {
-                            if (item.id == tag)
-                            {
-                                item.status = "rejected";
-                            }
+                            item.status = "rejected";
                         }
                     }
-
-                    CollectionViewSource.GetDefaultView(ServicesData).Refresh();
                 }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message);
-                    throw;
-                }
+                CollectionViewSource.GetDefaultView(ServicesData).Refresh();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+                throw;
             }
         }
-
     }
 }

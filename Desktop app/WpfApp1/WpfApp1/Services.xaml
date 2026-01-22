@@ -56,9 +56,11 @@
             <RowDefinition Height="8*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
-            <Label Foreground="{StaticResource primaryText}">Home / Services</Label>
-            <Label Foreground="{StaticResource primaryText}">Services management</Label>
-            <Label></Label>
+            <Label Foreground="{StaticResource secondaryText}" FontSize="15" Margin="20 10 0 0">Kezdőlap / Szolgáltatások</Label>
+            <Label Foreground="#F0F0F0" FontSize="25" FontWeight="SemiBold" Margin="20 0 0 0">Szolgáltatások kezelése</Label>
+            <TextBlock Foreground="#D1D5DB" FontSize="17" TextWrapping="Wrap" Margin="20 0 0 0">Itt tekintheti át a rendszerben regisztrált szolgáltatásokat.
+A zöld ✔ gombbal jóváhagyhatja, a piros ✖ gombbal elutasíthatja őket.
+A felső szűrőfülek segítségével könnyen válogathat az összes, elfogadott, függő vagy elutasított szolgáltatás között.</TextBlock>
         </StackPanel>
 
         <Border Background="#1e293b" Grid.Row="1" Margin="20" CornerRadius="15" BorderThickness="1" BorderBrush="#354458">
@@ -76,15 +78,15 @@
                         </Grid.ColumnDefinitions>
                         <Border Background="{StaticResource darkBg}" Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="5">
                             <UniformGrid Rows="1" Columns="4" VerticalAlignment="Center" Margin="10 0 10 0">
-                                <RadioButton x:Name="allFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Összes" Checked="RadioButton_Click"/>
-                                <RadioButton x:Name="approvedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Elfogadott" Checked="RadioButton_Click"/>
-                                <RadioButton x:Name="pendingFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Függő" Checked="RadioButton_Click"/>
-                                <RadioButton x:Name="rejectedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Elutasított" Checked="RadioButton_Click"/>
+                                <RadioButton x:Name="allFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Összes" Checked="FilterButton_Click"/>
+                                <RadioButton x:Name="approvedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Elfogadott" Checked="FilterButton_Click"/>
+                                <RadioButton x:Name="pendingFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Függő" Checked="FilterButton_Click"/>
+                                <RadioButton x:Name="rejectedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Elutasított" Checked="FilterButton_Click"/>
                             </UniformGrid>
                         </Border>
 
                         <Border CornerRadius="5" Grid.Column="1" Background="{StaticResource darkBg}" Padding="4" VerticalAlignment="Center">
-                            <TextBox BorderThickness="0" FontSize="15" Background="Transparent" Foreground="{StaticResource primaryText}" x:Name="searchbox" TextChanged="TextBox_TextChanged"></TextBox>
+                            <TextBox BorderThickness="0" FontSize="15" Background="Transparent" Foreground="{StaticResource primaryText}" x:Name="searchbox" TextChanged="searchbox_TextChanged"></TextBox>
                         </Border>
                     </Grid>
                 </Border>
@@ -92,18 +94,18 @@
                 <Border Grid.Row="1" BorderBrush="{StaticResource Border}" BorderThickness="0 0 0 1">
                     <Grid x:Name="tableFieldContainer">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="0.7*"></ColumnDefinition>
-                            <ColumnDefinition Width="1.4*"></ColumnDefinition>
+                            <ColumnDefinition Width="3.5*" />
+                            <ColumnDefinition Width="2.5*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="0.7*" />
+                            <ColumnDefinition Width="1.4*" />
                         </Grid.ColumnDefinitions>
 
                         <Label VerticalAlignment="Center" FontSize="15" Grid.Column="0" FontWeight="Bold" Foreground="{StaticResource secondaryText}">SZOLGÁLTATÁS NEVE</Label>
                         <Label VerticalAlignment="Center" FontSize="15" Grid.Column="1" FontWeight="Bold" Foreground="{StaticResource secondaryText}">KÉSZÍTŐ</Label>
                         <Label VerticalAlignment="Center" FontSize="15" Grid.Column="2" FontWeight="Bold" Foreground="{StaticResource secondaryText}">ÁR</Label>
-                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="3" FontWeight="Bold" Foreground="{StaticResource secondaryText}">Hely</Label>
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="3" FontWeight="Bold" Foreground="{StaticResource secondaryText}">HELY</Label>
                         <Label VerticalAlignment="Center" FontSize="15" Grid.Column="4" FontWeight="Bold" Foreground="{StaticResource secondaryText}">STÁTUSZ</Label>
                         <Label VerticalAlignment="Center" FontSize="15" Grid.Column="5" FontWeight="Bold" Foreground="{StaticResource secondaryText}">TEVÉKENYSÉG</Label>
                     </Grid>
@@ -113,15 +115,15 @@
                     <ItemsControl ItemsSource="{Binding ServicesData}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Height="50"
+                                <Border Height="70"
                         HorizontalAlignment="Stretch"
                         BorderThickness="0 1 0 1"
                         BorderBrush="#354458">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="3.5*" />
+                                            <ColumnDefinition Width="2.5*" />
+                                            <ColumnDefinition Width="1*" />
                                             <ColumnDefinition Width="1*" />
                                             <ColumnDefinition Width="0.7*" />
                                             <ColumnDefinition Width="1.4*" />
@@ -129,7 +131,7 @@
 
                                         <StackPanel Grid.Column="0" VerticalAlignment="Center">
                                             <Label Foreground="{StaticResource primaryText}"
-                                   Content="{Binding title}" />
+                                   Content="{Binding title}" FontSize="17" FontWeight="SemiBold"/>
                                             <Label Foreground="{StaticResource secondaryText}"
                                    Content="{Binding id, StringFormat=id: {0}}" />
                                         </StackPanel>
@@ -202,13 +204,14 @@
                                         </Border>
 
 
-                                        <Grid Grid.Column="5" Width="25" Height="25" HorizontalAlignment="Right" Margin="0 0 20 0">
-                                            <ComboBox SelectionChanged="ComboBox_SelectionChanged">
-                                                <ComboBoxItem Tag="{Binding id}">Elfogadás</ComboBoxItem>
-                                                <ComboBoxItem Tag="{Binding id}">Elutasítás</ComboBoxItem>
-                                                <ComboBoxItem Tag="{Binding id}">Törlés</ComboBoxItem>
-                                            </ComboBox>
-                                        </Grid>
+                                        <StackPanel Grid.Column="5" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 0 20 0">
+                                            <Border x:Name="approveBorder" VerticalAlignment="Center" ToolTip="Szolgáltatás elfogadása" Background="{StaticResource approvedBg}" Width="40" Height="30" CornerRadius="10 0 0 10" Cursor="Hand" MouseLeftButtonDown="setApprovalStatus" Tag="{Binding id}">
+                                                <Path x:Name="approveIcon" Data="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" Fill="{StaticResource approved}" Width="30" Height="20" Stretch="Uniform"/>
+                                            </Border>
+                                            <Border x:Name="rejectBorder" VerticalAlignment="Center" ToolTip="Szolgáltatás elutasítása" Background="{StaticResource rejectedBg}" Width="40" Height="30" CornerRadius="0 10 10 0" Cursor="Hand" Tag="{Binding id}" MouseLeftButtonDown="setApprovalStatus">
+                                                <Path x:Name="rejectIcon" Data="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" Fill="{StaticResource rejected}" Width="30" Height="20" Stretch="Uniform"/>
+                                            </Border>
+                                        </StackPanel>
                                     </Grid>
                                 </Border>
                             </DataTemplate>

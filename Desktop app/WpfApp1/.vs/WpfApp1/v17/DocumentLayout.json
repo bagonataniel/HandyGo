@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\users.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\users.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\users.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\users.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\services.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\services.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,31 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 334,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Users.xaml.cs",
+              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Users.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Users.xaml.cs",
+              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Users.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Users.xaml.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAlwEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T12:47:45.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Users.xaml",
+              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Users.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\Users.xaml",
+              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Users.xaml",
+              "RelativeToolTip": "WpfApp1\\Users.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-22T12:46:35.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Services.xaml.cs",
               "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Services.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\Services.xaml.cs",
               "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Services.xaml.cs",
               "RelativeToolTip": "WpfApp1\\Services.xaml.cs",
-              "ViewState": "AgIAAK8AAAAAAAAAAAAqwMgAAABQAAAAAAAAAA==",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAwwKUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-21T07:12:30.45Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Services.xaml",
               "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Services.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\Services.xaml",
               "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Services.xaml",
               "RelativeToolTip": "WpfApp1\\Services.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-20T10:18:50.754Z",
+              "WhenOpened": "2026-01-22T12:44:40.506Z",
               "EditorCaption": ""
             }
           ]
