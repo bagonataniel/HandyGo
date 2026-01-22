@@ -14,7 +14,7 @@
     </mat-list>
   </mat-drawer>
   <mat-drawer-content #drawerContent>
-    <button [disabled]="isButtonDisabled" id="toggle-button" mat-fab color="primary" (click)="drawer.toggle()">
+    <button [disabled]="isButtonDisabled" id="toggle-button" mat-fab color="primary" (click)="drawer.toggle()" #drawerToggleButton>
       <mat-icon>chat</mat-icon>
     </button>
   </mat-drawer-content>

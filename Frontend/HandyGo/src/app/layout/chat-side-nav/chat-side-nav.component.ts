@@ -4,6 +4,7 @@ import { ModalService } from '../../services/modal.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ChatPanelComponent } from '../chat-panel/chat-panel.component';
 import { MatDrawer, MatDrawerContent } from '@angular/material/sidenav';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-chat-side-nav',
@@ -15,7 +16,11 @@ export class ChatSideNavComponent {
   opened: boolean = false;
   isButtonDisabled: boolean = false;
   readonly drawer = viewChild.required<MatDrawer>('drawer');
-  @ViewChild('drawerContent') drawerContent!: MatDrawerContent;
+  @ViewChild('drawer', { read: ElementRef})
+  drawerContent!: ElementRef<HTMLElement>;
+
+  @ViewChild('drawerToggleButton', { read: ElementRef })
+  drawerToggleButton!: ElementRef<HTMLElement>;
 
 
   constructor(private connectionService: ConnectionService, private modalService: ModalService, private dialog: MatDialog) {
@@ -45,20 +50,23 @@ export class ChatSideNavComponent {
     });
   }
 
-  @HostListener('document:click', ['$event'])
-  onClick(event: Event) {
-    const drawerContent = this.drawerContent;
-
-    const clickedInside = (drawerContent as any)._elementRef.nativeElement.contains(event.target);
-    if (!clickedInside && this.opened) {
-      this.opened = false;
-      console.log("clicked outside");
-    }
-    else{
-      console.log("clicked inside");
-    }
-    event.stopPropagation();
+@HostListener('document:click', ['$event'])
+onDocumentClick(event: MouseEvent) {
+  if (this.drawer().opened == false) {
+    return;
   }
+  const target = event.target as Node;
+  
+  const clickedInsideDrawer =
+    this.drawerContent.nativeElement.contains(target);
+
+  const clickedToggleButton =
+    this.drawerToggleButton.nativeElement.contains(target);
+
+  if (!clickedInsideDrawer && !clickedToggleButton) {
+    this.drawer().close();
+  }
+}
 
 }
 
