@@ -26,6 +26,8 @@ export class MainComponent implements OnInit{
     })
   }
 
+  
+
   onServiceSelect(serviceId: number): void {
     // Handle service selection, e.g., navigate to service details page
     console.log('Selected service ID:', serviceId);

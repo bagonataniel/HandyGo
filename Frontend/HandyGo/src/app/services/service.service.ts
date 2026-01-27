@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -20,7 +20,13 @@ export class ServiceService {
       return this._http.get(`http://localhost:3000/service/${lat}/${lon}`, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
     }
 
-    public getServices(){
+    public getServices(filters : {category?:string,distance?:number,}){
+      const apiURL = `http://localhost:3000/service/service`;
+      let params = new HttpParams();
+
+      
+
+
       return this._http.get(`http://localhost:3000/service`, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
     }
 

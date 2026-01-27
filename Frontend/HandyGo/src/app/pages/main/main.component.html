@@ -1,10 +1,16 @@
 <app-navbar></app-navbar>
-<div class="card-section">
-    <mat-card *ngFor="let item of services" class="service-card" (click)="onServiceSelect(item.id)" style="cursor: pointer;">
-        <mat-card-title>{{item.category}}</mat-card-title>
-        <mat-card-content>
-            <p>{{item.description}}</p>
-            <p>{{item.price}}</p>
-        </mat-card-content>
-    </mat-card>
+<div class="main">
+    <div class="filter-section">
+
+    </div>
+    <div class="card-section">
+        <mat-card *ngFor="let item of services" class="service-card" (click)="onServiceSelect(item.id)" style="cursor: pointer;">
+            <mat-card-title>{{item.category}}</mat-card-title>
+            <mat-card-content>
+                <p>{{item.description}}</p>
+                <p>{{item.price}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
 </div>
