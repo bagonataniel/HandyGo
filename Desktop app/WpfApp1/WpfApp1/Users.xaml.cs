@@ -32,7 +32,6 @@ namespace WpfApp1
         public string id { get; set; }
         public string name { get; set; }
         public string email { get; set; }
-        //public string password_hash { get; set; }
         public string bio { get; set; }
         public string skills { get; set; }
         public string latitude { get; set; }
@@ -40,6 +39,7 @@ namespace WpfApp1
         public string location { get; set; }
         public string created_at { get; set; }
         public int is_verified { get; set; }
+        public string is_verified_text { get; set; }
     }
     public partial class Users : UserControl
     {
@@ -51,6 +51,7 @@ namespace WpfApp1
         {
             InitializeComponent();
             token = TOKEN;
+            DataContext = this;
             client.DefaultRequestHeaders.Add("x-admin-auth-token", token);
             _ = apiCall();
         }
@@ -70,9 +71,20 @@ namespace WpfApp1
                 UsersData.Clear();
                 foreach (var item in users)
                 {
+                    if (item.is_verified == 0)
+                    {
+                        item.is_verified_text = "Nem hitelesített";
+                    }
+                    else
+                    {
+                        item.is_verified_text = "Hitelesített";
+                    }
+                    if (item.bio == ""){item.bio = "{nincs megadva}";}
+                    if (item.location == ""){item.bio = "{nincs megadva}";}
+                    if (item.latitude == ""){item.bio = "{nincs megadva}";}
+                    if (item.longitude == ""){item.bio = "{nincs megadva}";}
                     UsersData.Add(item);
                 }
-
             }
             catch (Exception e)
             {
