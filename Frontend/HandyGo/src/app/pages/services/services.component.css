@@ -1,0 +1,89 @@
+.service-detail-page {
+  padding: 100px 20px 60px;
+  background: #f8f9fa;
+  min-height: calc(100vh - 70px - 100px);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #1976d2;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.service-info p {
+  font-size: 17px;
+  margin: 12px 0;
+  line-height: 1.6;
+}
+
+.service-info strong {
+  color: #333;
+}
+
+.actions {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.actions button {
+  padding: 14px 48px;
+  font-size: 18px;
+  border-radius: 30px;
+  background-color: #1976d2;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: #1565c0;
+  transform: translateY(-2px);
+}
+
+.booking-status {
+  margin-top: 16px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.booking-status.success {
+  color: #2e7d32;
+}
+
+.booking-status.error {
+  color: #d32f2f;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 80px 20px;
+  font-size: 18px;
+}
+
+.loading {
+  color: #666;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+@media (max-width: 600px) {
+  .service-detail-page {
+    padding: 80px 15px 60px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .actions button {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+  }
+}
