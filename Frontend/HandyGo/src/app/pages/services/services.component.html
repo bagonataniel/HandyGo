@@ -1,12 +1,19 @@
 <app-navbar></app-navbar>
-<p>{{serviceData?.availability}}</p>
-<p>{{serviceData?.category}}</p>
-<p>{{serviceData?.description}}</p>
-<p>{{serviceData?.id}}</p>
-<p>{{serviceData?.latitude}}</p>
-<p>{{serviceData?.longitude}}</p>
-<p>{{serviceData?.price}}</p>
-<p>{{serviceData?.status}}</p>
-<p>{{serviceData?.title}}</p>
-<p>{{serviceData?.worker_id}}</p>
-<button (click)="bookService()">Foglalás</button>
+
+<div class="service-detail">
+  <ng-container>
+    <h1>{{ serviceData.title }}</h1>
+    <p><strong>Kategória:</strong> {{ serviceData.category }}</p>
+    <p><strong>Leírás:</strong> {{ serviceData.description }}</p>
+    <p><strong>Ár:</strong> {{ serviceData.price }} Ft</p>
+    <p><strong>Helyszín:</strong> {{ serviceData.location || 'Nincs megadva' }}</p>
+    <p><strong>Koordináták:</strong> {{ serviceData.latitude }}, {{ serviceData.longitude }}</p>
+    <p><strong>Státusz:</strong> {{ serviceData.status }}</p>
+    <p><strong>ID:</strong> {{ serviceData.id }}</p>
+    <p><strong>Szolgáltató ID:</strong> {{ serviceData.worker_id }}</p>
+
+    <button mat-raised-button color="primary" (click)="bookService()">
+      Foglalás
+    </button>
+  </ng-container>
+</div>
