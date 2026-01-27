@@ -55,11 +55,8 @@
             <RowDefinition Height="8*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
-            <Label Foreground="{StaticResource secondaryText}" FontSize="15" Margin="20 10 0 0">Kezdőlap / Szolgáltatások</Label>
-            <Label Foreground="#F0F0F0" FontSize="25" FontWeight="SemiBold" Margin="20 0 0 0">Szolgáltatások kezelése</Label>
-            <TextBlock Foreground="#D1D5DB" FontSize="17" TextWrapping="Wrap" Margin="20 0 0 0">Itt tekintheti át a rendszerben regisztrált szolgáltatásokat.
-A zöld ✔ gombbal jóváhagyhatja, a piros ✖ gombbal elutasíthatja őket.
-A felső szűrőfülek segítségével könnyen válogathat az összes, elfogadott, függő vagy elutasított szolgáltatás között.</TextBlock>
+            <Label Foreground="{StaticResource secondaryText}" FontSize="15" Margin="20 10 0 0">Kezdőlap / Felhasználók</Label>
+            <Label Foreground="#F0F0F0" FontSize="25" FontWeight="SemiBold" Margin="20 0 0 0">Felhasználók listája</Label>
         </StackPanel>
 
         <Border Background="#1e293b" Grid.Row="1" Margin="20" CornerRadius="15" BorderThickness="1" BorderBrush="#354458">
@@ -123,7 +120,6 @@ A felső szűrőfülek segítségével könnyen válogathat az összes, elfogado
                                             <ColumnDefinition Width="1*" />
                                             <ColumnDefinition Width="1*" />
                                             <ColumnDefinition Width="1*" />
-                                            <ColumnDefinition Width="1" />
                                         </Grid.ColumnDefinitions>
 
                                         <StackPanel Grid.Column="0" VerticalAlignment="Center">

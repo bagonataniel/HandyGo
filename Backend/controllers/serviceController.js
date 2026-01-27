@@ -40,8 +40,7 @@ exports.getAllServices = async (req, res) => {
 }
 
 exports.filterServices = async (req, res) => {
-    const {lat, lon} = req.params;
-
+    const {lat, lon, distance} = req.params;
     try {
         services = await Service.getAllService();
         for (let index = 0; index < services.length; index++) {
@@ -54,8 +53,8 @@ exports.filterServices = async (req, res) => {
             
             services[index].distance = d;
         }
-        // res.status(200).json(services.filter(service => service.distance <= distance));
-        res.status(200).json(services);
+        res.status(200).json(services.filter(service => service.distance <= distance));
+        // res.status(200).json(services);
     }
     catch (error) {
         res.status(400).json({ error: error.message });
