@@ -13,8 +13,14 @@ export class MainComponent implements OnInit{
 
   constructor(private service: ServiceService) { }
 
+  categories: string[] = ["Otthon & Kert", "Javítás", "Kreatív", "Tech", "Életmód", "Szállítás", "egyéb"];
+  
+  selectedCategory: string = '';
+  distance: number | undefined = undefined;
+  priceRange: [number, number] = [1, 1000000000];
+
   ngOnInit(): void {
-    this.service.getServices().subscribe({
+    this.service.getServices({"category": this.selectedCategory, "distance": this.distance , priceRange: this.priceRange}).subscribe({
       next: (data: any) => {
         console.log(data);
         
@@ -25,6 +31,8 @@ export class MainComponent implements OnInit{
       }
     })
   }
+
+  
 
   onServiceSelect(serviceId: number): void {
     // Handle service selection, e.g., navigate to service details page
