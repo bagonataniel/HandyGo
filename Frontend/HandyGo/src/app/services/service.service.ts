@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { concatWith, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,39 @@ export class ServiceService {
       return this._http.get(`http://localhost:3000/service/${lat}/${lon}`, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
     }
 
-    public getServices(){
-      return this._http.get(`http://localhost:3000/service`, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
-    }
+getServices(filters: { category?: string; distance?: number; priceRange?: [number, number] }) {
+  let params = new HttpParams();
+
+  return this._http
+    .get<any>(`http://localhost:3000/users/${localStorage.getItem('userId')}`, {
+      headers: { 'x-auth-token': localStorage.getItem('token') || '' }
+    })
+    .pipe(
+      switchMap(userData => {
+        params = params
+          .append('lat', userData.user.latitude)
+          .append('lon', userData.user.longitude);
+
+        if (filters.category) {
+          params = params.append('category', filters.category);
+        }
+        if (filters.distance !== undefined && userData.user.latitude && userData.user.longitude) {
+          params = params.append('distance', filters.distance.toString());
+        }
+        if (filters.priceRange) {
+          params = params
+            .append('minPrice', filters.priceRange[0].toString())
+            .append('maxPrice', filters.priceRange[1].toString());
+        }
+
+        console.log(params);
+        return this._http.get(`http://localhost:3000/service`, {
+          headers: { 'x-auth-token': localStorage.getItem('token') || '' },
+          params
+        });
+      })
+    );
+}
 
     public getServiceById(id: string){
       return this._http.get(`http://localhost:3000/service/${id}`, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });

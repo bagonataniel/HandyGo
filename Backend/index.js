@@ -80,17 +80,10 @@ io.on("connection", (socket) => {
 
       if(room?.size > 0) {
         io.in(roomName).emit("new-message", {from: data.from, message: data.message, to: data.to, recivedFrom: roomName});
-      } else {
-        // console.log('User is offline, message saved to DB only');
       }
     });
   });
 
-  // setInterval(()=>{
-  //   io.sockets.adapter.rooms.forEach((room, roomName) => {
-  //     io.to(roomName).emit("new-message", {from: "system", message: "This is a periodic update.", to: roomName.replace('user_', '')});
-  //   });
-  // }, 3000);
 
   socket.on("check-room", (data)=>{
     io.to(socket.id).emit("room-status", {room: io.sockets.adapter.rooms.get(`user_${data.uID}`)});
