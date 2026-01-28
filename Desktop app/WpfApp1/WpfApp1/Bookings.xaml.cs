@@ -30,6 +30,9 @@ namespace WpfApp1
         public string worker_id { get; set; }
         public string status { get; set; }
         public DateTime date { get; set; }
+        public string worker_name  { get; set;}
+        public string client_name {get; set;}
+        public string service_name {get; set;}
     }
 
     public partial class Bookings : UserControl
@@ -130,9 +133,9 @@ namespace WpfApp1
                 var s = bookings[i];
                 bool match =
                     (!string.IsNullOrEmpty(s.id) && s.id.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
-                    (!string.IsNullOrEmpty(s.worker_id) && s.worker_id.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
-                    (!string.IsNullOrEmpty(s.client_id) && s.client_id.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
-                    (!string.IsNullOrEmpty(s.service_id) && s.service_id.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.worker_name) && s.worker_name.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.client_name) && s.client_name.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrEmpty(s.service_name) && s.service_name.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
                     (!string.IsNullOrEmpty(s.status) && s.status.Contains(search, StringComparison.OrdinalIgnoreCase)) ||
                     (!string.IsNullOrEmpty(s.date.ToString()) && s.date.ToString().Contains(search, StringComparison.OrdinalIgnoreCase));
                 if (match)

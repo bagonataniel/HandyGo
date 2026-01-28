@@ -35,13 +35,13 @@ namespace WpfApp1
             fontcolor = (Brush)this.FindResource("ActiveNav");
             background = (Brush)this.FindResource("ActiveNavBg");
             defaultText = (Brush)this.FindResource("TextLight2");
-            paths = new Path[] { homeLogo, serviceLogo, usersLogo, bookingsLogo, settingsLogo, profileLogo};
-            labels = new Label[] { homeText, servicesText, usersText, bookingsText, settingsText, profileText };
-            borders = new Border[] { homeElement, servicesElement, usersElement, bookingsElement, settingsElement, profileElement };
-            Button_Click(null,null);
+            paths = new Path[] { homeLogo, serviceLogo, usersLogo, bookingsLogo, settingsLogo};
+            labels = new Label[] { homeText, servicesText, usersText, bookingsText, settingsText};
+            borders = new Border[] { homeElement, servicesElement, usersElement, bookingsElement, settingsElement};
+            homeButton_Click(null,null);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void homeButton_Click(object sender, RoutedEventArgs e)
         {
             control.Content = new Home(TOKEN);
             homeLogo.Fill = fontcolor;
@@ -69,7 +69,7 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void serviceButton_Click(object sender, RoutedEventArgs e)
         {
             control.Content = new Services(TOKEN);
             serviceLogo.Fill = fontcolor;
@@ -98,7 +98,7 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void usersButton_Click(object sender, RoutedEventArgs e)
         {
             control.Content = new Users(TOKEN);
             usersLogo.Fill = fontcolor;
@@ -127,7 +127,7 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void bookingsButton_Click(object sender, RoutedEventArgs e)
         {
             control.Content = new Users(TOKEN);
             bookingsLogo.Fill = fontcolor;
@@ -156,7 +156,7 @@ namespace WpfApp1
             }
         }
 
-        private void settingsElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void settingsButton_Click(object sender, MouseButtonEventArgs e)
         {
             //control.Content = new Users(TOKEN);
             settingsLogo.Fill = fontcolor;
@@ -179,64 +179,6 @@ namespace WpfApp1
             foreach (Border element in borders)
             {
                 if (element != settingsElement)
-                {
-                    element.Background = transparentBackground;
-                }
-            }
-        }
-
-        private void profileElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //control.Content = new Users(TOKEN);
-            profileLogo.Fill = fontcolor;
-            profileText.Foreground = fontcolor;
-            profileElement.Background = background;
-            foreach (Path path in paths)
-            {
-                if (path != profileLogo)
-                {
-                    path.Fill = defaultText;
-                }
-            }
-            foreach (Label label in labels)
-            {
-                if (label != profileText)
-                {
-                    label.Foreground = defaultText;
-                }
-            }
-            foreach (Border element in borders)
-            {
-                if (element != profileElement)
-                {
-                    element.Background = transparentBackground;
-                }
-            }
-        }
-
-        private void bookingsElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            control.Content = new Bookings(TOKEN);
-            bookingsLogo.Fill = fontcolor;
-            bookingsText.Foreground = fontcolor;
-            bookingsElement.Background = background;
-            foreach (Path path in paths)
-            {
-                if (path != bookingsLogo)
-                {
-                    path.Fill = defaultText;
-                }
-            }
-            foreach (Label label in labels)
-            {
-                if (label != bookingsText)
-                {
-                    label.Foreground = defaultText;
-                }
-            }
-            foreach (Border element in borders)
-            {
-                if (element != bookingsElement)
                 {
                     element.Background = transparentBackground;
                 }

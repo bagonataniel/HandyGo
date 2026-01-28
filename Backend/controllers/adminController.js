@@ -2,6 +2,8 @@ const Admin = require("../models/Admin");
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const User = require("../models/User")
+const Service = require("../models/Service")
 
 exports.adminLogin = async (req, res) => {
     const { username, password } = req.body;
@@ -100,7 +102,12 @@ exports.getStats = async (req, res) => {
 
 exports.getBookings = async (req, res) => {
     try {
-        const bookings = await Admin.getBookings();
+        var bookings = await Admin.getBookings();
+        for (let index = 0; index < bookings.length; index++) {
+            bookings[index].worker_name = (await User.findById(bookings[index].worker_id)).name;
+            bookings[index].client_name = (await User.findById(bookings[index].client_id)).name;
+            bookings[index].service_name = (await Service.getServiceById(bookings[index].service_id)).title;
+        }
         res.status(200).json(bookings);
     } catch (error) {
         res.status(500).json({ error: error.message });

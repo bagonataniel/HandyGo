@@ -76,15 +76,15 @@
                 <Border Grid.Row="0" BorderBrush="{StaticResource Border}" BorderThickness="0 0 0 1">
                     <Grid x:Name="tableFieldContainer">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1.2*" />
+                            <ColumnDefinition Width="2*" />
                             <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="0.5*" />
-                            <ColumnDefinition Width="0.8*" />
-                            <ColumnDefinition Width="0.8*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
-                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="0" FontWeight="Bold" Foreground="{StaticResource secondaryText}">SZOLG. ID</Label>
-                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="1" FontWeight="Bold" Foreground="{StaticResource secondaryText}">DOLGOZÓ ID</Label>
-                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="2" FontWeight="Bold" Foreground="{StaticResource secondaryText}">ÜGYFÉL ID</Label>
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="0" FontWeight="Bold" Foreground="{StaticResource secondaryText}">SZOLG. NÉV</Label>
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="1" FontWeight="Bold" Foreground="{StaticResource secondaryText}">DOLGOZÓ NÉV</Label>
+                        <Label VerticalAlignment="Center" FontSize="15" Grid.Column="2" FontWeight="Bold" Foreground="{StaticResource secondaryText}">ÜGYFÉL NÉV</Label>
                         <Label VerticalAlignment="Center" FontSize="15" Grid.Column="3" FontWeight="Bold" Foreground="{StaticResource secondaryText}">DÁTUM</Label>
                         <Label VerticalAlignment="Center" FontSize="15" Grid.Column="4" FontWeight="Bold" Foreground="{StaticResource secondaryText}">STÁTUSZ</Label>
                     </Grid>
@@ -100,27 +100,27 @@
                         BorderBrush="#354458">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1.2*" />
+                                            <ColumnDefinition Width="2*" />
                                             <ColumnDefinition Width="1*" />
-                                            <ColumnDefinition Width="0.5*" />
-                                            <ColumnDefinition Width="0.8*" />
-                                            <ColumnDefinition Width="0.8*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Grid.Column="0" Foreground="{StaticResource primaryText}"
-                                   Content="{Binding service_id}" FontSize="17" FontWeight="SemiBold"/>
+                                        <Label Grid.Column="0" VerticalAlignment="Center" Foreground="{StaticResource primaryText}"
+                                   Content="{Binding service_name}" FontSize="17" FontWeight="SemiBold"/>
 
                                         <Label Grid.Column="1"
                                VerticalAlignment="Center"
                                Foreground="{StaticResource primaryText}"
                                FontSize="15"
-                               Content="{Binding worker_id}" />
+                               Content="{Binding worker_name}" />
 
                                         <Label Grid.Column="2"
                                VerticalAlignment="Center"
                                FontSize="15"
                                Foreground="{StaticResource primaryText}"
-                               Content="{Binding client_id}" />
+                               Content="{Binding client_name}" />
 
                                         <StackPanel Grid.Column="3" VerticalAlignment="Center">
                                             <Label Foreground="{StaticResource secondaryText}"
