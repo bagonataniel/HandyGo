@@ -1,19 +1,64 @@
 <app-navbar></app-navbar>
 
-<div class="service-detail">
-  <ng-container>
-    <h1>{{ serviceData.title }}</h1>
-    <p><strong>Kategória:</strong> {{ serviceData.category }}</p>
-    <p><strong>Leírás:</strong> {{ serviceData.description }}</p>
-    <p><strong>Ár:</strong> {{ serviceData.price }} Ft</p>
-    <p><strong>Helyszín:</strong> {{ serviceData.location || 'Nincs megadva' }}</p>
-    <p><strong>Koordináták:</strong> {{ serviceData.latitude }}, {{ serviceData.longitude }}</p>
-    <p><strong>Státusz:</strong> {{ serviceData.status }}</p>
-    <p><strong>ID:</strong> {{ serviceData.id }}</p>
-    <p><strong>Szolgáltató ID:</strong> {{ serviceData.worker_id }}</p>
+<div class="service-detail-page">
+  <div class="container">
+    <div class="profile-card">
+      <div class="profile-header">
+        <a [routerLink]="['/users', serviceData?.worker_id]" class="avatar-link" *ngIf="serviceData?.worker_id">
+          <div class="avatar">
+            {{ workerName?.charAt(0) || '?' }}
+          </div>
+        </a>
+        <div class="user-info">
+          <h2>
+            <a [routerLink]="['/users', serviceData?.worker_id]" *ngIf="serviceData?.worker_id">
+              {{ workerName || 'Ismeretlen szolgáltató' }}
+            </a>
+            <ng-container *ngIf="!serviceData?.worker_id">
+              {{ workerName || 'Ismeretlen szolgáltató' }}
+            </ng-container>
+          </h2>
+          <p class="email">{{ workerEmail || 'email@example.com' }}</p>
 
-    <button mat-raised-button color="primary" (click)="bookService()">
-      Foglalás
-    </button>
-  </ng-container>
+          <p class="coordinates" *ngIf="serviceData?.latitude && serviceData?.longitude">
+            <mat-icon>my_location</mat-icon>
+            Szélesség: {{ serviceData.latitude | number:'1.6-6' }} | 
+            Hosszúság: {{ serviceData.longitude | number:'1.6-6' }}
+          </p>
+        </div>
+
+
+        <div class="status-box">
+          <p class="category">
+            <strong>Kategória:</strong> {{ serviceData?.category || 'Vízszerelés' }}
+          </p>
+          <p class="status" [ngClass]="{
+            'status-accepted': serviceData?.status === 'kész' || serviceData?.status === 'elfogadva',
+            'status-pending': serviceData?.status === 'elfogadásra vár',
+            'status-working': serviceData?.status === 'folyamatban'
+          }">
+            <strong>Státusz:</strong> {{ serviceData?.status || 'Elfogadásra vár' }}
+          </p>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h3>Leírás</h3>
+        <p>{{ serviceData?.description || 'Nincs leírás' }}</p>
+      </div>
+
+      <div class="profile-section">
+        <h3>Ár</h3>
+        <p class="price">{{ serviceData?.price ? serviceData.price + ' Ft' : 'Nincs megadva' }}</p>
+      </div>
+
+      <div class="profile-actions">
+        <button mat-raised-button color="primary" (click)="bookService()">
+          Foglalás
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<app-footer></app-footer>
