@@ -9,8 +9,24 @@ class Service {
     return { id: result.worker_id, title, description };
   }
 
-  static async getAllService() {
-    const [rows] = await db.execute("SELECT * FROM services WHERE status = 'approved'");
+  static async getAllService(category, minPrice, maxPrice) {
+    let query = "SELECT * FROM services WHERE status = 'approved'"
+    let params = [];
+
+    if(category){
+      query += " AND category = ?";
+      params.push(category);
+    }
+    if(minPrice){
+      query += " AND price >= ?";
+      params.push(minPrice);
+    }
+    if(maxPrice){
+      query += " AND price <= ?";
+      params.push(maxPrice);
+    }
+
+    const [rows] = await db.execute(query, params);
     return rows;
   }
 
