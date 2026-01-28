@@ -51,43 +51,44 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="7.5*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Grid.Row="0">
             <Label Foreground="{StaticResource secondaryText}" FontSize="15" Margin="20 10 0 0">Kezdőlap / Felhasználók</Label>
             <Label Foreground="#F0F0F0" FontSize="25" FontWeight="SemiBold" Margin="20 0 0 0">Felhasználók listája</Label>
         </StackPanel>
 
-        <Border Background="#1e293b" Grid.Row="1" Margin="20" CornerRadius="15" BorderThickness="1" BorderBrush="#354458">
+        <Border Background="#1e293b" Grid.Row="1" Margin="20 0" Padding="10" CornerRadius="15" BorderThickness="1" BorderBrush="#354458">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Border CornerRadius="5" Grid.Column="0" Background="{StaticResource darkBg}" Padding="10" VerticalAlignment="Center">
+                    <TextBox BorderThickness="0" FontSize="15" Background="Transparent" Foreground="{StaticResource primaryText}" x:Name="searchbox" TextChanged="searchbox_TextChanged"></TextBox>
+                </Border>
+
+                <Border Background="{StaticResource darkBg}" Grid.Column="1" Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="5">
+                    <UniformGrid Rows="1" Columns="3" VerticalAlignment="Center" Margin="10 0">
+                        <RadioButton x:Name="allFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Click="filterClick" Content="Összes"/>
+                        <RadioButton x:Name="verifiedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Click="filterClick" Content="Hitelesített"/>
+                        <RadioButton x:Name="notverifiedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Click="filterClick" Content="Nem hitelesített"/>
+                    </UniformGrid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Background="#1e293b" Grid.Row="2" Margin="20" CornerRadius="15" BorderThickness="1" BorderBrush="#354458">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.5*" MaxHeight="50"></RowDefinition>
                     <RowDefinition Height="1*" MaxHeight="50"></RowDefinition>
                     <RowDefinition Height="7.5*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="{StaticResource Border}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5.5*"></ColumnDefinition>
-                            <ColumnDefinition Width="4.5*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Border Background="{StaticResource darkBg}" Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="5">
-                            <UniformGrid Rows="1" Columns="4" VerticalAlignment="Center" Margin="10 0 10 0">
-                                <RadioButton x:Name="allFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Összes"/>
-                                <RadioButton x:Name="approvedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Elfogadott"/>
-                                <RadioButton x:Name="pendingFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Függő"/>
-                                <RadioButton x:Name="rejectedFilter" GroupName="filter" Style="{StaticResource NoCircleRadioButton}" Content="Elutasított"/>
-                            </UniformGrid>
-                        </Border>
 
-                        <Border CornerRadius="5" Grid.Column="1" Background="{StaticResource darkBg}" Padding="4" VerticalAlignment="Center">
-                            <TextBox BorderThickness="0" FontSize="15" Background="Transparent" Foreground="{StaticResource primaryText}" x:Name="searchbox" TextChanged="searchbox_TextChanged"></TextBox>
-                        </Border>
-                    </Grid>
-                </Border>
-
-                <Border Grid.Row="1" BorderBrush="{StaticResource Border}" BorderThickness="0 0 0 1">
+                <Border Grid.Row="0" BorderBrush="{StaticResource Border}" BorderThickness="0 0 0 1">
                     <Grid x:Name="tableFieldContainer">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1.5*" />
@@ -105,7 +106,7 @@
                     </Grid>
                 </Border>
 
-                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <ItemsControl ItemsSource="{Binding UsersData}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>

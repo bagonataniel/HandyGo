@@ -213,5 +213,34 @@ namespace WpfApp1
                 }
             }
         }
+
+        private void bookingsElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            control.Content = new Bookings(TOKEN);
+            bookingsLogo.Fill = fontcolor;
+            bookingsText.Foreground = fontcolor;
+            bookingsElement.Background = background;
+            foreach (Path path in paths)
+            {
+                if (path != bookingsLogo)
+                {
+                    path.Fill = defaultText;
+                }
+            }
+            foreach (Label label in labels)
+            {
+                if (label != bookingsText)
+                {
+                    label.Foreground = defaultText;
+                }
+            }
+            foreach (Border element in borders)
+            {
+                if (element != bookingsElement)
+                {
+                    element.Background = transparentBackground;
+                }
+            }
+        }
     }
 }

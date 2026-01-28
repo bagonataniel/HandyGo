@@ -58,3 +58,5 @@ D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\LoginView.baml
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\MainLayout.g.cs
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\MainLayout.baml
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Bookings.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Bookings.baml

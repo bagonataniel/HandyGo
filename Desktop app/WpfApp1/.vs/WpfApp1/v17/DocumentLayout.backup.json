@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\users.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\users.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\bookings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\bookings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\users.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\users.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\services.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\services.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\services.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\services.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\bookings.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\bookings.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,56 +18,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 334,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Users.xaml.cs",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Users.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Users.xaml.cs",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Users.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\Users.xaml.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAqwFQAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T12:47:45.037Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Users.xaml",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Users.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\Users.xaml",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Users.xaml",
-              "RelativeToolTip": "WpfApp1\\Users.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-22T12:46:35.634Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Services.xaml.cs",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Services.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Services.xaml.cs",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Services.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\Services.xaml.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAQwDQAAAAMAAAAAAAAAA==",
+              "Title": "Bookings.xaml.cs",
+              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Bookings.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Bookings.xaml.cs",
+              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Bookings.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Bookings.xaml.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAASwIEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T07:12:30.45Z",
+              "WhenOpened": "2026-01-28T07:40:17.554Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Services.xaml",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Services.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\Services.xaml",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Services.xaml",
-              "RelativeToolTip": "WpfApp1\\Services.xaml",
+              "DocumentIndex": 0,
+              "Title": "Bookings.xaml",
+              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Bookings.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\Bookings.xaml",
+              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Bookings.xaml",
+              "RelativeToolTip": "WpfApp1\\Bookings.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-22T12:44:40.506Z",
+              "WhenOpened": "2026-01-28T07:36:20.767Z",
               "EditorCaption": ""
             }
           ]

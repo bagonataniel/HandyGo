@@ -25,7 +25,7 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for Services.xaml
     /// </summary>
-    public class ServiceDto
+    public class ServicesDto
     {
         public string id {  get; set; }
         public string worker_id { get; set; }
@@ -44,8 +44,8 @@ namespace WpfApp1
     {
         private string token;
         HttpClient client = new HttpClient();
-        public ObservableCollection<ServiceDto> ServicesData { get; } = new ObservableCollection<ServiceDto>();
-        List<ServiceDto> services;
+        public ObservableCollection<ServicesDto> ServicesData { get; } = new ObservableCollection<ServicesDto>();
+        List<ServicesDto> services;
         public string selectedFilter = "Összes";
         public Services(string TOKEN)
         {
@@ -67,7 +67,7 @@ namespace WpfApp1
 
                 string responseBody = await response.Content.ReadAsStringAsync();
 
-                services = await response.Content.ReadFromJsonAsync<List<ServiceDto>>();
+                services = await response.Content.ReadFromJsonAsync<List<ServicesDto>>();
                 ServicesData.Clear();
                 foreach (var item in services)
                 {

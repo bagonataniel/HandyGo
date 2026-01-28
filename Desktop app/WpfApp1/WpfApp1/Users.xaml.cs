@@ -71,6 +71,11 @@ namespace WpfApp1
                 UsersData.Clear();
                 foreach (var item in users)
                 {
+                    if (item.bio == "" || item.bio == null) { item.bio = "{nincs megadva}"; }
+                    if (item.location == "" || item.location == null) { item.location = "{nincs megadva}"; }
+                    if (item.latitude == "" || item.latitude == null) { item.latitude = "{nincs megadva}"; }
+                    if (item.longitude == "" || item.longitude == null) { item.longitude = "{nincs megadva}"; }
+                    if (item.skills == "" || item.skills == null) { item.skills = "{nincs megadva}"; }
                     if (item.is_verified == 0)
                     {
                         item.is_verified_text = "Nem hitelesített";
@@ -79,10 +84,6 @@ namespace WpfApp1
                     {
                         item.is_verified_text = "Hitelesített";
                     }
-                    if (item.bio == ""){item.bio = "{nincs megadva}";}
-                    if (item.location == ""){item.bio = "{nincs megadva}";}
-                    if (item.latitude == ""){item.bio = "{nincs megadva}";}
-                    if (item.longitude == ""){item.bio = "{nincs megadva}";}
                     UsersData.Add(item);
                 }
             }
@@ -124,6 +125,41 @@ namespace WpfApp1
                 UsersData.Add(users[i]);
             }
 
+        }
+
+        private void filterClick(object sender, EventArgs e)
+        {
+            RadioButton button = sender as RadioButton;
+            if (button.Content.ToString() == "Hitelesített")
+            {
+                UsersData.Clear();
+                foreach (var item in users)
+                {
+                    if (item.is_verified == 1)
+                    {
+                        UsersData.Add(item);
+                    }
+                }
+            }
+            else if (button.Content.ToString() == "Összes")
+            {
+                UsersData.Clear();
+                foreach (var item in users)
+                {
+                    UsersData.Add(item);
+                }
+            }
+            else if (button.Content.ToString() == "Nem hitelesített")
+            {
+                UsersData.Clear();
+                foreach (var item in users)
+                {
+                    if (item.is_verified == 0)
+                    {
+                        UsersData.Add(item);
+                    }
+                }
+            }
         }
     }
 }

@@ -56,7 +56,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border x:Name="bookingsElement" MouseLeftButtonDown="Button_Click_3" Margin="10 5" HorizontalAlignment="Stretch" Cursor="Hand">
+                <Border x:Name="bookingsElement" MouseLeftButtonDown="bookingsElement_MouseLeftButtonDown" Margin="10 5" HorizontalAlignment="Stretch" Cursor="Hand">
                     <StackPanel Margin="2" Orientation="Horizontal">
                         <Border VerticalAlignment="Center" Width="20" Height="20">
                             <Path x:Name="bookingsLogo" Data="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z" Fill="{StaticResource TextLight2}" Stretch="Uniform" />
