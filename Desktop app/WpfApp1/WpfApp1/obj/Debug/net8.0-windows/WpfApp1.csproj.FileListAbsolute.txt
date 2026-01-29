@@ -54,7 +54,6 @@ D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.genruntimeconfig.cache
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\LoginView.g.cs
-D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\LoginView.baml
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\MainLayout.g.cs
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\MainLayout.baml
@@ -93,3 +92,5 @@ C:\Users\Technikus\Documents\GitHub\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debu
 C:\Users\Technikus\Documents\GitHub\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.pdb
 C:\Users\Technikus\Documents\GitHub\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.genruntimeconfig.cache
 C:\Users\Technikus\Documents\GitHub\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Settings.g.cs
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Settings.baml

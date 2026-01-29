@@ -129,7 +129,7 @@ namespace WpfApp1
 
         private void bookingsButton_Click(object sender, RoutedEventArgs e)
         {
-            control.Content = new Users(TOKEN);
+            control.Content = new Bookings(TOKEN);
             bookingsLogo.Fill = fontcolor;
             bookingsText.Foreground = fontcolor;
             bookingsElement.Background = background;
@@ -158,7 +158,7 @@ namespace WpfApp1
 
         private void settingsButton_Click(object sender, MouseButtonEventArgs e)
         {
-            //control.Content = new Users(TOKEN);
+            control.Content = new Settings(TOKEN);
             settingsLogo.Fill = fontcolor;
             settingsText.Foreground = fontcolor;
             settingsElement.Background = background;
