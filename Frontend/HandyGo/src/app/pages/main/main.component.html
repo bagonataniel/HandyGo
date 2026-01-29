@@ -1,7 +1,29 @@
 <app-navbar></app-navbar>
 <div class="main">
     <div class="filter-section">
-
+        <mat-form-field>
+            <mat-label>Kategóriák</mat-label>
+            <mat-select placeholder="Válassz kategóriát" >
+                <mat-option *ngFor="let category of categories" [value]="category" (click)="onCategorySelect(category)">
+                    {{category}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Távolság (Km)</mat-label>
+            <input matInput placeholder="Pl.: 100" type="number" [(ngModel)]="distance" [defaultValue]="undefined">
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Ár Minimum(Ft)</mat-label>
+            <input matInput placeholder="Pl.: 0" type="number" [(ngModel)]="priceRange[0]">
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Ár Maximum(Ft)</mat-label>
+            <input matInput placeholder="Pl.: 100" type="number" [(ngModel)]="priceRange[1]">
+        </mat-form-field>
+        
+        <button mat-raised-button (click)="ngOnInit()">Szűrés</button>
+        <button mat-raised-button (click)="resetFilters()">Vissza állítás</button>
     </div>
     <div class="card-section">
         <mat-card *ngFor="let item of services" class="service-card" (click)="onServiceSelect(item.id)" style="cursor: pointer;">
