@@ -94,7 +94,7 @@ exports.deleteUser = async (req, res) => {
 exports.getStats = async (req, res) => {
     try {
         const stats = await Admin.getStats();
-        res.status(200).json(stats[0]);
+        res.status(200).json(stats);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
