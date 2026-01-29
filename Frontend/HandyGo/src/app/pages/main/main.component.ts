@@ -13,7 +13,7 @@ export class MainComponent implements OnInit{
 
   constructor(private service: ServiceService) { }
 
-  categories: string[] = ["Otthon & Kert", "Javítás", "Kreatív", "Tech", "Életmód", "Szállítás", "egyéb"];
+  categories: string[] = ["---","Otthon & Kert", "Javítás", "Kreatív", "Tech", "Életmód", "Szállítás", "egyéb"];
   
   selectedCategory: string = '';
   distance: number | undefined = undefined;
@@ -32,7 +32,20 @@ export class MainComponent implements OnInit{
     })
   }
 
+  onCategorySelect(category: string): void{
+    if (category === '---'){
+      this.selectedCategory = '';
+      return;
+    }
+    this.selectedCategory = category;
+  }
   
+  resetFilters():void{
+    this.selectedCategory = '';
+    this.distance = undefined;
+    this.priceRange = [1, 1000000000];
+    this.ngOnInit();
+  }
 
   onServiceSelect(serviceId: number): void {
     // Handle service selection, e.g., navigate to service details page

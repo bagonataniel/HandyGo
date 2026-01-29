@@ -44,6 +44,8 @@ import { MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
 import { Error404Component } from './pages/error404/error404.component';
 import { MyServicesComponent } from './pages/my-services/my-services.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { MatSelectModule } from '@angular/material/select';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 
@@ -94,7 +96,9 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
     MatListModule,
     MatSnackBarModule,
     MatDialogTitle,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    MatSliderModule
 ],
   providers: [
     provideAnimationsAsync(),
