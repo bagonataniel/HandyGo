@@ -94,3 +94,8 @@ C:\Users\Technikus\Documents\GitHub\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debu
 C:\Users\Technikus\Documents\GitHub\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Settings.g.cs
 D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Settings.baml
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.AssemblyReference.cache
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\OxyPlot.dll
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\OxyPlot.Wpf.dll
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\OxyPlot.Wpf.Shared.dll
+D:\Munka\13C_info2\HandyGo\Desktop app\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.Up2Date

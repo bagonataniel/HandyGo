@@ -113,3 +113,23 @@ exports.getBookings = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
+
+exports.getAdminAccounts = async (req, res) => {
+    try {
+        const admins = await Admin.getAdminAccounts();
+        res.status(200).json(admins);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+exports.removeAdminAccount = async (req, res) => {
+    const adminId = req.params.id;
+
+    try {
+        await Admin.removeAdminAccount(adminId);
+        res.status(200).json({ message: "Admin account removed successfully" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}

@@ -59,13 +59,22 @@ class Admin {
         const [totalRevenue] = await db.execute("SELECT SUM(s.price) AS total_revenue FROM handygo.bookings b JOIN handygo.services s ON b.service_id = s.id WHERE b.status = 'kész';")
         basicStats[0].total_revenue = totalRevenue[0].total_revenue || 0;
         var result = [...basicStats, ...userGrowth];
-        console.log(result);
         return result;
     }
 
     static async getBookings(){
         const [rows] = await db.execute("SELECT * FROM bookings");
         return rows
+    }
+
+    static async getAdminAccounts(){
+        const [rows] = await db.execute("SELECT id, username, created_at FROM admin_users");
+        return rows;
+    }
+
+    static async removeAdminAccount(id){
+        const [result] = await db.execute("DELETE FROM admin_users WHERE id = ?", [id]);
+        return result;
     }
 }
 

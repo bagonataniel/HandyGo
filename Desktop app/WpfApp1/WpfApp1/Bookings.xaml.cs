@@ -74,55 +74,6 @@ namespace WpfApp1
                 MessageBox.Show(e.Message, "Error");
             }
         }
-
-        //private void FilterButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    RadioButton button = sender as RadioButton;
-        //    if (button.Content.ToString() == "Összes")
-        //    {
-        //        ServicesData.Clear();
-        //        foreach (var item in services)
-        //        {
-        //            ServicesData.Add(item);
-        //        }
-
-        //    }
-        //    else if (button.Content.ToString() == "Elfogadott")
-        //    {
-        //        ServicesData.Clear();
-        //        foreach (var item in services)
-        //        {
-        //            if (item.status == "approved")
-        //            {
-        //                ServicesData.Add(item);
-        //            }
-        //        }
-        //    }
-        //    else if (button.Content.ToString() == "Elutasított")
-        //    {
-        //        ServicesData.Clear();
-        //        foreach (var item in services)
-        //        {
-        //            if (item.status == "rejected")
-        //            {
-        //                ServicesData.Add(item);
-        //            }
-        //        }
-        //    }
-        //    else if (button.Content.ToString() == "Függő")
-        //    {
-        //        ServicesData.Clear();
-        //        foreach (var item in services)
-        //        {
-        //            if (item.status == "pending")
-        //            {
-        //                ServicesData.Add(item);
-        //            }
-        //        }
-        //    }
-        //    selectedFilter = button.Content.ToString();
-        //}
-
         private void searchbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string search = searchbox.Text;
@@ -151,44 +102,5 @@ namespace WpfApp1
             }
 
         }
-
-        //private async void setApprovalStatus(object sender, MouseButtonEventArgs e)
-        //{
-        //    Border button = sender as Border;
-        //    string tag = button.Tag.ToString();
-        //    try
-        //    {
-        //        if (button.Name.Contains("approve"))
-        //        {
-        //            HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{tag}/approve", null);
-        //            response.EnsureSuccessStatusCode();
-        //            foreach (var item in ServicesData)
-        //            {
-        //                if (item.id == tag)
-        //                {
-        //                    item.status = "approved";
-        //                }
-        //            }
-        //        }
-        //        else if (button.Name.Contains("reject"))
-        //        {
-        //            HttpResponseMessage response = await client.PostAsync($"http://localhost:3000/admin/Services/{tag}/reject", null);
-        //            response.EnsureSuccessStatusCode();
-        //            foreach (var item in ServicesData)
-        //            {
-        //                if (item.id == tag)
-        //                {
-        //                    item.status = "rejected";
-        //                }
-        //            }
-        //        }
-        //        CollectionViewSource.GetDefaultView(ServicesData).Refresh();
-        //    }
-        //    catch (Exception err)
-        //    {
-        //        MessageBox.Show(err.Message);
-        //        throw;
-        //    }
-        //}
     }
 }
