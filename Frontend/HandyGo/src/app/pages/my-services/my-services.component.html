@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
 <h2>Szolgáltatásaid</h2>
+@if (myServices.length === 0) {
+    <p>Nincsenek szolgáltatásaid jelenleg.</p>
+}
 <mat-card *ngFor="let serviceData of myServices">
     <p>{{serviceData?.title}}</p>
     <p>{{serviceData?.availability}}</p>
@@ -12,3 +15,4 @@
     <p>{{serviceData?.status}}</p>
     <p>{{serviceData?.worker_id}}</p>
 </mat-card>
+

@@ -46,6 +46,7 @@ import { MyServicesComponent } from './pages/my-services/my-services.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { MatSelectModule } from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
+import { ServiceCreatorComponent } from './pages/service-creator/service-creator.component';
 
 
 
@@ -76,6 +77,7 @@ import {MatSliderModule} from '@angular/material/slider';
     Error404Component,
     MyServicesComponent,
     EditProfileComponent,
+    ServiceCreatorComponent,
     
   ],
   imports: [

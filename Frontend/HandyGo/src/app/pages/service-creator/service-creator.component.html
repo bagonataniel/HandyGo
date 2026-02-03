@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<h2>Új szolgáltatás létrehozása</h2>
+
+<mat-form-field >
+<mat-label>Cím megadása</mat-label>
+<input matInput placeholder="Pl. Takrítás" [(ngModel)]="newService.title">
+</mat-form-field>
+
+<mat-form-field >
+    <mat-label>Írja be a leírását</mat-label>
+    <textarea matInput placeholder="Pl. Napi takarítás, 2 óra" [(ngModel)]="newService.description"></textarea>
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Kategóriák</mat-label>
+    <mat-select placeholder="Válassz kategóriát">
+        <mat-option
+        *ngFor="let category of categories"
+        [value]="category"
+        (click)="onCategorySelect(category)"
+        >
+            {{ category }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field >
+<mat-label>Ár</mat-label>
+<input matInput placeholder="Pl. 1000 Ft" type="number" [(ngModel)]="newService.price">
+</mat-form-field>
+
+<mat-form-field >
+<mat-label>Hely megadása</mat-label>
+<input matInput placeholder="Pl. Budapest" [(ngModel)]="newService.location">
+</mat-form-field>
+
+
+<button mat-flat-button (click)="SubmitService()">Szolgáltatás létrehozása</button>

@@ -11,13 +11,14 @@ export class MainComponent implements OnInit{
   services: any[] = [];
   router: Router = inject(Router);
 
-  constructor(private service: ServiceService) { }
-
+  filterOpen: boolean = false;
   categories: string[] = ["---","Otthon & Kert", "Javítás", "Kreatív", "Tech", "Életmód", "Szállítás", "egyéb"];
   
   selectedCategory: string = '';
   distance: number | undefined = undefined;
-  priceRange: [number, number] = [1, 1000000000];
+  priceRange: [number, number] = [0, 1000000000];
+
+  constructor(private service: ServiceService) { }
 
   ngOnInit(): void {
     this.service.getServices({"category": this.selectedCategory, "distance": this.distance , priceRange: this.priceRange}).subscribe({
@@ -43,7 +44,7 @@ export class MainComponent implements OnInit{
   resetFilters():void{
     this.selectedCategory = '';
     this.distance = undefined;
-    this.priceRange = [1, 1000000000];
+    this.priceRange = [0, 1000000000];
     this.ngOnInit();
   }
 

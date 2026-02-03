@@ -23,6 +23,7 @@ import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { MyServicesComponent } from './pages/my-services/my-services.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { ServiceCreatorComponent } from './pages/service-creator/service-creator.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'rights', component: RightsComponent },
   { path: 'error', component: Error404Component },
   { path: 'edit-profile', component: EditProfileComponent, canActivate: [authGuard, isVerifiedGuard] },
+  {path: 'my-services/service-creator', component: ServiceCreatorComponent, canActivate: [authGuard, isVerifiedGuard]},
   { path: '**', redirectTo: 'error' }, // This has to be at the bottom, otherwise it would override all routes below it!
 ];
 
