@@ -1,4 +1,122 @@
-.error-container {
-    text-align: center;
-    margin-top: 50px;
+.error-page {
+  padding: 80px 20px 60px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9f2ff 100%);
+  min-height: calc(100vh - 70px - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.error-content {
+  max-width: 500px;
+  width: 100%;
+}
+
+.error-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.error-code {
+  font-size: 90px;
+  font-weight: 800;
+  color: #1976d2;
+  margin: 0;
+  line-height: 1;
+}
+
+
+
+.error-gif {
+  margin: 24px 0 40px;
+}
+
+.error-gif img {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;          
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.error-title {
+  font-size: 30px;
+  color: #333;
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+.error-text {
+  font-size: 17px;
+  color: #666;
+  margin: 0 0 32px;
+  line-height: 1.5;
+}
+
+.home-btn {
+  padding: 12px 40px;
+  font-size: 16px;
+  border-radius: 30px;
+  background-color: #1976d2;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #1565c0;
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* Responszív – még kisebb mobilra */
+@media (max-width: 768px) {
+  .error-page {
+    padding: 60px 15px 40px;
+  }
+
+  .error-code {
+    font-size: 70px;
+  }
+
+  .error-icon {
+    font-size: 50px;
+    height: 50px;
+    width: 50px;
+  }
+
+  .error-title {
+    font-size: 26px;
+  }
+
+  .error-text {
+    font-size: 16px;
+  }
+
+  .error-gif img {
+    max-height: 150px;
+  }
+
+  .home-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-code {
+    font-size: 60px;
+  }
+
+  .error-title {
+    font-size: 22px;
+  }
+
+  .error-gif img {
+    max-height: 120px;
+  }
 }

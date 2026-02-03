@@ -1,7 +1,24 @@
-<div class="error-container">
-    <h1 class="error-code">404</h1>
-    <p class="error-message">Hoppá! Úgy tűnik, az oldal, amit kerestél, nem létezik.</p>
-    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjR0Y29zYWJsb3hnaDVmeTBxZWZrMnpiNWx4MzZ0eHQ5N3E1ZW5idyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/DDgHvbLeMkemvhKxgB/giphy.gif" alt="">
-    <br>
-    <a routerLink="/" class="home-link">Go back to Home</a>
+<div class="error-page">
+  <div class="error-content">
+    <div class="error-header">
+      <h1 class="error-code">404</h1>
+    </div>
+
+    <div class="error-gif">
+      <img 
+        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjR0Y29zYWJsb3hnaDVmeTBxZWZrMnpiNWx4MzZ0eHQ5N3E1ZW5idyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/DDgHvbLeMkemvhKxgB/giphy.gif" 
+        alt="Confused animation"
+      />
+    </div>
+
+    <h2 class="error-title">Hoppá! Az oldal nem található</h2>
+    
+    <p class="error-text">
+      Úgy tűnik, az oldal, amit keresel, nem létezik vagy áthelyezték.
+    </p>
+
+    <button mat-raised-button color="primary" routerLink="/" class="home-btn">
+      Vissza a főoldalra
+    </button>
+  </div>
 </div>
