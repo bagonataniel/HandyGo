@@ -1,62 +1,56 @@
 <app-navbar></app-navbar>
-
-<div class="service-detail-page">
+<div class="service-hero">
   <div class="container">
-    <div class="profile-card">
-      <div class="profile-header">
+    <div class="hero-content">
+      <div class="avatar-wrapper">
         <a [routerLink]="['/users', serviceData?.worker_id]" class="avatar-link" *ngIf="serviceData?.worker_id">
           <div class="avatar">
-            {{ workerName.charAt(0) || '?' }}
+            {{ workerName?.charAt(0) || '?' }}
           </div>
         </a>
-        <div class="user-info">
-          <h2>
-            <a [routerLink]="['/users', serviceData?.worker_id]" *ngIf="serviceData?.worker_id">
-              {{ workerName || 'Ismeretlen szolgáltató' }}
-            </a>
-            <ng-container *ngIf="!serviceData?.worker_id">
-              {{ workerName || 'Ismeretlen szolgáltató' }}
-            </ng-container>
-          </h2>
-          <p class="email">{{ workerEmail || 'email@example.com' }}</p>
+      </div>
 
-          <p class="coordinates" *ngIf="serviceData?.latitude && serviceData?.longitude">
+      <div class="main-info">
+        <div class="category-pill">
+          {{ serviceData?.category || 'Vízszerelés' }}
+        </div>
+        
+        <h1 class="worker-name">
+          <a [routerLink]="['/users', serviceData?.worker_id]" *ngIf="serviceData?.worker_id" class="no-underline">
+            {{ workerName || 'Ismeretlen szolgáltató' }}
+          </a>
+          <ng-container *ngIf="!serviceData?.worker_id">
+            {{ workerName || 'Ismeretlen szolgáltató' }}
+          </ng-container>
+        </h1>
+
+        <div class="meta-line">
+          <span class="email">{{ workerEmail || 'email@example.com' }}</span>
+          <span class="dot">•</span>
+          <span class="coordinates" *ngIf="serviceData?.latitude && serviceData?.longitude">
             <mat-icon>my_location</mat-icon>
-            Szélesség: {{ serviceData.latitude | number:'1.6-6' }} | 
-            Hosszúság: {{ serviceData.longitude | number:'1.6-6' }}
-          </p>
-        </div>
-
-
-        <div class="status-box">
-          <p class="category">
-            <strong>Kategória:</strong> {{ serviceData?.category || 'Vízszerelés' }}
-          </p>
-          <p class="status" [ngClass]="{
-            'status-accepted': serviceData?.status === 'kész' || serviceData?.status === 'elfogadva',
-            'status-pending': serviceData?.status === 'elfogadásra vár',
-            'status-working': serviceData?.status === 'folyamatban'
-          }">
-            <strong>Státusz:</strong> {{ serviceData?.status || 'Elfogadásra vár' }}
-          </p>
+            {{ serviceData.latitude || 'Ismeretlen szolgáltató' }}° × {{ serviceData.longitude || 'Ismeretlen szolgáltató' }}°
+          </span>
         </div>
       </div>
 
-      <div class="profile-section">
-        <h3>Leírás</h3>
-        <p>{{ serviceData?.description || 'Nincs leírás' }}</p>
-      </div>
-
-      <div class="profile-section">
-        <h3>Ár</h3>
-        <p class="price">{{ serviceData?.price ? serviceData.price + ' Ft' : 'Nincs megadva' }}</p>
-      </div>
-
-      <div class="profile-actions">
-        <button mat-raised-button color="primary" (click)="bookService()">
-          Foglalás
+      <div class="price-cta">
+        <div class="price">
+          {{ serviceData?.price ? serviceData.price + ' Ft' : 'Ár kérhető' }}
+        </div>
+        <button mat-raised-button color="primary" (click)="bookService()" class="book-btn">
+          Foglalás most
         </button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="container content-section">
+  <div class="description-block">
+    <h2>Mi történik pontosan?</h2>
+    <div class="description">
+      <p>{{ serviceData?.description || 'Nincs részletes leírás még...' }}</p>
     </div>
   </div>
 </div>
