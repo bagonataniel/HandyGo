@@ -23,7 +23,18 @@ async function getMessagesBetween(User1,User2){
     }).select("from message to").exec();
 }
 
+async function deleteChatMessages(uID1,uID2) {
+    await chatSchema.deleteMany({
+        $or:[
+            {from:uID1 , to:uID2},
+            {from:uID2 , to:uID1}
+        ]
+    });
+    
+}
+
 module.exports = {
     saveMessage,
-    getMessagesBetween
+    getMessagesBetween,
+    deleteChatMessages
 };

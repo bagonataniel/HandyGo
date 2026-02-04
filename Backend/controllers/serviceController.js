@@ -6,7 +6,6 @@ exports.addService = async (req, res) => {
     const userToken = req.header("x-auth-token");
     const userId = jwt.decode(userToken).id;
 
-    console.log(req.body);
     if (!title || !description || !category || (!price && price !== 0) || !location) {
         return res.status(400).json({ message: "All fields are required" });
     }

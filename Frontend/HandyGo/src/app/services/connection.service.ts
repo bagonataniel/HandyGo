@@ -15,8 +15,8 @@ export class ConnectionService {
   login(): void {
     this.socket.emit('login', {uID:localStorage.getItem('userId')});
   }
-  createConnection(uID2:String): void {
-    this.socket.emit('create-connection',{uID1:localStorage.getItem('userId'),uID2:uID2});
+  createConnection(uID2:String,name2:String): void {
+    this.socket.emit('add-connection',{uID1:localStorage.getItem('userId'),uID2:uID2,name1:localStorage.getItem('username'),name2:name2});
   }
   getConnections(callback:(connections:any[]) => void){
     this.socket.emit("get-connections", {uID:localStorage.getItem('userId')});

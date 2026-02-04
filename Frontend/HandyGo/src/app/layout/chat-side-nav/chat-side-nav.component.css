@@ -39,5 +39,20 @@ mat-list-item {
   border-radius: 20px;
   width: 80%;
   margin: auto;
+  margin-right: 0.0em;
   margin-top: 0.5rem;
+}
+
+mat-list{
+  display: grid;
+  grid-template-columns: 85% 15%;
+}
+
+.contact-item{
+  grid-column: 1;
+}
+
+.delete-button{
+  grid-column: 2;
+  margin-top: 0.6em;
 }

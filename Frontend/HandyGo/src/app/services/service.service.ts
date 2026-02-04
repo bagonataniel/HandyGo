@@ -46,7 +46,6 @@ getServices(filters: { category?: string; distance?: number; priceRange?: [numbe
             .append('maxPrice', filters.priceRange[1].toString());
         }
 
-        console.log(params);
         return this._http.get(`http://localhost:3000/service`, {
           headers: { 'x-auth-token': localStorage.getItem('token') || '' },
           params

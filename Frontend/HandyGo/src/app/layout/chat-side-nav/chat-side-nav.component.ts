@@ -32,7 +32,6 @@ export class ChatSideNavComponent {
   loadContacts() {
     this.connectionService.getConnections((connections:any)=>{
       this.contacts = connections;
-      console.log('Connections loaded:', this.contacts);
     });
   }
   openChat(contact:any) {
