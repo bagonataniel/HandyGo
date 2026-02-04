@@ -28,7 +28,7 @@
             <RowDefinition Height="5*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+
         <StackPanel Grid.Row="0" Margin="20 10 0 0">
             <Label FontSize="20" Foreground="{StaticResource primaryText}">Admin Beállítások</Label>
             <Label FontSize="15" Foreground="{StaticResource primaryText}">Törölj vagy adj hozzá új admin felhasználókat.</Label>
@@ -91,7 +91,7 @@
                                             <Label FontSize="20" Foreground="{StaticResource primaryText}" VerticalAlignment="Center"  Grid.Column="1" Content="{Binding username}" />
                                             <Label FontSize="18" Foreground="{StaticResource primaryText}" VerticalAlignment="Center"  Grid.Column="2" Content="{Binding created_at}" />
 
-                                            <Border Tag="{Binding id}" Grid.Column="3" MouseLeftButtonDown="removeAccountBtn" Padding="5" CornerRadius="10" Background="{StaticResource rejectedBg}" HorizontalAlignment="Left" Margin="5 5 20 5" VerticalAlignment="Center">
+                                            <Border Tag="{Binding id}" Grid.Column="3" MouseLeftButtonDown="removeAccountBtn" Padding="5" CornerRadius="10" Background="{StaticResource rejectedBg}" HorizontalAlignment="Left" Margin="5 5 20 5" VerticalAlignment="Center" Loaded="Border_Loaded">
                                                 <Label FontSize="15" Foreground="{StaticResource primaryText}" Cursor="Hand">Fiók törlése</Label>
                                             </Border>
                                         </Grid>
@@ -123,12 +123,12 @@
                         <ColumnDefinition Width="5*"></ColumnDefinition>
                         <ColumnDefinition Width="5*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    
+
                     <StackPanel Margin="10" Orientation="Vertical" Grid.Column="0">
                         <Label FontSize="20" Foreground="{StaticResource primaryText}">Felhasználónév</Label>
                         <TextBox FontSize="20" x:Name="usernameField"></TextBox>
                     </StackPanel>
-                    
+
                     <StackPanel Margin="10" Orientation="Vertical" Grid.Column="1">
                         <Label FontSize="20" Foreground="{StaticResource primaryText}">Jelszó</Label>
                         <TextBox FontSize="20" x:Name="passwordField"></TextBox>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -32,13 +33,16 @@ namespace WpfApp1
     public partial class Settings : UserControl
     {
         private string token;
+        private string username;
+        private int CurrentUserId;
         HttpClient client = new HttpClient();
         public ObservableCollection<AdminsDto> AdminsData { get; } = new ObservableCollection<AdminsDto>();
         List<AdminsDto> admins;
-        public Settings(string TOKEN)
+        public Settings(string TOKEN, string username)
         {
             InitializeComponent();
             DataContext = this;
+            this.username = username;
             token = TOKEN;
             client.DefaultRequestHeaders.Add("x-admin-auth-token", token);
             _ = getAdmins();
@@ -59,6 +63,13 @@ namespace WpfApp1
                 {
                     AdminsData.Add(item);
                 }
+
+                admins.ForEach(x => {
+                    if (x.username == this.username)
+                    {
+                        CurrentUserId = x.id;
+                    }
+                });
             }
             catch (Exception e)
             {
@@ -68,6 +79,11 @@ namespace WpfApp1
 
         public async void addAdministrator(object sender, MouseButtonEventArgs e)
         {
+            if (usernameField.Text.Length == 0 || passwordField.Text.Length == 0)
+            {
+                MessageBox.Show("A felhasználónév és a jelszó kitöltése kötelező!");
+                return;
+            }
             try
             {
                 var payload = new
@@ -84,6 +100,8 @@ namespace WpfApp1
                 MessageBox.Show("Fiók létrehozva!");
 
                 admins.Clear();
+                usernameField.Text = "";
+                passwordField.Text = "";
                 getAdmins();
             }
             catch (Exception)
@@ -94,7 +112,7 @@ namespace WpfApp1
 
         private async void removeAccountBtn(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
+            Border button = sender as Border;
             string id = button.Tag.ToString();
             try
             {
@@ -107,6 +125,16 @@ namespace WpfApp1
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        private void Border_Loaded(object sender, RoutedEventArgs e)
+        {
+            Border button = sender as Border;
+            int id = int.Parse(button.Tag.ToString());
+            if (id == CurrentUserId)
+            {
+                button.Visibility = Visibility.Hidden;
             }
         }
     }

@@ -21,6 +21,7 @@ namespace WpfApp1
     public partial class MainLayout : UserControl
     {
         string TOKEN;
+        List<string> authDetails;
         Brush fontcolor;
         Brush background;
         Brush defaultText;
@@ -28,26 +29,29 @@ namespace WpfApp1
         Path[] paths;
         Label[] labels;
         Border[] borders;
-        public MainLayout(string token)
+        public MainLayout(string token, string username)
         {
             InitializeComponent();
             TOKEN = token;
+            authDetails = new List<string>() { token, username };
             fontcolor = (Brush)this.FindResource("ActiveNav");
             background = (Brush)this.FindResource("ActiveNavBg");
             defaultText = (Brush)this.FindResource("TextLight2");
-            paths = new Path[] { homeLogo, serviceLogo, usersLogo, bookingsLogo, settingsLogo};
-            labels = new Label[] { homeText, servicesText, usersText, bookingsText, settingsText};
-            borders = new Border[] { homeElement, servicesElement, usersElement, bookingsElement, settingsElement};
-            homeButton_Click(null,null);
+            paths = new Path[] { homeLogo, serviceLogo, usersLogo, bookingsLogo, settingsLogo };
+            labels = new Label[] { homeText, servicesText, usersText, bookingsText, settingsText };
+            borders = new Border[] { homeElement, servicesElement, usersElement, bookingsElement, settingsElement };
+            homeButton_Click(null, null);
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
             control.Content = new Home(TOKEN);
+            control.Content = new Home(authDetails[0]);
             homeLogo.Fill = fontcolor;
             homeText.Foreground = fontcolor;
             homeElement.Background = background;
-            foreach (Path path in paths) {
+            foreach (Path path in paths)
+            {
                 if (path != homeLogo)
                 {
                     path.Fill = defaultText;
@@ -72,6 +76,7 @@ namespace WpfApp1
         private void serviceButton_Click(object sender, RoutedEventArgs e)
         {
             control.Content = new Services(TOKEN);
+            control.Content = new Services(authDetails[0]);
             serviceLogo.Fill = fontcolor;
             servicesText.Foreground = fontcolor;
             servicesElement.Background = background;
@@ -101,6 +106,7 @@ namespace WpfApp1
         private void usersButton_Click(object sender, RoutedEventArgs e)
         {
             control.Content = new Users(TOKEN);
+            control.Content = new Users(authDetails[0]);
             usersLogo.Fill = fontcolor;
             usersText.Foreground = fontcolor;
             usersElement.Background = background;
@@ -130,6 +136,7 @@ namespace WpfApp1
         private void bookingsButton_Click(object sender, RoutedEventArgs e)
         {
             control.Content = new Bookings(TOKEN);
+            control.Content = new Bookings(authDetails[0]);
             bookingsLogo.Fill = fontcolor;
             bookingsText.Foreground = fontcolor;
             bookingsElement.Background = background;
@@ -158,7 +165,7 @@ namespace WpfApp1
 
         private void settingsButton_Click(object sender, MouseButtonEventArgs e)
         {
-            control.Content = new Settings(TOKEN);
+            control.Content = new Settings(authDetails[0], authDetails[1]);
             settingsLogo.Fill = fontcolor;
             settingsText.Foreground = fontcolor;
             settingsElement.Background = background;
