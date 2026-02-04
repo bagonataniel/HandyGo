@@ -23,7 +23,7 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginView : UserControl
     {
-        public string Result { get; private set; }
+        public List<string> Result { get; private set; }
         public event Action LoginSucceeded;
         public LoginView()
         {
@@ -33,6 +33,7 @@ namespace WpfApp1
         public async void apiCall()
         {
             string TOKEN = "";
+            string usernameField = username.Text;
             using var client = new HttpClient();
 
             string url = "http://localhost:3000/admin/login";
@@ -55,9 +56,29 @@ namespace WpfApp1
 
                 JsonNode node = JsonNode.Parse(query_result);
                 TOKEN = node["JWT"]!.ToString();
-                Result = TOKEN;
+                Result = new List<string>() { TOKEN, usernameField };
                 LoginSucceeded?.Invoke();
 
+            }
+            catch (HttpRequestException httpEx) when (httpEx.StatusCode.HasValue)
+            {
+                var statusCode = (int)httpEx.StatusCode.Value;
+
+                if (statusCode >= 400 && statusCode < 500)
+                {
+                    Console.WriteLine($"Client error ({statusCode}): {httpEx.Message}");
+                    MessageBox.Show("Hibás adatok, kérlek ellenőrizd a beírtakat.");
+                }
+                else if (statusCode >= 500)
+                {
+                    Console.WriteLine($"Server error ({statusCode}): {httpEx.Message}");
+                    MessageBox.Show("Szerverhiba történt, próbáld meg később.");
+                }
+                else
+                {
+                    Console.WriteLine($"HTTP error ({statusCode}): {httpEx.Message}");
+                    MessageBox.Show("Ismeretlen HTTP hiba.");
+                }
             }
             catch (Exception ex)
             {
@@ -69,6 +90,14 @@ namespace WpfApp1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             apiCall();
+        }
+
+        private void enter_keyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                apiCall();
+            }
         }
     }
 }

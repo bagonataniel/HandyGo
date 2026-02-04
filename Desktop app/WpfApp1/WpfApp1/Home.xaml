@@ -58,15 +58,35 @@
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60*"></ColumnDefinition>
-                <ColumnDefinition Width="40*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <oxy:PlotView Model="{Binding MyModel}" />
+                <Border CornerRadius="20" Background="#16212C" Margin="20">
+                    <oxy:PlotView x:Name="graph" Background="Transparent"/>
+                </Border>
             </Grid>
-            <Grid Grid.Column="1">
-                <Label>Kördiagram</Label>
-            </Grid>
+            <Border Grid.Column="1" Grid.Row="1" CornerRadius="20" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#16212C">
+                <StackPanel HorizontalAlignment="Stretch">
+                    <Border HorizontalAlignment="Center" Background="#144718" Width="40" Height="40" CornerRadius="10" Padding="5" Margin="0 40 0 0">
+                        <Path Data="M441-120v-86q-53-12-91.5-46T293-348l74-30q15 48 44.5 73t77.5 25q41 0 69.5-18.5T587-356q0-35-22-55.5T463-458q-86-27-118-64.5T313-614q0-65 42-101t86-41v-84h80v84q50 8 82.5 36.5T651-650l-74 32q-12-32-34-48t-60-16q-44 0-67 19.5T393-614q0 33 30 52t104 40q69 20 104.5 63.5T667-358q0 71-42 108t-104 46v84h-80Z" Fill="#4CAF50" Stretch="Uniform" ></Path>
+                    </Border>
+                    <TextBlock Foreground="#839CB6" FontSize="20" Margin="0 30 0 0" HorizontalAlignment="Center">Bevétel az oldalról</TextBlock>
+                    <Label Foreground="White" FontSize="30" Margin="10 0 0 0" x:Name="transactionSum" HorizontalAlignment="Center">0</Label>
+
+                    <Label Foreground="White" FontSize="20" HorizontalAlignment="Center" Margin="0 20 0 0">Cél: 100 000 Ft</Label>
+                    <Border x:Name="progressBorder" Height="20" Margin="50,30,50,0" CornerRadius="6" Background="#145A18">
+                        <Rectangle Fill="#4CAF50" RadiusX="6" RadiusY="6" HorizontalAlignment="Left" x:Name="progressBar" Width="0"/>
+                    </Border>
+
+                    <Grid HorizontalAlignment="Stretch" Margin="50, 50, 50, 0" Height="1" Background="#839CB6"></Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 10">
+                        <Path Data="M240-80q-50 0-85-35t-35-85v-120h120v-560h600v680q0 50-35 85t-85 35H240Zm480-80q17 0 28.5-11.5T760-200v-600H320v480h360v120q0 17 11.5 28.5T720-160ZM360-600v-80h360v80H360Zm0 120v-80h360v80H360ZM240-160h360v-80H200v40q0 17 11.5 28.5T240-160Zm0 0h-40 400-360Z" Fill="#839CB6" Stretch="Uniform" Width="20" Height="20" Margin="0 0 5 0"/>
+                        <Label VerticalAlignment="Center" Foreground="#839CB6" FontSize="17" HorizontalAlignment="Center">Tranzakciók</Label>
+                    </StackPanel>
+                    <Label x:Name="transactionCount" FontSize="25" Foreground="WhiteSmoke" HorizontalAlignment="Center"></Label>
+                </StackPanel>
+            </Border>
         </Grid>
     </Grid>
 </UserControl>
