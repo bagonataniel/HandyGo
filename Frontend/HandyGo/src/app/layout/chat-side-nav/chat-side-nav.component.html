@@ -3,18 +3,21 @@
   <mat-drawer #drawer mode="over" position="end" class="chat-drawer" [opened]="opened">
     <h2>Kapcsolatok</h2>
     <br>
+    @if (contacts.length === 0) {
+      <p>Nincs elérhető kapcsolatod.</p>
+    }
     <mat-list>
-      @if (contacts.length === 0) {
-        <p>Nincs elérhető kapcsolatod.</p>
+      @for (contact of contacts; track $index) {
+          <mat-list-item (click)="openChat(contact)" class="contact-item">
+            <mat-icon matListItemIcon>person</mat-icon>
+            <div matListItemTitle>{{ contact.name }}
+            </div>
+          </mat-list-item>
+          
+          <button mat-icon-button (click)="deleteContact(contact)" class="delete-button"> 
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
       }
-      <mat-list-item *ngFor="let contact of contacts" (click)="openChat(contact)" class="contact-item">
-        <mat-icon matListItemIcon>person</mat-icon>
-        <div matListItemTitle>{{ contact.name }}
-        </div>
-      </mat-list-item>
-      <button *ngFor="let contact of contacts" mat-icon-button (click)="deleteContact(contact.uID)" class="delete-button"> 
-        <mat-icon color="warn">delete</mat-icon>
-      </button>
     </mat-list>
   </mat-drawer>
   <mat-drawer-content #drawerContent>

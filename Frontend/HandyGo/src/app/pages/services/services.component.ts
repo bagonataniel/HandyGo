@@ -19,7 +19,7 @@ export class ServicesComponent implements OnInit {
   workerEmail: string = 'Betöltés...';
   isLoading = true;
   errorMessage: string | null = null;
-  
+  worker_id:string = '';
 
   private _snackBar = inject(MatSnackBar);
 
@@ -54,6 +54,7 @@ export class ServicesComponent implements OnInit {
         console.log('Szolgáltatás adatok:', this.serviceData);
 
         if (this.serviceData?.worker_id) {
+          this.worker_id = this.serviceData.worker_id;
           this.loadWorkerDetails(this.serviceData.worker_id);
         } else {
           this.workerName = 'Nincs hozzárendelve szolgáltató';
@@ -85,18 +86,20 @@ export class ServicesComponent implements OnInit {
   }
 
   bookService(): void {
+    
+    
     if (!this.serviceData?.id) {
       this._snackBar.open('❌ Nincs szolgáltatás betöltve.', 'Bezár', { duration: 4000 });
       return;
     }
-
+    
     this.bookingService.createBooking(this.serviceData.id).subscribe({
       next: (data: any) => {
         this._snackBar.open('✅ Sikeres foglalás! A szolgáltató hamarosan értesül.', 'Bezár', {
           duration: 5000,
           panelClass: ['success-snackbar']
         });
-        this.connectionService.createConnection(data.worker_id);
+        this.connectionService.createConnection(this.serviceData.worker_id,this.workerName);
         console.log('Service booked successfully:', data);
       },
       error: (error: any) => {

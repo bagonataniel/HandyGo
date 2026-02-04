@@ -26,8 +26,8 @@ async function getAllConnections(User){
     return connections;
 }
 
-async function addConnection(uID1,uID2) {
-    await connectionsSchema.create({uID1:uID1,uID2:uID2});
+async function addConnection(uID1,uID2,name1,name2) {
+    await connectionsSchema.create({uID1:uID1,uID2:uID2,name1:name1,name2:name2});
 }
 
 async function checkForPrevoisConnection(uID1,uID2) {
@@ -37,7 +37,8 @@ async function checkForPrevoisConnection(uID1,uID2) {
             { uID1: uID2, uID2: uID1 }
         ]
     });
-    return existingConnection !== null;
+    
+    return existingConnection != null;
 }
 async function deleteConnection(uID1,uID2) {
     await connectionsSchema.deleteOne({

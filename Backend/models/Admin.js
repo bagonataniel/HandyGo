@@ -57,7 +57,9 @@ class Admin {
         const [basicStats] = await db.execute("SELECT (SELECT COUNT(*) FROM users) AS users_count, (SELECT COUNT(*) FROM services WHERE services.status = 'pending')  AS pending_services, (SELECT COUNT(*) FROM services WHERE services.status = 'rejected')  AS rejected_services, (SELECT COUNT(*) FROM services WHERE services.status = 'approved')  AS approved_services, (SELECT COUNT(*) FROM bookings)  AS bookings_count;")
         const [userGrowth] = await db.execute("SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(*) AS new_users FROM handygo.users GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year DESC, month DESC;");
         const [totalRevenue] = await db.execute("SELECT SUM(s.price) AS total_revenue FROM handygo.bookings b JOIN handygo.services s ON b.service_id = s.id WHERE b.status = 'kész';")
+        const [transactionCount] = await db.execute("SELECT COUNT(*) AS transaction_count FROM handygo.bookings WHERE status = 'kész';");
         basicStats[0].total_revenue = totalRevenue[0].total_revenue || 0;
+        basicStats[0].completed_transactions = transactionCount[0].transaction_count || 0;
         var result = [...basicStats, ...userGrowth];
         return result;
     }

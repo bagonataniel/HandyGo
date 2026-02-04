@@ -24,7 +24,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         private LoginView _loginView;
-        string TOKEN;
+        List<string> Result;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,8 +35,8 @@ namespace WpfApp1
 
         private void OnLoginSuccess()
         {
-            TOKEN = _loginView.Result;
-            rootContent.Content = new MainLayout(TOKEN);
+            Result = _loginView.Result;
+            rootContent.Content = new MainLayout(Result[0], Result[1]);
         }
 
     }

@@ -61,13 +61,18 @@ io.on("connection", (socket) => {
   });
 
   socket.on("add-connection", (data)=>{
-    if (connectionModel.checkForPrevoisConnection(data.uID1,data.uID2)) {
-      return;
-    }
-    connectionModel.addConnection(data.uID1,data.uID2);
+    connectionModel.checkForPrevoisConnection(data.uID1,data.uID2).then((previousConn) => {
+      if (previousConn) {
+        return;
+      }
+      else{
+        connectionModel.addConnection(data.uID1,data.uID2,data.name1,data.name2);
+      }
+    });
   });
 
   socket.on("delete-connection", (data)=>{
+    chatModel.deleteChatMessages(data.uID1,data.uID2);
     connectionModel.deleteConnection(data.uID1,data.uID2);
   });
 

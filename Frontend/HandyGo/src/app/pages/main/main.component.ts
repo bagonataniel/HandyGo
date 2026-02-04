@@ -16,14 +16,14 @@ export class MainComponent implements OnInit{
   
   selectedCategory: string = '';
   distance: number | undefined = undefined;
-  priceRange: [number, number] = [0, 1000000000];
+  priceRange: [number, number] = [NaN, Infinity];
 
   constructor(private service: ServiceService) { }
 
   ngOnInit(): void {
-    this.service.getServices({"category": this.selectedCategory, "distance": this.distance , priceRange: this.priceRange}).subscribe({
+    this.service.getServices({"category": this.selectedCategory, "distance": this.distance , priceRange: (this.priceRange[1] == Infinity ? [this.priceRange[0],1000000000] : this.priceRange)}).subscribe({
       next: (data: any) => {
-        data = data.filter((service: any) => service.worker_id != localStorage.getItem('user_id'));
+        data = data.filter((item : any) => item.worker_id !== localStorage.getItem("userId"));
         console.log(data);
         
         this.services = data;
@@ -45,7 +45,7 @@ export class MainComponent implements OnInit{
   resetFilters():void{
     this.selectedCategory = '';
     this.distance = undefined;
-    this.priceRange = [0, 1000000000];
+    this.priceRange = [NaN, Infinity];
     this.ngOnInit();
   }
 
