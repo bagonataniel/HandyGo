@@ -4,6 +4,8 @@ import { ServiceService } from '../../services/service.service';
 import { BookingService } from '../../services/booking.service';
 import { UsersService } from '../../services/users.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConnectionService } from '../../services/connection.service';
+
 
 @Component({
   selector: 'app-services',
@@ -25,7 +27,8 @@ export class ServicesComponent implements OnInit {
     private route: ActivatedRoute,
     private service: ServiceService,
     private bookingService: BookingService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private connectionService: ConnectionService
   ) {}
 
   ngOnInit(): void {
@@ -93,6 +96,7 @@ export class ServicesComponent implements OnInit {
           duration: 5000,
           panelClass: ['success-snackbar']
         });
+        this.connectionService.createConnection(data.worker_id);
         console.log('Service booked successfully:', data);
       },
       error: (error: any) => {

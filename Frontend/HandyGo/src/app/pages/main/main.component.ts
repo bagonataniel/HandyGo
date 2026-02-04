@@ -23,6 +23,7 @@ export class MainComponent implements OnInit{
   ngOnInit(): void {
     this.service.getServices({"category": this.selectedCategory, "distance": this.distance , priceRange: this.priceRange}).subscribe({
       next: (data: any) => {
+        data = data.filter((service: any) => service.worker_id != localStorage.getItem('user_id'));
         console.log(data);
         
         this.services = data;

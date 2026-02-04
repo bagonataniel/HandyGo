@@ -22,4 +22,7 @@ export class ConnectionService {
     this.socket.emit("get-connections", {uID:localStorage.getItem('userId')});
     this.socket.once('all-connections', (connections:any[]) => { callback(connections);} );
   }
+  deleteConnection(uID2:String): void {
+    this.socket.emit('delete-connection',{uID1:localStorage.getItem('userId'),uID2:uID2});
+  }
 }

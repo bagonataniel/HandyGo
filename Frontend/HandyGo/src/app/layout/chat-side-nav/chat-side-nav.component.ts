@@ -32,6 +32,7 @@ export class ChatSideNavComponent {
   loadContacts() {
     this.connectionService.getConnections((connections:any)=>{
       this.contacts = connections;
+      console.log('Connections loaded:', this.contacts);
     });
   }
   openChat(contact:any) {
@@ -50,23 +51,31 @@ export class ChatSideNavComponent {
     });
   }
 
-@HostListener('document:click', ['$event'])
-onDocumentClick(event: MouseEvent) {
-  if (this.drawer().opened == false) {
-    return;
-  }
-  const target = event.target as Node;
-  
-  const clickedInsideDrawer =
-    this.drawerContent.nativeElement.contains(target);
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (this.drawer().opened == false) {
+      return;
+    }
+    const target = event.target as Node;
+    
+    const clickedInsideDrawer =
+      this.drawerContent.nativeElement.contains(target);
 
-  const clickedToggleButton =
-    this.drawerToggleButton.nativeElement.contains(target);
+    const clickedToggleButton =
+      this.drawerToggleButton.nativeElement.contains(target);
 
-  if (!clickedInsideDrawer && !clickedToggleButton) {
-    this.drawer().close();
+    if (!clickedInsideDrawer && !clickedToggleButton) {
+      this.drawer().close();
+    }
   }
-}
+
+  deleteContact(contact:any){
+    if (confirm(`Biztosan törölni szeretnéd a kapcsolatot ${contact.name} személlyel?`) == false) {
+      return;
+    }
+    this.connectionService.deleteConnection(contact.uID);
+    this.contacts = this.contacts.filter(c => c.uID !== contact.uID);
+  }
 
 }
 

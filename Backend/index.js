@@ -61,7 +61,14 @@ io.on("connection", (socket) => {
   });
 
   socket.on("add-connection", (data)=>{
+    if (connectionModel.checkForPrevoisConnection(data.uID1,data.uID2)) {
+      return;
+    }
     connectionModel.addConnection(data.uID1,data.uID2);
+  });
+
+  socket.on("delete-connection", (data)=>{
+    connectionModel.deleteConnection(data.uID1,data.uID2);
   });
 
   socket.on("get-messages", (selectedUser,user)=>{

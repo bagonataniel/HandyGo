@@ -9,8 +9,12 @@
       }
       <mat-list-item *ngFor="let contact of contacts" (click)="openChat(contact)" class="contact-item">
         <mat-icon matListItemIcon>person</mat-icon>
-        <div matListItemTitle>{{ contact.name }}</div>
+        <div matListItemTitle>{{ contact.name }}
+        </div>
       </mat-list-item>
+      <button *ngFor="let contact of contacts" mat-icon-button (click)="deleteContact(contact.uID)" class="delete-button"> 
+        <mat-icon color="warn">delete</mat-icon>
+      </button>
     </mat-list>
   </mat-drawer>
   <mat-drawer-content #drawerContent>

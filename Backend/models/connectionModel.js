@@ -30,7 +30,27 @@ async function addConnection(uID1,uID2) {
     await connectionsSchema.create({uID1:uID1,uID2:uID2});
 }
 
+async function checkForPrevoisConnection(uID1,uID2) {
+    const existingConnection = await connectionsSchema.findOne({
+        $or: [
+            { uID1: uID1, uID2: uID2 },
+            { uID1: uID2, uID2: uID1 }
+        ]
+    });
+    return existingConnection !== null;
+}
+async function deleteConnection(uID1,uID2) {
+    await connectionsSchema.deleteOne({
+        $or: [
+            { uID1: uID1, uID2: uID2 },
+            { uID1: uID2, uID2: uID1 }
+        ]
+    });
+}
+
 module.exports = {
     getAllConnections,
-    addConnection
+    addConnection,
+    checkForPrevoisConnection,
+    deleteConnection
 }

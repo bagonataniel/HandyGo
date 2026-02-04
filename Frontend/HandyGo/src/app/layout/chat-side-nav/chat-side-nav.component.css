@@ -1,5 +1,4 @@
 
-/* This container now floats over your entire app */
 .example-container {
   position: fixed;
   top: 0;
@@ -7,19 +6,18 @@
   width: 100vw;
   height: 100vh;
   z-index: 13;
-  background: transparent; /* Allow main app to show through */
-  pointer-events: none;    /* Allow clicks to pass through to the app below */
+  background: transparent; 
+  pointer-events: none;    
 }
 
 mat-drawer {
-  pointer-events: auto;    /* Make sure the sidebar itself is clickable */
+  pointer-events: auto;    
   z-index: 10;
   width: 30rem;
   max-width: 80%;
 }
 
 mat-drawer-content {
-  /* We don't want the content area to block the screen */
   background: transparent !important;
   overflow: visible !important;
   z-index: 12;
@@ -29,7 +27,7 @@ mat-drawer-content {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  pointer-events: auto;    /* Make sure the button is clickable */
+  pointer-events: auto;   
   z-index: 12;
 }
 .chat-drawer {

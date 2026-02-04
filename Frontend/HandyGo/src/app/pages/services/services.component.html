@@ -5,7 +5,7 @@
       <div class="avatar-wrapper">
         <a [routerLink]="['/users', serviceData?.worker_id]" class="avatar-link" *ngIf="serviceData?.worker_id">
           <div class="avatar">
-            {{ workerName?.charAt(0) || '?' }}
+            {{ workerName.charAt(0) || '?' }}
           </div>
         </a>
       </div>
