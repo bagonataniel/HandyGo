@@ -82,3 +82,172 @@
         transform: translateX(0);
     }
 }
+
+/* ==================== HandyGo dizájn (desktop + általános) ==================== */
+.filter-section {
+    background-color: #f8f9ff;
+    border-right: 1px solid #e0e0e0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+}
+
+.filter-section mat-form-field {
+    width: 100%;
+    margin-bottom: 1.2em;
+}
+
+.filter-section .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+.filter-button {
+    margin-right: 0.7em !important;
+    margin-top: 1em;
+    min-width: 120px;
+}
+
+.filter-section button[mat-raised-button] {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 500;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(98,0,234,0.3);
+}
+
+.filter-section button[mat-raised-button]:last-child {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+.card-section {
+    background-color: #f5f7fa !important; /* felülírja a lightblue-t */
+    padding: 1.5em;
+    overflow-y: auto;
+}
+
+.service-card {
+    margin-bottom: 1.5em;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+    cursor: pointer;
+}
+
+.service-card mat-card-title {
+    background-color: #1976d2;
+    color: white;
+    padding: 12px 16px;
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.service-card mat-card-content {
+    padding: 16px !important;
+}
+
+.service-card p {
+    margin: 8px 0;
+    font-size: 1em;
+}
+
+.service-card p:last-child {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #1976d2;
+    margin-top: 12px;
+}
+
+/* Filter toggle gomb dizájn (mobil) */
+.filter-toggle[mat-fab] {
+    background-color: ##1976d2 !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(98,0,234,0.4) !important;
+    font-weight: 500;
+}
+
+/* Scrollbar stílus (opcionális) */
+.filter-section::-webkit-scrollbar {
+    width: 6px;
+}
+.filter-section::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.filter-section::-webkit-scrollbar-thumb {
+    background: #1976d2;
+    border-radius: 3px;
+}
+
+/* ==================== HandyGo finomítás – MOBIL / keskenyebb filter ==================== */
+.filter-toggle[mat-fab] {
+    background-color: #1976d2 !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(98, 0, 234, 0.35) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0 1.2em;
+}
+
+@media (max-width: 880px) {
+    .filter-section {
+        width: 78% !important;           /* keskenyebb */
+        max-width: 300px !important;     /* max 300px */
+        padding-left: 6vw !important;
+        padding-right: 6vw !important;
+        background-color: #ffffff !important;  /* tiszta fehér */
+        border-right: none;
+        box-shadow: 4px 0 16px rgba(0,0,0,0.12) !important;
+    }
+
+    .filter-section.open {
+        transform: translateX(0);
+    }
+
+    /* Form fields – HandyGo lila focus */
+    .filter-section mat-form-field {
+        width: 100%;
+        margin-bottom: 1.4em;
+    }
+
+    .filter-section .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: #1976d2 !important;
+    }
+    .filter-section .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+        color: #1976d2 !important;
+    }
+    .filter-section .mat-focused .mat-form-field-label {
+        color: #1976d2 !important;
+    }
+    .filter-section .mat-form-field.mat-focused .mat-form-field-ripple {
+        background-color: #1976d2 !important;
+    }
+
+    /* Gombok */
+    .filter-section button[mat-raised-button] {
+        min-width: 110px;
+        border-radius: 8px;
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(98,0,234,0.25);
+        margin: 0.6em 0.4em 0.6em 0 !important;
+    }
+
+    .filter-section button[mat-raised-button]:first-child {  /* Szűrés */
+        background-color: #1976d2 !important;
+        color: white !important;
+    }
+
+    .filter-section button[mat-raised-button]:last-child {   /* Visszaállítás */
+        background-color: #9e9e9e !important;
+        color: white !important;
+    }
+
+    .card-section {
+        padding: 1em 0.8em !important;
+        background-color: #f8f9ff !important;
+    }
+}
