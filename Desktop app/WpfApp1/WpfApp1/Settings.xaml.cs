@@ -104,6 +104,26 @@ namespace WpfApp1
                 passwordField.Text = "";
                 getAdmins();
             }
+            catch (HttpRequestException httpEx) when (httpEx.StatusCode.HasValue)
+            {
+                var statusCode = (int)httpEx.StatusCode.Value;
+
+                if (statusCode >= 400 && statusCode < 500)
+                {
+                    Console.WriteLine($"Client error ({statusCode}): {httpEx.Message}");
+                    MessageBox.Show("Ez a felhasználó már létezik.");
+                }
+                else if (statusCode >= 500)
+                {
+                    Console.WriteLine($"Server error ({statusCode}): {httpEx.Message}");
+                    MessageBox.Show("Szerverhiba történt, próbáld meg később.");
+                }
+                else
+                {
+                    Console.WriteLine($"HTTP error ({statusCode}): {httpEx.Message}");
+                    MessageBox.Show("Ismeretlen HTTP hiba.");
+                }
+            }
             catch (Exception)
             {
                 throw;

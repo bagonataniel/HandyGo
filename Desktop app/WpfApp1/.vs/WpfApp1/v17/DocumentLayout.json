@@ -3,40 +3,12 @@
   "WorkspaceRootPath": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\settings.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\settings.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\mainlayout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainlayout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\mainlayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainlayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2723D416-A82F-4C1A-8BBB-5CCD62F2C934}|WpfApp1\\WpfApp1.csproj|d:\\munka\\13c_info2\\handygo\\desktop app\\wpfapp1\\wpfapp1\\settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -50,131 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 334,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginView.xaml.cs",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\LoginView.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\LoginView.xaml.cs",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\LoginView.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\LoginView.xaml.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAkwGcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Settings.xaml.cs",
+              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Settings.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Settings.xaml.cs",
+              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Settings.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Settings.xaml.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAswGkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T12:20:34.923Z",
+              "WhenOpened": "2026-02-04T12:34:13.962Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LoginView.xaml",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\LoginView.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\LoginView.xaml",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\LoginView.xaml",
-              "RelativeToolTip": "WpfApp1\\LoginView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-04T12:20:33.127Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainLayout.xaml",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainLayout.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\MainLayout.xaml",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainLayout.xaml",
-              "RelativeToolTip": "WpfApp1\\MainLayout.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-04T12:19:35.373Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainLayout.xaml.cs",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainLayout.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\MainLayout.xaml.cs",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainLayout.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\MainLayout.xaml.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAmwMMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T12:19:29.385Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainWindow.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAowCEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T12:19:07.17Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainWindow.xaml",
-              "RelativeToolTip": "WpfApp1\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-04T12:19:06.311Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 2,
               "Title": "Settings.xaml",
               "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Settings.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\Settings.xaml",
               "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Settings.xaml",
               "RelativeToolTip": "WpfApp1\\Settings.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-04T12:18:56.075Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Settings.xaml.cs",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Settings.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Settings.xaml.cs",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Settings.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\Settings.xaml.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAA1wGEAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T12:18:35.432Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Home.xaml.cs",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Home.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Home.xaml.cs",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Home.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\Home.xaml.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAwwCUAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T09:26:15.348Z",
+              "WhenOpened": "2026-02-04T12:34:11.066Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Home.xaml",
-              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Home.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\Home.xaml",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\Home.xaml",
-              "RelativeToolTip": "WpfApp1\\Home.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-03T09:26:12.628Z",
+              "Title": "LoginView.xaml.cs",
+              "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\LoginView.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\LoginView.xaml.cs",
+              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\LoginView.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\LoginView.xaml.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAiwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T12:20:34.923Z",
               "EditorCaption": ""
             }
           ]
