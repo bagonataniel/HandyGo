@@ -55,8 +55,8 @@
 
       <ng-container *ngIf="loggedIn">
         <li (click)="toggleMobileMenu()" [routerLink]="['/home']">Kezdőlap</li>
-        <li (click)="toggleMobileMenu()" [routerLink]="['/yourservices']">Szolgáltatásaid</li>
-        <li (click)="toggleMobileMenu()" [routerLink]="['/yourjobs']">Foglalásaid</li>
+        <li (click)="toggleMobileMenu()" [routerLink]="['/my-services']">Szolgáltatásaid</li>
+        <li (click)="toggleMobileMenu()" [routerLink]="['/bookings']">Foglalásaid</li>
         <li (click)="toggleMobileMenu()" [routerLink]="['/profile']">Profil</li>
         <li (click)="toggleMobileMenu(); logout()" class="logout-item">
           <mat-icon>logout</mat-icon> Kijelentkezés

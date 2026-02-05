@@ -17,11 +17,11 @@ export class BookingService {
   }
 
   public getClientsBookings(){
-    return this._http.get('http://localhost:3000/booking/bookings/client', { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+    return this._http.get<any[]>('http://localhost:3000/booking/bookings/client', { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
   }
 
   public getWorkerBookings(){
-    return this._http.get('http://localhost:3000/booking/bookings/worker', { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+    return this._http.get<any[]>('http://localhost:3000/booking/bookings/worker', { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
   }
 
   public updateBookingStatus(id:any, status:any){

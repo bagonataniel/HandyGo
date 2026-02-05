@@ -23,18 +23,9 @@ export class BookingsComponent {
   }
 
   loadWorkerBookings(){
-    this.bookingService.getWorkerBookings().subscribe({
-      next: (data: any) => {
-        this.bookingsAsWorker = data;
-        console.log(this.bookingsAsWorker);
-        this.bookingsAsWorker.map(x => {
-          console.log(x);
-        });
-      },
-      error: (err) => {
-        console.log(err);
-        
-      }
+    this.bookingService.getWorkerBookings().subscribe((bookings:any[])=>{
+      this.bookingsAsWorker = bookings;
+      console.log(this.bookingsAsWorker)
     })
   }
   

@@ -31,7 +31,7 @@ exports.getBookingsAsClient = async (req, res) => {
 
     try {
         const bookings = await Booking.getBookingsAsClient(client_id);
-        res.status(200).json({ bookings });
+        res.status(200).json( bookings );
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
