@@ -160,3 +160,7 @@ obj/
 publish/
 *.dll
 *.exe
+
+
+# Telepítő kivétel
+!HandyGoAdminSetup.exe
