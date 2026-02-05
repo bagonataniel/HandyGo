@@ -68,6 +68,7 @@ exports.verify = async (req, res) => {
 exports.extendVerification = async (req, res) => {
     try {
         const userToken = req.header("x-auth-token");
+   
         if (!userToken) {
             return res.status(401).json({ message: "No token provided" });
         }
@@ -79,5 +80,24 @@ exports.extendVerification = async (req, res) => {
         res.status(200).json({message: "Verification email sent successfully."});
     } catch (error) {
         res.status(400).json({ message: "Failed to extend verification"});
+    }
+}
+
+exports.checkVerification = async (req, res) => {
+    try {
+        const userToken = req.header("x-auth-token");
+        if (!userToken) {
+            return res.status(401).json({ message: "No token provided" });
+        }
+
+        const decoded = jwt.verify(userToken, process.env.JWT_SECRET_KEY);
+
+        const user = await User.findById(decoded.id);
+        if (user.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json({ is_verified: user.is_verified });
+    } catch (error) {
+        res.status(400).json({ message: "Failed to check verification status" });
     }
 }

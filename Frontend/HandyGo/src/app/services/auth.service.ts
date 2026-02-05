@@ -45,4 +45,12 @@ export class AuthService {
   public register(data:any){
     return this._http.post('http://localhost:3000/auth/register', data);
   }
+
+  public resendVerificationEmail(){
+    return this._http.post('http://localhost:3000/auth/extend-verification', {}, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+  }
+
+  public checkVerificationStatus(){
+    return this._http.get('http://localhost:3000/auth/check-verification', { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+  }
 }

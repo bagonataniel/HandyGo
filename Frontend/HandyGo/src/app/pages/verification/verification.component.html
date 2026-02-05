@@ -15,6 +15,12 @@
         </button>
       </div>
 
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="resendVerificationEmail()" [routerLink]="['/home']">
+          Hitelesítő email újraküldése
+        </button>
+      </div>
+
       <div class="info">
         <p>Ha nem kapsz emailt, ellenőrizd a spam mappát, vagy próbáld újra később.</p>
       </div>

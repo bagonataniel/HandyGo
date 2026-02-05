@@ -5,6 +5,7 @@ const router = express.Router();
 router.post("/register", authController.register)
 router.post("/login", authController.login)
 router.get("/verify/:token", authController.verify)
-router.get("/extend-verification", authController.extendVerification)
+router.post("/extend-verification", authController.extendVerification)
+router.get("/check-verification", authController.checkVerification)
 
 module.exports = router
