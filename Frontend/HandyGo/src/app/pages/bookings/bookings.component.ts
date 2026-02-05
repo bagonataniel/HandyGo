@@ -11,24 +11,31 @@ import { forkJoin, switchMap } from 'rxjs';
 })
 
 export class BookingsComponent {
-  bookingsAsClient:any[] = [];
-  bookingsAsWorker:any[] = [];
+  bookingsAsClient:clientBooking[] = [];
+  bookingsAsWorker: any[] = [];
 
 
 
   constructor(private bookingService:BookingService, private userService:UsersService, private serviceService:ServiceService){}
 
   ngOnInit(){
-
+    this.loadWorkerBookings();
   }
 
   loadWorkerBookings(){
-    this.bookingService.getWorkerBookings().pipe(
-      switchMap((data)=> forkJoin(
+    this.bookingService.getWorkerBookings().subscribe({
+      next: (data: any) => {
+        this.bookingsAsWorker = data;
+        console.log(this.bookingsAsWorker);
+        this.bookingsAsWorker.map(x => {
+          console.log(x);
+        });
+      },
+      error: (err) => {
+        console.log(err);
         
-        )
-      )
-    );
+      }
+    })
   }
   
 

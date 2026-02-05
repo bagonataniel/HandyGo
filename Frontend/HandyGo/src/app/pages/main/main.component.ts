@@ -12,20 +12,18 @@ export class MainComponent implements OnInit{
   router: Router = inject(Router);
 
   filterOpen: boolean = false;
-  categories: string[] = ["---","Otthon & Kert", "Javítás", "Kreatív", "Tech", "Életmód", "Szállítás", "egyéb"];
+  categories: string[] = ["Mind","Otthon & Kert", "Javítás", "Kreatív", "Tech", "Életmód", "Szállítás", "egyéb"];
   
-  selectedCategory: string = '';
+  selectedCategory: string = 'Mind';
   distance: number | undefined = undefined;
   priceRange: [number, number] = [NaN, Infinity];
 
   constructor(private service: ServiceService) { }
 
   ngOnInit(): void {
-    console.log(this.priceRange);
-    this.service.getServices({"category": (this.selectedCategory === '---' ? '':this.selectedCategory), "distance": this.distance , priceRange: (this.priceRange[1] == Infinity || Number.isNaN(this.priceRange[1]) ? [this.priceRange[0],1000000000] : this.priceRange)}).subscribe({
+    this.service.getServices({"category": (this.selectedCategory === 'Mind' ? '':this.selectedCategory), "distance": (this.distance == null?undefined:this.distance) , priceRange: (this.priceRange[1] == Infinity || Number.isNaN(this.priceRange[1]) || Number.isNaN(this.priceRange[0]) ? [this.priceRange[0],1000000000] : this.priceRange)}).subscribe({
       next: (data: any) => {
         data = data.filter((item : any) => item.worker_id !== localStorage.getItem("userId"));
-        console.log(data);
         
         this.services = data;
       },
@@ -36,7 +34,7 @@ export class MainComponent implements OnInit{
   }
 
   onCategorySelect(category: string): void{
-    if (category === '---'){
+    if (category === 'Mind'){
       this.selectedCategory = '';
       return;
     }
@@ -44,14 +42,13 @@ export class MainComponent implements OnInit{
   }
   
   resetFilters():void{
-    this.selectedCategory = '';
+    this.selectedCategory = 'Mind';
     this.distance = undefined;
     this.priceRange = [NaN, Infinity];
     this.ngOnInit();
   }
 
   onServiceSelect(serviceId: number): void {
-    // Handle service selection, e.g., navigate to service details page
     console.log('Selected service ID:', serviceId);
     this.router.navigate(['/services', serviceId]);
   }

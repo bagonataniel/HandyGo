@@ -25,6 +25,8 @@ import { MyServicesComponent } from './pages/my-services/my-services.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { ServiceCreatorComponent } from './pages/service-creator/service-creator.component';
 
+import { BookingsComponent } from './pages/bookings/bookings.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,7 +47,8 @@ const routes: Routes = [
   { path: 'rights', component: RightsComponent },
   { path: 'error', component: Error404Component },
   { path: 'edit-profile', component: EditProfileComponent, canActivate: [authGuard, isVerifiedGuard] },
-  {path: 'my-services/service-creator', component: ServiceCreatorComponent, canActivate: [authGuard, isVerifiedGuard]},
+  { path: 'my-services/service-creator', component: ServiceCreatorComponent, canActivate: [authGuard, isVerifiedGuard]},
+  { path:'bookings', component:BookingsComponent, canActivate: [authGuard, isVerifiedGuard]},
   { path: '**', redirectTo: 'error' }, // This has to be at the bottom, otherwise it would override all routes below it!
 ];
 
