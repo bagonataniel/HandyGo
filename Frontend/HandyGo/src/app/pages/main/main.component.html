@@ -1,10 +1,10 @@
-<app-navbar></app-navbar>
+<app-navbar style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000;"></app-navbar>
 <div class="main">
     <button
     mat-fab
     class="filter-toggle"
     (click)="filterOpen = !filterOpen">
-    Szűrő
+    <mat-icon aria-hidden="false" aria-label="Szűrő" fontIcon="filter_alt"></mat-icon>
     </button>
 
     <div class="filter-section" [class.open]="filterOpen">
@@ -36,8 +36,10 @@
             <input matInput type="number" [(ngModel)]="priceRange[1]">
         </mat-form-field>
         <br>
-        <button mat-raised-button (click)="ngOnInit()" class="filter-button">Szűrés</button>
-        <button mat-raised-button (click)="resetFilters()">Visszaállítás</button>
+        <div class="filter-buttons">
+            <button mat-raised-button (click)="ngOnInit()" class="filter-button">Szűrés</button>
+            <button mat-raised-button (click)="resetFilters()" class="filter-button">Visszaállítás</button>
+        </div>
     </div>
     <div class="card-section">
         <mat-card *ngFor="let item of services" class="service-card" (click)="onServiceSelect(item.id)" style="cursor: pointer;">
