@@ -47,6 +47,7 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
 import { MatSelectModule } from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
 import { ServiceCreatorComponent } from './pages/service-creator/service-creator.component';
+import { BookingsComponent } from './pages/bookings/bookings.component';
 
 
 
@@ -78,6 +79,7 @@ import { ServiceCreatorComponent } from './pages/service-creator/service-creator
     MyServicesComponent,
     EditProfileComponent,
     ServiceCreatorComponent,
+    BookingsComponent,
     
   ],
   imports: [
