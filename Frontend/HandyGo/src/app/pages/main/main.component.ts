@@ -21,7 +21,8 @@ export class MainComponent implements OnInit{
   constructor(private service: ServiceService) { }
 
   ngOnInit(): void {
-    this.service.getServices({"category": this.selectedCategory, "distance": this.distance , priceRange: (this.priceRange[1] == Infinity ? [this.priceRange[0],1000000000] : this.priceRange)}).subscribe({
+    console.log(this.priceRange);
+    this.service.getServices({"category": (this.selectedCategory === '---' ? '':this.selectedCategory), "distance": this.distance , priceRange: (this.priceRange[1] == Infinity || Number.isNaN(this.priceRange[1]) ? [this.priceRange[0],1000000000] : this.priceRange)}).subscribe({
       next: (data: any) => {
         data = data.filter((item : any) => item.worker_id !== localStorage.getItem("userId"));
         console.log(data);

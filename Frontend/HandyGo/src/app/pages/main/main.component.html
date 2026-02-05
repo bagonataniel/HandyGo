@@ -10,7 +10,7 @@
     <div class="filter-section" [class.open]="filterOpen">
         <mat-form-field>
             <mat-label>Kategóriák</mat-label>
-            <mat-select placeholder="Válassz kategóriát">
+            <mat-select placeholder="Válassz kategóriát" [(ngModel)]="selectedCategory">
                 <mat-option
                 *ngFor="let category of categories"
                 [value]="category"
