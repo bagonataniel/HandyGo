@@ -59,7 +59,7 @@ class Admin {
         const [totalRevenue] = await db.execute("SELECT SUM(s.price) AS total_revenue FROM handygo.bookings b JOIN handygo.services s ON b.service_id = s.id WHERE b.status = 'kész';")
         const [transactionCount] = await db.execute("SELECT COUNT(*) AS transaction_count FROM handygo.bookings WHERE status = 'kész';");
         basicStats[0].total_revenue = totalRevenue[0].total_revenue || 0;
-        basicStats[0].completed_transactions = transactionCount[0].transaction_count || 0;
+        basicStats[0].completed_transactions = transactionCount[0].transaction_count || "0";
         var result = [...basicStats, ...userGrowth];
         return result;
     }
