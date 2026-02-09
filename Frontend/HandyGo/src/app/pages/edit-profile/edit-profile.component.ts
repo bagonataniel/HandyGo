@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-profile',
@@ -23,7 +24,8 @@ export class EditProfileComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -64,10 +66,12 @@ export class EditProfileComponent implements OnInit {
 
     const changes: any = {};
 
-    if (this.formData.name !== this.originalData.name) changes.name = this.formData.name;
-    if (this.formData.bio !== this.originalData.bio) changes.bio = this.formData.bio;
-    if (this.formData.skills !== this.originalData.skills) changes.skills = this.formData.skills;
-    if (this.formData.location !== this.originalData.location) changes.location = this.formData.location;
+    if (this.formData.name !== this.originalData.name || this.originalData.name === null) changes.name = this.formData.name;
+    if (this.formData.bio !== this.originalData.bio || this.originalData.bio === null) changes.bio = this.formData.bio;
+    if (this.formData.skills !== this.originalData.skills || this.originalData.skills === null) changes.skills = this.formData.skills;
+    if (this.formData.location !== ''){
+      if (this.formData.location !== this.originalData.location || this.originalData.location === null) changes.location = this.formData.location;
+    }
 
     if (Object.keys(changes).length === 0) {
       this.isSaving = false;
@@ -83,7 +87,8 @@ export class EditProfileComponent implements OnInit {
       },
       error: (err) => {
         this.isSaving = false;
-        alert('Hiba történt a mentés során.');
+
+        this.snackBar.open('Hiba történt a mentés során.', 'Bezár', { duration: 3000 });
         console.error('Mentési hiba:', err);
       }
     });
