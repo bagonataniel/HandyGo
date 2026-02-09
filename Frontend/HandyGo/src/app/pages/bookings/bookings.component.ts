@@ -15,8 +15,6 @@ export class BookingsComponent {
   loadedWorkerBookings:any[] = [];
   loadedClientBookings:any[] = [];
 
-
-
   constructor(private bookingService:BookingService, private userService:UsersService, private serviceService:ServiceService){}
 
   async ngOnInit(){
@@ -44,20 +42,7 @@ export class BookingsComponent {
     });
   }
 
-}
-
-export interface WorkerBooking {
-  id: string;
-  hisName: string;
-  serviceName: string;
-  status: string;
-  date: string;
-}
-
-export interface clientBooking{
-    serviceName:string,
-    userName:string,
-    userID:string,
-    status:string,
-    id:number
+  acceptBooking(){
+    
+  }
 }
