@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { BookingService } from '../../services/booking.service';
 import { UsersService } from '../../services/users.service';
 import { ServiceService } from '../../services/service.service';
-import { forkJoin, switchMap } from 'rxjs';
+import { forkJoin, share, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-bookings',
@@ -11,54 +11,43 @@ import { forkJoin, switchMap } from 'rxjs';
 })
 
 export class BookingsComponent {
-  bookingsAsClient:clientBooking[] = [];
-  bookingsAsWorker: any[] = [];
+  
+  loadedWorkerBookings:any[] = [];
+  loadedClientBookings:any[] = [];
 
 
 
   constructor(private bookingService:BookingService, private userService:UsersService, private serviceService:ServiceService){}
 
-  ngOnInit(){
-    this.loadWorkerBookings();
+  async ngOnInit(){
+    this.loadBookings();
   }
 
-  loadWorkerBookings(){
-    this.bookingService.getWorkerBookings().subscribe((bookings:any[])=>{
-      this.bookingsAsWorker = bookings;
-      console.log(this.bookingsAsWorker)
-    })
-  }
-  
-
-  loadUser(data:any):any{
-    this.userService.getUserDetails(data).subscribe({
-      next:(data:any)=>{
-        return data.name;
+  loadBookings(){
+    this.bookingService.getWorkerBookings().subscribe({
+      next: (data: any) => {
+        console.log(data.bookings);
+        this.loadedWorkerBookings = data.bookings;
       },
-      error:(err)=>{
-        console.log(err);
-        return "[error service]";
+      error: (error: any) => {
+        console.error('Error fetching services:', error);
       }
     });
-  }
-  
-  loadService(data:any):any{
-    this.serviceService.getServiceById(data).subscribe({
-      next: (data:any) =>{
-        return data.title;
+    this.bookingService.getClientsBookings().subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.loadedClientBookings = data;
       },
-      error:(err) =>{
-        console.log(err);
-        return "[error name]"
+      error: (error: any) => {
+        console.error('Error fetching services:', error);
       }
     });
-    
   }
 
 }
 
 export interface WorkerBooking {
-  id: number;
+  id: string;
   hisName: string;
   serviceName: string;
   status: string;

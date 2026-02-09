@@ -21,7 +21,10 @@ export class MainComponent implements OnInit{
   constructor(private service: ServiceService) { }
 
   ngOnInit(): void {
-    this.service.getServices({"category": (this.selectedCategory === 'Mind' ? '':this.selectedCategory), "distance": (this.distance == null || this.distance < 0 ?undefined:this.distance) , priceRange: (this.priceRange[1] == Infinity || Number.isNaN(this.priceRange[1]) || Number.isNaN(this.priceRange[0]) ? [this.priceRange[0],1000000000] : this.priceRange)}).subscribe({
+    if (this.priceRange[0] == null || Number.isNaN(this.priceRange[0])) {
+      this.priceRange[0] = NaN;
+    }
+    this.service.getServices({"category": (this.selectedCategory === 'Mind' ? '':this.selectedCategory), "distance": (this.distance == null || this.distance < 0 ?undefined:this.distance) , priceRange: (this.priceRange[1] == Infinity || Number.isNaN(this.priceRange[1]) ? [this.priceRange[0],1000000000] : this.priceRange)}).subscribe({
       next: (data: any) => {
         data = data.filter((item : any) => item.worker_id !== localStorage.getItem("userId"));
         this.services = data;
