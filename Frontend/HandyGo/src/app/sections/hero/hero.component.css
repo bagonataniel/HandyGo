@@ -47,41 +47,28 @@ p {
   margin-bottom: 30px;
 }
 
-.hero-btn {
- 
-  width: 160px;
-  height: 48px;
-  border-radius: 480px !important;
-  font-size: 15px;
-  position: relative;
-  overflow: hidden;
-  background: #e0e0e0 !important;
-  color: #000 !important;
-  box-shadow:
-    6px 6px 12px #c5c5c507,
-   -6px -6px 12px #ffffff2f;
+.hero-btn-simple {
+  padding: 0 40px !important;
+  height: 52px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  border-radius: 50px !important;
+  background-color: #1976d2 !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25) !important;
+  transition: all 0.3s ease !important;
+  text-transform: none !important;
 }
 
-.hero-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  width: 0;
-  height: 100%;
-  border-radius: 480px;
-  background: linear-gradient(to right, #284cec 0%, #47f9ea 100%);
-  transition: width 0.5s ease;
-  z-index: 0;
+.hero-btn-simple:hover {
+  background-color: #1565c0 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(25, 118, 210, 0.35) !important;
 }
 
-.hero-btn:hover::before {
-  width: 100%;
-}
-
-
-.hero-btn .mdc-button__label {
-  position: relative;
-  z-index: 1;
+.hero-btn-simple:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.2) !important;
 }
 
 

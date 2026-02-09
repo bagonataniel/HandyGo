@@ -1,19 +1,70 @@
 <app-navbar></app-navbar>
-<h2>Szolgáltatásaid</h2>
-<button mat-raised-button routerLink="/my-services/service-creator">Új szolgáltatás hozzáadása</button>
-@if (myServices.length === 0) {
-    <p>Nincsenek szolgáltatásaid jelenleg.</p>
-}
-<mat-card *ngFor="let serviceData of myServices">
-    <p>{{serviceData?.title}}</p>
-    <p>{{serviceData?.availability}}</p>
-    <p>{{serviceData?.category}}</p>
-    <p>{{serviceData?.description}}</p>
-    <p>{{serviceData?.id}}</p>
-    <p>{{serviceData?.latitude}}</p>
-    <p>{{serviceData?.longitude}}</p>
-    <p>{{serviceData?.price}}</p>
-    <p>{{serviceData?.status}}</p>
-    <p>{{serviceData?.worker_id}}</p>
-</mat-card>
 
+<div class="my-services-page">
+  <div class="container">
+    <div class="page-header">
+      <h1>Saját szolgáltatásaid</h1>
+      <button mat-raised-button color="primary" class="add-service-btn" routerLink="/my-services/service-creator">
+        <mat-icon>add</mat-icon>
+        Új szolgáltatás hozzáadása
+      </button>
+    </div>
+
+    <div class="loading" *ngIf="isLoading">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Szolgáltatások betöltése...</p>
+    </div>
+
+    <div class="error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <ng-container *ngIf="!isLoading && !errorMessage">
+      <div *ngIf="myServices.length === 0" class="empty-state">
+        <mat-icon class="empty-icon">inventory_2</mat-icon>
+        <h3>Még nincs saját szolgáltatásod</h3>
+        <p>Hozz létre egyet, hogy ügyfelek megtaláljanak!</p>
+        <button mat-raised-button color="primary" routerLink="/my-services/service-creator">
+          Létrehozom az első szolgáltatásomat
+        </button>
+      </div>
+
+      <div class="services-grid" *ngIf="myServices.length > 0">
+        <div class="service-card" *ngFor="let service of myServices">
+          <div class="service-header">
+            <h3 class="service-title">{{ service.title || 'Névtelen szolgáltatás' }}</h3>
+            <span class="category-badge">{{ service.category || 'Egyéb' }}</span>
+          </div>
+
+          <div class="service-body">
+            <p class="description">{{ service.description || 'Nincs leírás hozzáadva...' }}</p>
+
+            <div class="service-meta">
+              <div class="detail-row">
+                <span class="label">Ár:</span>
+                <span class="value price">{{ service.price ? service.price + ' Ft' : '–' }}</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="label">Helyszín:</span>
+                <span class="value">{{ service.city || 'Nincs meghatározva' }}</span>
+              </div>
+
+              <div class="detail-row" *ngIf="service.latitude && service.longitude">
+                <span class="label">Koordináták:</span>
+                <span class="value">{{ service.latitude | number:'1.4-4' }}, {{ service.longitude | number:'1.4-4' }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="service-actions">
+            <button mat-mini-fab color="warn" class="delete-btn" (click)="deleteService(service.id)" matTooltip="Szolgáltatás törlése">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<app-footer></app-footer>

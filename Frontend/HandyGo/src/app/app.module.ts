@@ -48,6 +48,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
 import { ServiceCreatorComponent } from './pages/service-creator/service-creator.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -102,7 +103,8 @@ import { BookingsComponent } from './pages/bookings/bookings.component';
     MatDialogTitle,
     MatDialogModule,
     MatSelectModule,
-    MatSliderModule
+    MatSliderModule,
+    MatProgressSpinnerModule,
 ],
   providers: [
     provideAnimationsAsync(),

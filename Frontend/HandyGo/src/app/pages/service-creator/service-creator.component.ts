@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-service-creator',
@@ -11,45 +10,69 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ServiceCreatorComponent {
   newService: any = {
-    title:'',
-    description:'',
-    category:'',
+    title: '',
+    description: '',
+    category: '',
     price: 0,
     location: ''
-  }
+  };
 
   categories: string[] = ["Otthon & Kert", "Javítás", "Kreatív", "Tech", "Életmód", "Szállítás", "egyéb"];
 
+  constructor(
+    private service: ServiceService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
-  constructor(private service: ServiceService, private router: Router){}
-
-
-  onCategorySelect(category: string): void{
+  onCategorySelect(category: string): void {
     this.newService.category = category;
   }
 
-  getValidity(): boolean{
-    return this.newService.title !== '' && this.newService.description !== '' && this.newService.category !== '' && this.newService.price >= 0 && this.newService.location !== '';
+  getValidity(): boolean {
+    return (
+      this.newService.title.trim() !== '' &&
+      this.newService.description.trim() !== '' &&
+      this.newService.category !== '' &&
+      this.newService.price >= 0 &&
+      this.newService.location.trim() !== ''
+    );
   }
 
-  SubmitService(): void{
-    if (!this.getValidity()){
-      alert('Kérlek tölts ki minden mezőt helyesen!');
+  SubmitService(): void {
+    if (!this.getValidity()) {
+      this.snackBar.open('Kérlek tölts ki minden mezőt helyesen!', 'Bezár', {
+        duration: 4000,
+        panelClass: ['error-snackbar'],
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
       return;
     }
-    console.log(this.newService);
+
     this.service.createService(this.newService).subscribe({
       next: (data: any) => {
-        alert('Sikeres szolgáltatás létrehozás!');
+        this.snackBar.open('Sikeres szolgáltatás létrehozás!', 'Bezár', {
+          duration: 4000,
+          panelClass: ['success-snackbar'],
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
         this.router.navigate(['/my-services']);
       },
-      error: (error: HttpErrorResponse) => {
-        if (error.status === 404){
-          alert('Nem helyes helyadatot adott meg.')
+      error: (error: any) => {
+        let msg = 'Hiba történt a létrehozás során.';
+        if (error.status === 404) {
+          msg = 'Nem helyes helyadatot adott meg.';
         }
+        this.snackBar.open(msg, 'Bezár', {
+          duration: 5000,
+          panelClass: ['error-snackbar'],
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
         console.error('Error creating service:', error);
       }
     });
   }
-
 }

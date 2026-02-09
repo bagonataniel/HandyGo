@@ -1,38 +1,50 @@
 <app-navbar></app-navbar>
-<h2>Új szolgáltatás létrehozása</h2>
 
-<mat-form-field >
-<mat-label>Cím megadása</mat-label>
-<input matInput placeholder="Pl. Takrítás" [(ngModel)]="newService.title">
-</mat-form-field>
+<div class="service-creator-page">
+  <div class="creator-content">
+    <h2 class="page-title">Új szolgáltatás létrehozása</h2>
 
-<mat-form-field >
-    <mat-label>Írja be a leírását</mat-label>
-    <textarea matInput placeholder="Pl. Napi takarítás, 2 óra" [(ngModel)]="newService.description"></textarea>
-</mat-form-field>
+    <div class="form-grid">
+      <!-- Cím + Kategória egymás mellett -->
+      <mat-form-field appearance="outline" class="title-field">
+        <mat-label>Szolgáltatás címe</mat-label>
+        <input matInput placeholder="Pl. Professzionális takarítás" [(ngModel)]="newService.title" name="title" required>
+      </mat-form-field>
 
-<mat-form-field>
-    <mat-label>Kategóriák</mat-label>
-    <mat-select placeholder="Válassz kategóriát">
-        <mat-option
-        *ngFor="let category of categories"
-        [value]="category"
-        (click)="onCategorySelect(category)"
-        >
-            {{ category }}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
+      <mat-form-field appearance="outline" class="category-field">
+        <mat-label>Kategória</mat-label>
+        <mat-select [(ngModel)]="newService.category" name="category" placeholder="Válassz" required>
+          <mat-option *ngFor="let cat of categories" [value]="cat">
+            {{ cat }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-<mat-form-field >
-<mat-label>Ár</mat-label>
-<input matInput placeholder="Pl. 1000 Ft" type="number" [(ngModel)]="newService.price">
-</mat-form-field>
+      <!-- Ár + Helyszín egymás mellett -->
+      <mat-form-field appearance="outline" class="price-field">
+        <mat-label>Ár (Ft)</mat-label>
+        <input matInput type="number" placeholder="Pl. 12000" [(ngModel)]="newService.price" name="price" required min="1000">
+        <span matTextSuffix>Ft</span>
+      </mat-form-field>
 
-<mat-form-field >
-<mat-label>Hely megadása</mat-label>
-<input matInput placeholder="Pl. Budapest" [(ngModel)]="newService.location">
-</mat-form-field>
+      <mat-form-field appearance="outline" class="location-field">
+        <mat-label>Helyszín</mat-label>
+        <input matInput placeholder="Pl. Budapest XIII. kerület vagy online" [(ngModel)]="newService.location" name="location">
+      </mat-form-field>
+    </div>
 
+    <!-- Leírás – teljes szélességű -->
+    <mat-form-field appearance="outline" class="description-field full-width">
+      <mat-label>Részletes leírás</mat-label>
+      <textarea matInput rows="4" placeholder="Pl. Heti takarítás, 2 óra, környezetbarát szerekkel..." [(ngModel)]="newService.description" name="description" required></textarea>
+    </mat-form-field>
 
-<button mat-flat-button (click)="SubmitService()">Szolgáltatás létrehozása</button>
+    <!-- Gomb – középen alul -->
+    <div class="form-actions">
+      <button mat-flat-button color="primary" class="submit-btn" (click)="SubmitService()" [disabled]="!newService.title || !newService.description || !newService.category || !newService.price">
+        Szolgáltatás létrehozása
+      </button>
+    </div>
+  </div>
+</div>
+
