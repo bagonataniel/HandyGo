@@ -122,6 +122,7 @@ export class ServicesComponent implements OnInit {
   bookService(): void {
 
 
+    this.connectionService.createConnection(this.serviceData.worker_id, this.workerName);
     if (!this.serviceData?.id) {
       this._snackBar.open('❌ Nincs szolgáltatás betöltve.', 'Bezár', { duration: 4000 });
       return;
@@ -133,7 +134,6 @@ export class ServicesComponent implements OnInit {
           duration: 5000,
           panelClass: ['success-snackbar']
         });
-        this.connectionService.createConnection(this.serviceData.worker_id, this.workerName);
         console.log('Service booked successfully:', data);
       },
       error: (error: any) => {

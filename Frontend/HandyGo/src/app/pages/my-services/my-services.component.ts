@@ -76,7 +76,6 @@ export class MyServicesComponent implements OnInit {
     const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
 
     this.http.get(url, {
-      headers: { 'User-Agent': 'HandyGo-App/1.0 (your-email@example.com)' }
     }).subscribe({
       next: (data: any) => {
         const address = data?.address || {};
