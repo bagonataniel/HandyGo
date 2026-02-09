@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 09. 09:57
+-- Létrehozás ideje: 2026. Feb 09. 11:32
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `handygo`
 --
-
 CREATE DATABASE IF NOT EXISTS `handygo` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE `handygo`;
 
@@ -42,7 +41,7 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`id`, `username`, `password_hash`, `created_at`) VALUES
-(1, 'admin', '$2b$10$8iHrx3jwTWuJ6D5Ii67Deu2k/Drg1MV4Xh.QLXav1RRqdayFBsaSC', '2026-02-09 08:54:16');
+(1, 'admin', '$2b$10$9WgNbw49j9fQaE5IMf.yOu10tEmteT6NFyIRRKk0Iq7j2ct00Ruoy', '2025-12-08 10:39:30');
 
 -- --------------------------------------------------------
 
@@ -125,6 +124,15 @@ ALTER TABLE `admin_users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- A tábla indexei `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `service_id` (`service_id`),
+  ADD KEY `client_id` (`client_id`),
+  ADD KEY `worker_id` (`worker_id`);
+
+--
 -- A tábla indexei `reviews`
 --
 ALTER TABLE `reviews`
@@ -154,10 +162,20 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT a táblához `admin_users`
 --
+ALTER TABLE `admin_users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Megkötések a kiírt táblákhoz
 --
+
+--
+-- Megkötések a táblához `bookings`
+--
+ALTER TABLE `bookings`
+  ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`),
+  ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `bookings_ibfk_3` FOREIGN KEY (`worker_id`) REFERENCES `users` (`id`);
 
 --
 -- Megkötések a táblához `reviews`
