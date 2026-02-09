@@ -11,5 +11,6 @@ router.get("/:id", auth, serviceController.getServiceById)
 router.put("/update/:id", auth, serviceController.updateService)
 router.delete("/delete/:id", auth, serviceController.deleteService)
 router.post("/:id/review", auth, serviceController.createReview)
+router.get("/:id/reviews", auth, serviceController.getReviews)
 
 module.exports = router

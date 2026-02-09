@@ -77,6 +77,11 @@ class Service {
     const [rows] = await db.execute("SELECT * FROM services WHERE worker_id = ?", [userId]);
     return rows;
   }
+
+  static async getReviews(service_id) {
+    const [rows] = await db.execute("SELECT * FROM reviews WHERE service_id = ?", [service_id]);
+    return rows;
+  }
 }
 
 module.exports = Service;

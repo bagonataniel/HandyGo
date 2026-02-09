@@ -69,4 +69,8 @@ export class ServiceService {
   public writeReview(id: string, data: any) {
     return this._http.post(`http://localhost:3000/service/${id}/review`, data, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
   }
+
+  public getReviews(id: string) {
+    return this._http.get(`http://localhost:3000/service/${id}/reviews`, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+  }
 }

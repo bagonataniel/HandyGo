@@ -162,3 +162,14 @@ exports.getMyServices = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
+
+exports.getReviews = async (req, res) => {
+    const serviceId = req.params.id;
+
+    try {
+        const reviews = await Service.getReviews(serviceId);
+        res.status(200).json(reviews);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}

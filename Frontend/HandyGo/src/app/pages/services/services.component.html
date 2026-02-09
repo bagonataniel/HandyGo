@@ -31,6 +31,11 @@
             <mat-icon>my_location</mat-icon>
             {{ serviceData.latitude || 'Ismeretlen szolgáltató' }}° × {{ serviceData.longitude || 'Ismeretlen szolgáltató' }}°
           </span>
+          <br>
+          <div class="rating" *ngIf="rating">
+            <mat-icon aria-hidden="false" fontIcon="{{star === 'full' ? 'star' : star === 'half' ? 'star_half' : 'star_border'}}" *ngFor="let star of getStars(rating)"></mat-icon>
+          </div>
+          <div class="rating" *ngIf="!rating"><span>Nincs értékelés</span></div>
         </div>
       </div>
 
