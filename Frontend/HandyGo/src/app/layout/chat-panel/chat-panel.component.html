@@ -1,7 +1,9 @@
-<h2 mat-dialog-title>{{otherUserName}}</h2>
-<button mat-icon-button mat-dialog-close class="close-button">
-  <mat-icon>close</mat-icon>
-</button>
+<div class="header">
+  <h2 mat-dialog-title>{{otherUserName}}</h2>
+  <button mat-icon-button mat-dialog-close class="close-button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <mat-dialog-content class="mat-typography" #scrollContainer>
   <div class="content" >
     @if (messages.length == 0) {
@@ -18,5 +20,5 @@
     <input matInput [(ngModel)]="newMessage" (keydown.enter)="sendMessage(newMessage)" maxlength="512"/>
     <mat-hint>{{newMessage.length}}/512</mat-hint>
   </mat-form-field>
-  <button mat-raised-button (click)="sendMessage(newMessage)" id="send-button">Send</button>
+  <button mat-raised-button (click)="sendMessage(newMessage)" id="send-button"><mat-icon>send</mat-icon></button>
 </mat-dialog-actions>
