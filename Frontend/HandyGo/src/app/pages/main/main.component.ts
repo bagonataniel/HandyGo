@@ -37,7 +37,7 @@ export class MainComponent implements OnInit{
 
   onCategorySelect(category: string): void{
     if (category === 'Mind'){
-      this.selectedCategory = '';
+      this.selectedCategory = 'Mind';
       return;
     }
     this.selectedCategory = category;
@@ -48,6 +48,12 @@ export class MainComponent implements OnInit{
     this.distance = undefined;
     this.priceRange = [NaN, Infinity];
     this.ngOnInit();
+  }
+
+  blockNegativeInput(event:KeyboardEvent){
+    if (event.key === '-' || event.key === 'Minus') {
+      event.preventDefault();
+    }
   }
 
   onServiceSelect(serviceId: number): void {
