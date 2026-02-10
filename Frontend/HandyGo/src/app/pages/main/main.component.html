@@ -23,17 +23,17 @@
         <br>
         <mat-form-field>
             <mat-label>Távolság (Km)</mat-label>
-            <input matInput type="number" [(ngModel)]="distance">
+            <input matInput type="number" [(ngModel)]="distance" min="0" (keydown)="blockNegativeInput($event)">
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Ár Minimum (Ft)</mat-label>
-            <input matInput type="number" [(ngModel)]="priceRange[0]">
+            <input matInput type="number" [(ngModel)]="priceRange[0]" min="0" (keydown)="blockNegativeInput($event)">
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Ár Maximum (Ft)</mat-label>
-            <input matInput type="number" [(ngModel)]="priceRange[1]">
+            <input matInput type="number" [(ngModel)]="priceRange[1]" min="0" (keydown)="blockNegativeInput($event)">
         </mat-form-field>
         <br>
         <div class="filter-buttons">
