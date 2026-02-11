@@ -88,7 +88,6 @@ CREATE TABLE `services` (
   `price` decimal(10,2) NOT NULL,
   `latitude` decimal(10,7) DEFAULT NULL,
   `longitude` decimal(10,7) DEFAULT NULL,
-  `availability` enum('elérhető','lefoglalt') NOT NULL DEFAULT 'elérhető',
   `status` enum('pending','approved','rejected') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
