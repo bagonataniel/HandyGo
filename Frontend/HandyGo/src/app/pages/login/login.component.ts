@@ -30,6 +30,7 @@ export class LoginComponent {
         localStorage.setItem('token', res.JWT);
         localStorage.setItem('userId', res.id);
         localStorage.setItem('username', res.username);
+        localStorage.setItem('loginTime', new Date().toISOString());
         this.auth.setVerified(Boolean(res.is_verified));
         this.router.navigate(['/home']);
         this.connectionService.login();
