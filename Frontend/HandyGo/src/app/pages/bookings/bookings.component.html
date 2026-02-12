@@ -1,2 +1,74 @@
 <app-navbar></app-navbar>
+<div class="bookings-container">
 
+  <!-- 1. szekció: Bejövő felkérések (amiket én vállalhatsz el) -->
+  <section class="section incoming">
+    <h2>Beérkezett felkérések ({{bookingsAsWorker.length}} db)</h2>
+    
+    <div class="booking-list">
+      <div *ngIf="bookingsAsWorker.length === 0" class="empty-state">
+        Jelenleg nincs hozzád érkező felkérés.
+      </div>
+
+      <div *ngFor="let booking of bookingsAsWorker" class="booking-card">
+        <div class="booking-header">
+          <h3>{{booking.title}}</h3>
+          <span class="status-badge" [ngClass]="getStatusClass(booking.status)">
+            {{booking.status | titlecase}}
+          </span>
+        </div>
+
+        <div class="booking-info">
+          <p><strong>Ügyfél:</strong> {{booking.name}}</p>
+          <p><strong>Email:</strong> {{booking.email}}</p>
+          <p><strong>Kategória:</strong> {{booking.category}}</p>
+          <p><strong>Leírás:</strong> {{booking.description}}</p>
+        </div>
+
+        <div class="actions" *ngIf="booking.status === 'elfogadásra vár'">
+          <button class="btn accept" (click)="statusSelected(booking.booking_id || booking.id, 'folyamatban')">
+            Elfogadom
+          </button>
+          <button class="btn reject" (click)="statusSelected(booking.booking_id || booking.id, 'elutasítva')">
+            Elutasítom
+          </button>
+        </div>
+
+        <div class="status-info" *ngIf="booking.status !== 'elfogadásra vár'">
+          <small>A státusz már módosítva lett: <strong>{{booking.status}}</strong></small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 2. szekció: Általam leadott igények -->
+  <section class="section outgoing">
+    <h2>Leadott kéréseim ({{bookingsAsClient.length}} db)</h2>
+    
+    <div class="booking-list">
+      <div *ngIf="bookingsAsClient.length === 0" class="empty-state">
+        Még nem adtál fel semmilyen kérést.
+      </div>
+
+      <div *ngFor="let booking of bookingsAsClient" class="booking-card">
+        <div class="booking-header">
+          <h3>{{booking.title}}</h3>
+          <span class="status-badge" [ngClass]="getStatusClass(booking.status)">
+            {{booking.status | titlecase}}
+          </span>
+        </div>
+
+        <div class="booking-info">
+          <p><strong>Kategória:</strong> {{booking.category}}</p>
+          <p><strong>Leírás:</strong> {{booking.description}}</p>
+          <!-- Ha van rating később, ide jöhet -->
+          <p *ngIf="booking.rating"><strong>Értékelés:</strong> {{booking.rating}} / 5</p>
+        </div>
+
+        <small class="muted">Booking ID: {{booking.id}}</small>
+      </div>
+    </div>
+  </section>
+
+</div>
