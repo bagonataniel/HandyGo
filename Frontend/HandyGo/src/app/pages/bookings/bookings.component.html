@@ -34,8 +34,14 @@
           </button>
         </div>
 
-        <div class="status-info" *ngIf="booking.status !== 'elfogadásra vár'">
-          <small>A státusz már módosítva lett: <strong>{{booking.status}}</strong></small>
+        <div class="status-info" *ngIf="booking.status !== 'elfogadásra vár' && booking.status !== 'kész'">
+          <button class="btn accept" (click)="statusSelected(booking.booking_id || booking.id, 'kész')">
+            Munka lezárása
+          </button>
+        </div>
+        
+        <div class="status-info" *ngIf="booking.status === 'kész'">
+          <p>A folyamat lezárása a munkáltató részéről folyamatban van.</p>
         </div>
       </div>
     </div>
@@ -66,7 +72,15 @@
           <p *ngIf="booking.rating"><strong>Értékelés:</strong> {{booking.rating}} / 5</p>
         </div>
 
-        <small class="muted">Booking ID: {{booking.id}}</small>
+        <div class="booking-info" *ngIf="booking.status === 'kész'">
+            @for (item of stars; track $index) {
+                <mat-icon fontIcon="star" class="star"
+                (mouseenter)="!booking.selectedRating && booking.hoveredIndex = $index" 
+                (mouseleave)="!booking.selectedRating && booking.hoveredIndex = null"
+                [class.filled]="$index <= (booking.hoveredIndex ?? booking.selectedRating - 1)" 
+                (click)="rateBookingThenDelete(booking.id,$index,booking);booking.selectedRating = $index+1;"></mat-icon>
+            }
+        </div>
       </div>
     </div>
   </section>

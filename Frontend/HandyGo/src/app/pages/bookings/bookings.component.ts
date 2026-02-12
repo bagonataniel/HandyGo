@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { BookingService } from '../../services/booking.service';
+import { ServiceService } from '../../services/service.service';
 
 @Component({
   selector: 'app-bookings',
@@ -13,8 +14,11 @@ export class BookingsComponent {
   bookingsAsClient:any[] = [];
 
   selectableStatus = ['elfogadásra vár','folyamatban','kész','elutasítva'];
+  stars = [1,2,3,4,5];
+  hoveredIndex: number|null = null;
+  selectedRating = 0;
 
-  constructor(private bookingService:BookingService){}
+  constructor(private bookingService:BookingService, private serviceService:ServiceService){}
 
   async ngOnInit(){
     this.loadBookings();
@@ -55,15 +59,36 @@ export class BookingsComponent {
 
     this.bookingService.updateBookingStatus(booking_id, status).subscribe({
       next: () => {
-       
         this.loadBookings();
-
       },
       error: (err) => {
         console.error('Státusz módosítás hiba', err);
         alert('Nem sikerült módosítani a státuszt');
       }
     });
+  }
+
+  rateBookingThenDelete(service_id:any,index:number,booking:any){
+    if (booking.selectedRating) return;
+    booking.selectedRating = index+1;
+    this.selectedRating = index +1 ;
+    this.serviceService.writeReview(service_id,this.selectedRating.toString()).subscribe({
+      next:()=>{
+        this.bookingService.deleteBooking(booking.booking_id).subscribe({
+          next:()=>{
+
+          },
+          error:(err)=>{
+            console.log(err);
+          }
+        })
+      },
+      error:(err)=>{
+        confirm("sikertelen értékelés: " + err);
+        console.log(err);
+      }
+    });
+
   }
 
 }

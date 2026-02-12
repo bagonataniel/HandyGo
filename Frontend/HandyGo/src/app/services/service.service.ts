@@ -67,8 +67,8 @@ export class ServiceService {
     return this._http.delete(`http://localhost:3000/service/delete/${id}`, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
   }
 
-  public writeReview(id: string, data: any) {
-    return this._http.post(`http://localhost:3000/service/${id}/review`, data, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+  public writeReview(id: string, rating: any) {
+    return this._http.post(`http://localhost:3000/service/${id}/review`, {rating}, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
   }
 
   public getReviews(id: string) {

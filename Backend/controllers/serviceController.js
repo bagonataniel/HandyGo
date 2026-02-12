@@ -144,8 +144,8 @@ exports.createReview = async (req, res) => {
     const userToken = req.header("x-auth-token");
     const clientId = jwt.decode(userToken).id;
     const serviceId = req.params.id;
-    const { rating } = req.body;
-    
+    const rating = req.body.rating;
+
     try {
         const newReview = await Service.createReview(serviceId, clientId, rating);
         res.status(201).json(newReview);

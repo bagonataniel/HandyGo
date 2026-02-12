@@ -200,3 +200,13 @@
     border-radius: 12px;
   }
 }
+
+.star {
+  cursor: pointer;
+  color: gray;
+  transition: color 0.2s ease;
+}
+
+.star.filled {
+  color: gold;
+}

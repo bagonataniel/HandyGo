@@ -25,6 +25,10 @@ export class BookingService {
   }
 
   public updateBookingStatus(id:any, status:any){
-    return this._http.put(`http://localhost:3000/booking/${id}/status`, status, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+    return this._http.put(`http://localhost:3000/booking/${id}/status`, {status}, { headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
+  }
+
+  public deleteBooking(id:any){
+    return this._http.delete(`http://localhost:3000/booking/delete/${id}`,{ headers: { 'x-auth-token': localStorage.getItem('token') || '' } });
   }
 }

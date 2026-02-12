@@ -8,5 +8,6 @@ router.get("/:id", auth, serviceController.getBookingDetails);
 router.get("/bookings/client", auth, serviceController.getBookingsAsClient);
 router.get("/bookings/worker", auth, serviceController.getBookingsAsWorker);
 router.put("/:id/status", auth, serviceController.updateBookingStatus);
+router.delete("/delete/:id", auth, serviceController.deleteBooking);
 
 module.exports = router
