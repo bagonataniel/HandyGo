@@ -18,11 +18,6 @@ class Admin {
         return { id: insertResult.insertId, username };
     }
 
-    static async GetPendingServices() {
-        const [rows] = await db.execute("SELECT * FROM services WHERE status = 'pending'");
-        return rows;
-    }
-
     static async ApproveService(id) {
         const [result] = await db.execute("UPDATE services SET status = 'approved' WHERE id = ?", [id]);
         return result;
@@ -46,11 +41,6 @@ class Admin {
             rows[index].worker_name = worker_name[0][0].name;
         }
         return rows;
-    }
-
-    static async DeleteUser(id) {
-        const [result] = await db.execute("DELETE FROM users WHERE id = ?", [id]);
-        return result;
     }
 
     static async getStats(){

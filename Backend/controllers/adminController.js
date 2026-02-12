@@ -35,15 +35,6 @@ exports.adminRegister = async (req, res) => {
     }
 }
 
-exports.getPendingServices = async (req, res) => {
-    try {
-        services = await Admin.GetPendingServices();
-        res.status(200).json(services);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-}
-
 exports.approveService = async (req, res) => {
     const serviceId = req.params.id;
     try {
@@ -75,17 +66,6 @@ exports.getAllServices = async (req, res) => {
     try {
         services = await Admin.GetAllServices();
         res.status(200).json(services);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-}
-
-exports.deleteUser = async (req, res) => {
-    const userId = req.params.id;
-
-    try {
-        await Admin.DeleteUser(userId);
-        res.status(200).json({ message: "User deleted successfully" });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
