@@ -41,8 +41,29 @@ export class BookingsComponent {
     });
   }
 
-  statusSelected(booking_id:String,status:string){
-    this.bookingService.updateBookingStatus(booking_id,status);
+  getStatusClass(status: string): string {
+  return status.toLowerCase().replace(/\s+/g, '-');   // pl. "elfogadásra vár" → "elfogadásra-vár"
+}
+
+  
+  statusSelected(booking_id: string, status: string) {
+    if (status === 'elutasítva') {
+      if (!confirm('Biztosan elutasítod ezt a felkérést?')) {
+        return;
+      }
+    }
+
+    this.bookingService.updateBookingStatus(booking_id, status).subscribe({
+      next: () => {
+       
+        this.loadBookings();
+
+      },
+      error: (err) => {
+        console.error('Státusz módosítás hiba', err);
+        alert('Nem sikerült módosítani a státuszt');
+      }
+    });
   }
 
 }

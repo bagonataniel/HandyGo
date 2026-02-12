@@ -49,7 +49,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import { ServiceCreatorComponent } from './pages/service-creator/service-creator.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -105,6 +106,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSelectModule,
     MatSliderModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
+    MatTableModule,
 ],
   providers: [
     provideAnimationsAsync(),
