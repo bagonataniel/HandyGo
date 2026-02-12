@@ -10,17 +10,17 @@ exports.adminLogin = async (req, res) => {
     try {
         adminData = await Admin.GetAdminByUsername(username);
         if (adminData === undefined) {
-            return res.status(400).json({ error: "Invalid username or password" });
+            return res.status(404).json({ error: "Invalid username or password" });
         }
 
         const validPassword = await bcrypt.compare(password, adminData.password_hash);
         if (!validPassword) {
-            return res.status(400).json({ error: "Invalid username or password" });
+            return res.status(401).json({ error: "Invalid username or password" });
         }
         const token = jwt.sign({ id: adminData.id}, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
         res.status(200).json({ JWT: token, id: adminData.id });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 }
 
@@ -29,7 +29,7 @@ exports.adminRegister = async (req, res) => {
     hashedPassword = await bcrypt.hash(password, 10)
     try {
         await Admin.CreateAdmin(username, hashedPassword)
-        res.send(201)
+        res.status(201).json({ message: "Admin created successfully" });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

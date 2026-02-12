@@ -6,7 +6,12 @@ class Service {
       "INSERT INTO services (worker_id, title, description, category, price, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [worker_id, title, description, category, price, latitude, longitude]
     );
-    return { id: result.worker_id, title, description };
+
+    const [rows] = await db.execute(`SELECT id, status FROM services WHERE worker_id = ? AND title = ? AND description = ? ORDER BY id DESC LIMIT 1`,
+      [worker_id, title, description]
+    );
+
+    return { id: rows[0].id, title, description };
   }
 
   static async getAllService(category, minPrice, maxPrice, id) {

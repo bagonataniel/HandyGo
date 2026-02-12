@@ -29,13 +29,13 @@ exports.login = async (req, res) => {
         userData = await User.findByEmail(email);
 
         if (userData.length === 0) {
-            return res.status(400).json({ error: "Invalid email or password" });
+            return res.status(404).json({ error: "Invalid email or password" });
         }
 
         passwordMatch = await bcrypt.compare(password, userData[0].password_hash)
 
         if (!passwordMatch) {
-            return res.status(400).json({ error: "Invalid email or password" });
+            return res.status(401).json({ error: "Invalid email or password" });
         }
 
         const token = jwt.sign({ id: userData[0].id, role: userData[0].name, email: userData[0].email }, process.env.JWT_SECRET_KEY, { expiresIn: '24h' });
@@ -49,7 +49,7 @@ exports.verify = async (req, res) => {
     try {
         const token = req.params.token;
         if (!token) {
-            return res.status(400).json({ error: "No token provided" });
+            return res.status(401).json({ error: "No token provided" });
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
