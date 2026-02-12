@@ -25,17 +25,17 @@ class Booking {
     }
 
     static async getBookingsAsClient(client_id) {
-        const [rows] = await db.execute("SELECT services.id, services.title, services.description, services.category, bookings.status, users.name, users.email, reviews.rating FROM services JOIN bookings ON bookings.service_id = services.id JOIN users ON bookings.worker_id = users.id LEFT JOIN reviews ON reviews.service_id = services.id WHERE bookings.client_id = ?;", [client_id]);
+        const [rows] = await db.execute("SELECT bookings.id as booking_id, services.id, services.title, services.description, services.category, bookings.status, users.name, users.email, reviews.rating FROM services JOIN bookings ON bookings.service_id = services.id JOIN users ON bookings.worker_id = users.id LEFT JOIN reviews ON reviews.service_id = services.id WHERE bookings.client_id = ?;", [client_id]);
         return rows;
     }
 
     static async getBookingsAsWorker(worker_id) {
-        const [rows] = await db.execute("SELECT services.id, services.title, services.description, services.category, bookings.status, users.name, users.email, reviews.rating FROM services JOIN bookings ON bookings.service_id = services.id JOIN users ON bookings.client_id = users.id LEFT JOIN reviews ON reviews.service_id = services.id WHERE bookings.worker_id = ?;", [worker_id]);
+        const [rows] = await db.execute("SELECT bookings.id as booking_id, services.id, services.title, services.description, services.category, bookings.status, users.name, users.email, reviews.rating FROM services JOIN bookings ON bookings.service_id = services.id JOIN users ON bookings.client_id = users.id LEFT JOIN reviews ON reviews.service_id = services.id WHERE bookings.worker_id = ?;", [worker_id]);
         return rows;
     }
 
     static async updateStatus(booking_id, status, worker_id) {
-        if (!['elfogadásra vár','folyamatban','kész'].includes(status)) {
+        if (!['elfogadásra vár','folyamatban','kész','elutasítva'].includes(status)) {
             throw new Error("Invalid status value");
         }
         const [result] = await db.execute(

@@ -9,20 +9,20 @@ class Service {
     return { id: result.worker_id, title, description };
   }
 
-  static async getAllService(category, minPrice, maxPrice) {
-    let query = "SELECT * FROM services WHERE status = 'approved'"
+  static async getAllService(category, minPrice, maxPrice, id) {
+    let query = `SELECT s.* FROM services s LEFT JOIN bookings b ON s.id = b.service_id AND b.client_id = '${id}' WHERE b.client_id IS NULL AND s.status = 'approved'`
     let params = [];
 
     if(category){
-      query += " AND category = ?";
+      query += " AND s.category = ?";
       params.push(category);
     }
     if(minPrice){
-      query += " AND price >= ?";
+      query += " AND s.price >= ?";
       params.push(minPrice);
     }
     if(maxPrice){
-      query += " AND price <= ?";
+      query += " AND s.price <= ?";
       params.push(maxPrice);
     }
 

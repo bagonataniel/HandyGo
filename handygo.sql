@@ -54,7 +54,7 @@ CREATE TABLE `bookings` (
   `service_id` char(36) NOT NULL,
   `client_id` char(36) NOT NULL,
   `worker_id` char(36) NOT NULL,
-  `status` enum('elfogadásra vár','folyamatban','kész') NOT NULL DEFAULT 'elfogadásra vár',
+  `status` enum('elfogadásra vár','folyamatban','kész','elutasítva') NOT NULL DEFAULT 'elfogadásra vár',
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -88,7 +88,6 @@ CREATE TABLE `services` (
   `price` decimal(10,2) NOT NULL,
   `latitude` decimal(10,7) DEFAULT NULL,
   `longitude` decimal(10,7) DEFAULT NULL,
-  `availability` enum('elérhető','lefoglalt') NOT NULL DEFAULT 'elérhető',
   `status` enum('pending','approved','rejected') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 

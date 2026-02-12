@@ -1,8 +1,5 @@
 import { Component} from '@angular/core';
 import { BookingService } from '../../services/booking.service';
-import { UsersService } from '../../services/users.service';
-import { ServiceService } from '../../services/service.service';
-import { forkJoin, share, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-bookings',
@@ -12,10 +9,12 @@ import { forkJoin, share, switchMap } from 'rxjs';
 
 export class BookingsComponent {
   
-  loadedWorkerBookings:any[] = [];
-  loadedClientBookings:any[] = [];
+  bookingsAsWorker:any[] = [];
+  bookingsAsClient:any[] = [];
 
-  constructor(private bookingService:BookingService, private userService:UsersService, private serviceService:ServiceService){}
+  selectableStatus = ['elfogadásra vár','folyamatban','kész','elutasítva'];
+
+  constructor(private bookingService:BookingService){}
 
   async ngOnInit(){
     this.loadBookings();
@@ -25,7 +24,7 @@ export class BookingsComponent {
     this.bookingService.getWorkerBookings().subscribe({
       next: (data: any) => {
         console.log(data.bookings);
-        this.loadedWorkerBookings = data.bookings;
+        this.bookingsAsWorker = data.bookings;
       },
       error: (error: any) => {
         console.error('Error fetching services:', error);
@@ -34,7 +33,7 @@ export class BookingsComponent {
     this.bookingService.getClientsBookings().subscribe({
       next: (data: any) => {
         console.log(data);
-        this.loadedClientBookings = data;
+        this.bookingsAsClient = data;
       },
       error: (error: any) => {
         console.error('Error fetching services:', error);
@@ -42,7 +41,8 @@ export class BookingsComponent {
     });
   }
 
-  acceptBooking(){
-    
+  statusSelected(booking_id:String,status:string){
+    this.bookingService.updateBookingStatus(booking_id,status);
   }
+
 }

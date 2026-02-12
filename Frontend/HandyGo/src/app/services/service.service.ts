@@ -45,6 +45,7 @@ export class ServiceService {
               .append('minPrice', filters.priceRange[0].toString())
               .append('maxPrice', filters.priceRange[1].toString());
           }
+          params = params.append('id', localStorage.getItem("userId") || '');
 
           return this._http.get(`http://localhost:3000/service`, {
             headers: { 'x-auth-token': localStorage.getItem('token') || '' },

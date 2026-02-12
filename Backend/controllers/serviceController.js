@@ -30,10 +30,10 @@ exports.addService = async (req, res) => {
 }
 
 exports.getAllServices = async (req, res) => {
-    const {category, distance, minPrice, maxPrice, lon, lat} = req.query;
+    const {category, distance, minPrice, maxPrice, lon, lat,id} = req.query;
 
     try {
-        services = await Service.getAllService(category, minPrice, maxPrice);
+        services = await Service.getAllService(category, minPrice, maxPrice,id);
         for (let index = 0; index < services.length; index++) {
             coor1 = [parseFloat(lat) * Math.PI / 180, parseFloat(lon) * Math.PI / 180];
             coor2 = [parseFloat(services[index].latitude) * Math.PI / 180, parseFloat(services[index].longitude) * Math.PI / 180];
