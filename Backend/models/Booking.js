@@ -49,7 +49,7 @@ class Booking {
     }
 
     static async deleteBooking(booking_id){
-        const [result] = await db.execute("DELETE FROM bookings WHERE bookings.id = ?;",booking_id);
+        const [result] = await db.execute("DELETE FROM bookings WHERE bookings.id = ?;",[booking_id]);
         if (result.affectedRows === 0) {
             throw new Error("Booking not found or unauthorized");
         }

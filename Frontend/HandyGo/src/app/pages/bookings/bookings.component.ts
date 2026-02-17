@@ -74,9 +74,11 @@ export class BookingsComponent {
     this.selectedRating = index +1 ;
     this.serviceService.writeReview(service_id,this.selectedRating.toString()).subscribe({
       next:()=>{
+        console.log(booking.booking_id);
         this.bookingService.deleteBooking(booking.booking_id).subscribe({
           next:()=>{
-
+            confirm("sikeres értékelés és törlés");
+            this.loadBookings();
           },
           error:(err)=>{
             console.log(err);
