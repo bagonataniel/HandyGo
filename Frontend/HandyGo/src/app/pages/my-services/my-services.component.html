@@ -31,7 +31,7 @@
 
       <div class="services-grid" *ngIf="myServices.length > 0">
         <div class="service-card" *ngFor="let service of myServices">
-          <div class="service-header">
+          <div class="service-header" routerLink="/services/{{service.id}}" style="cursor: pointer;">
             <h3 class="service-title">{{ service.title || 'Névtelen szolgáltatás' }}</h3>
             <span class="category-badge">{{ service.category || 'Egyéb' }}</span>
           </div>

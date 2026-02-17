@@ -22,6 +22,7 @@ export class ServicesComponent implements OnInit {
   errorMessage: string | null = null;
   worker_id: string = '';
   rating = 0;
+  myUserId = localStorage.getItem('userId') || '';
 
   private _snackBar = inject(MatSnackBar);
 
