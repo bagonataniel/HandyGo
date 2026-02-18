@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validator, AbstractControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -16,16 +16,48 @@ export class RegisterComponent {
 
   constructor(private auth: AuthService, private _fb: FormBuilder) {
     this.registerForm = this._fb.group({
-      name: [''],
-      email: [''],
-      password: ['']
+      name: ['', [
+        Validators.required,
+        Validators.minLength(5)
+      ]],
+      email: ['',[
+        Validators.required,
+        Validators.email
+      ]],
+      password: ['',[
+        Validators.required,
+        Validators.minLength(8),
+        this.passwordStrengthValidator
+      ]]
     });
   }
 
+  passwordStrengthValidator(control:AbstractControl){
+    const value = control.value;
+
+    if(!value) return null;
+
+    const hasUpperCase = /[A-Z]+/.test(value);
+    const hasLowerCase = /[a-z]+/.test(value);
+    const hasNumeric = /[0-9]+/.test(value);
+    
+    const valid = hasLowerCase && hasNumeric && hasUpperCase;
+
+    return !valid ? { passwordStrength: 'A jelszónak tartalmaznia kell legalább egy kisbetűt, egy nagybetűt és egy számot.' } : null;
+
+  }
 
   onRegister() {
     if (this.confirmPassword !== this.registerForm.value.password) {
-      console.log('Passwords do not match');
+      this._snackBar.open('A jelszavak nem egyeznek meg', 'Close', { duration: 3000 });
+      return;
+    }
+    if (this.registerForm.get('password')?.errors?.['passwordStrength']){
+      this._snackBar.open(this.registerForm.get('password')?.errors?.['passwordStrength'], 'Close', { duration: 3000 });
+      return;
+    }
+    if (this.registerForm.invalid) {
+      this._snackBar.open('Kérem töltse ki a mezőket helyesen', 'Close', { duration: 3000 });
       return;
     }
     
@@ -36,7 +68,7 @@ export class RegisterComponent {
       },
       error: (err) => {
         console.error('Login failed', err.error);
-        this._snackBar.open(`❌ Hiba a regisztráció során: ${err.error.error}`, 'Close', { duration: 3000 });
+        this._snackBar.open(`❌ Hiba a regisztráció során`, 'Close', { duration: 3000 });
       }
     })
   }
