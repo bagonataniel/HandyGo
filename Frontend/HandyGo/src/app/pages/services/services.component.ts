@@ -139,7 +139,7 @@ export class ServicesComponent implements OnInit {
       },
       error: (error: any) => {
         const errorMsg = error.error?.error || 'Ismeretlen hiba';
-        this._snackBar.open(`❌ Hiba a foglalás során: ${errorMsg}`, 'Bezár', {
+        this._snackBar.open(`❌ Hiba a foglalás során`, 'Bezár', {
           duration: 6000,
           panelClass: ['error-snackbar']
         });
