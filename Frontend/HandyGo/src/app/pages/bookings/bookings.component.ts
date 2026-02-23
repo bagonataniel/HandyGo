@@ -9,6 +9,8 @@ import { ServiceService } from '../../services/service.service';
 })
 
 export class BookingsComponent {
+
+  
   
   bookingsAsWorker:any[] = [];
   bookingsAsClient:any[] = [];
