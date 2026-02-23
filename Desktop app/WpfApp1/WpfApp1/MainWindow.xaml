@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
+        Icon="/Resources/logo.ico"
         Title="HandyGo Admin" Height="871" Width="1438" MinHeight="700" MinWidth="1000" WindowStartupLocation="CenterScreen">
     <Grid>
         <ContentControl x:Name="rootContent" />
