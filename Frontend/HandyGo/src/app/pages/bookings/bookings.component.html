@@ -1,8 +1,11 @@
 <app-navbar></app-navbar>
 <div class="bookings-container">
-
+  <div class="navigation">
+    <a [routerLink]="[]" fragment="incoming" mat-flat-button>Bejövő felkérések</a>
+    <a [routerLink]="[]" fragment="outgoing" mat-flat-button>Leadott kéréseim</a>
+  </div>
   <!-- 1. szekció: Bejövő felkérések (amiket én vállalhatsz el) -->
-  <section class="section incoming">
+  <section class="section incoming" id="incoming">
     <h2>Beérkezett felkérések ({{bookingsAsWorker.length}} db)</h2>
     
     <div class="booking-list">
@@ -49,7 +52,7 @@
 
 
   <!-- 2. szekció: Általam leadott igények -->
-  <section class="section outgoing">
+  <section class="section outgoing" id="outgoing">
     <h2>Leadott kéréseim ({{bookingsAsClient.length}} db)</h2>
     
     <div class="booking-list">
