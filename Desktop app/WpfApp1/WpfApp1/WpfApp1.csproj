@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="OxyPlot.Wpf" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\logo.ico" />
   </ItemGroup>
 
 </Project>
