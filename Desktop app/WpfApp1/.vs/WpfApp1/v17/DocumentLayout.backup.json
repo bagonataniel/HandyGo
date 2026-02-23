@@ -34,8 +34,8 @@
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml",
-              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainWindow.xaml*",
-              "RelativeToolTip": "WpfApp1\\MainWindow.xaml*",
+              "ToolTip": "D:\\Munka\\13C_info2\\HandyGo\\Desktop app\\WpfApp1\\WpfApp1\\MainWindow.xaml",
+              "RelativeToolTip": "WpfApp1\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-02-23T08:48:35.737Z",
               "EditorCaption": ""
@@ -50,8 +50,7 @@
               "RelativeToolTip": "WpfApp1\\Settings.xaml.cs",
               "ViewState": "AgIAAFgAAAAAAAAAAAAswGkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T12:34:13.962Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-04T12:34:13.962Z"
             },
             {
               "$type": "Document",
