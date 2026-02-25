@@ -65,4 +65,17 @@ describe('Auth API', () => {
       expect(res.body).toHaveProperty('error');
     });
   });
+
+  describe('DELETE /users/removeaccount', () => {
+    let token;
+    beforeAll(async () => {
+      const loginRes = await request(app).post('/auth/login').send({ email: testUser.email, password: testUser.password });
+      token = loginRes.body.JWT;
+    })
+    it('should delete the user account successfully', async () => {
+      const res = await request(app).delete('/users/removeaccount')
+        .set('x-auth-token', token);
+      expect(res.statusCode).toBe(200);
+    })
+  });
 });

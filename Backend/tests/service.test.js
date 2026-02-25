@@ -19,7 +19,7 @@ describe('Services API', () => {
             
             id = res.body.id
             expect(res.statusCode).toBe(201)
-        });
+        }, 10000);
 
         it('should fail when creating new service', async () => {
             const res = await request(app)
@@ -55,6 +55,12 @@ describe('Services API', () => {
         })
     })
 
+
+    afterAll(async () => {
+        await request(app)
+            .delete("/users/removeaccount/")
+            .set("x-auth-token", token)
+    })
     // PUT /service/update/:id
     // DELETE /service/delete/:id
 })
