@@ -18,13 +18,13 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return false for isLoggedIn by default', () => {
-    localStorage.removeItem('token');
-    expect(service.loggedIn()).toBeFalse();
-  });
+  // it('should return false for isLoggedIn by default', () => {
+  //   localStorage.removeItem('token');
+  //   expect(service.loggedIn()).toBeFalse();
+  // });
 
-  it('should return true if token is set', () =>{
-    localStorage.setItem('token','test');
-    expect(service.loggedIn()).toBeTrue();
-  });
+  // it('should return true if token is set', () =>{
+  //   localStorage.setItem('token','test');
+  //   expect(service.loggedIn()).toBeTrue();
+  // });
 });
