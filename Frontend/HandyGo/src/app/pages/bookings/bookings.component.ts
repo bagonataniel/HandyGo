@@ -29,7 +29,7 @@ export class BookingsComponent {
   loadBookings(){
     this.bookingService.getWorkerBookings().subscribe({
       next: (data: any) => {
-        console.log(data.bookings);
+        
         this.bookingsAsWorker = data.bookings;
       },
       error: (error: any) => {
@@ -38,7 +38,7 @@ export class BookingsComponent {
     });
     this.bookingService.getClientsBookings().subscribe({
       next: (data: any) => {
-        console.log(data);
+        
         this.bookingsAsClient = data;
       },
       error: (error: any) => {
@@ -76,20 +76,19 @@ export class BookingsComponent {
     this.selectedRating = index +1 ;
     this.serviceService.writeReview(service_id,this.selectedRating.toString()).subscribe({
       next:()=>{
-        console.log(booking.booking_id);
         this.bookingService.deleteBooking(booking.booking_id).subscribe({
           next:()=>{
             confirm("sikeres értékelés és törlés");
             this.loadBookings();
           },
           error:(err)=>{
-            console.log(err);
+            console.error(err);
           }
         })
       },
       error:(err)=>{
         confirm("sikertelen értékelés: " + err);
-        console.log(err);
+        console.error(err);
       }
     });
 

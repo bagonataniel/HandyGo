@@ -86,7 +86,6 @@ export class ServicesComponent implements OnInit {
     this.service.getServiceById(serviceId).subscribe({
       next: (data: any) => {
         this.serviceData = data;
-        console.log('Szolgáltatás adatok:', this.serviceData);
 
         if (this.serviceData?.worker_id) {
           this.worker_id = this.serviceData.worker_id;
@@ -135,7 +134,7 @@ export class ServicesComponent implements OnInit {
           duration: 5000,
           panelClass: ['success-snackbar']
         });
-        console.log('Service booked successfully:', data);
+        
       },
       error: (error: any) => {
         const errorMsg = error.error?.error || 'Ismeretlen hiba';
@@ -143,7 +142,7 @@ export class ServicesComponent implements OnInit {
           duration: 6000,
           panelClass: ['error-snackbar']
         });
-        console.log('Error booking service:', error);
+        console.error('Error booking service:', error);
       }
     });
   }

@@ -57,7 +57,6 @@ export class MainComponent implements OnInit{
   }
 
   onServiceSelect(serviceId: number): void {
-    console.log('Selected service ID:', serviceId);
     this.router.navigate(['/services', serviceId]);
   }
 }

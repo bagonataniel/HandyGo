@@ -24,8 +24,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { HttpClientModule } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
 import { RegisterComponent } from './pages/register/register.component';
-import { TestComponent } from './test/test.component';
-import { MainComponent } from './pages/main/main.component'; // TestComponent has to be removed later!
+import { MainComponent } from './pages/main/main.component'; 
 import {MatMenuModule} from '@angular/material/menu';
 import { VerificationComponent } from './pages/verification/verification.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -65,7 +64,6 @@ import { MatTableModule } from '@angular/material/table';
     GetStartedComponent,
     LoginComponent,
     RegisterComponent,
-    TestComponent,
     MainComponent,
     VerificationComponent,
     AboutComponent,

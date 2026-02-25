@@ -12,7 +12,7 @@ export class MessageService {
   constructor() { 
     this.socket = io('http://localhost:3000');
     this.socket.on("room-status", (data)=>{
-      console.log('Room status received:', data);
+      //console.log('Room status received:', data);
     });
   }
 

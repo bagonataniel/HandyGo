@@ -43,7 +43,7 @@
         <div class="price">
           {{ serviceData?.price ? serviceData.price + ' Ft' : 'Ár kérhető' }}
         </div>
-        <button mat-raised-button color="primary" (click)="bookService()" class="book-btn" *ngIf="serviceData.worker_id != myUserId">
+        <button mat-raised-button color="primary" (click)="bookService()" class="book-btn" *ngIf="serviceData?.worker_id != myUserId">
           Foglalás most
         </button>
       </div>

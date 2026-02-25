@@ -26,7 +26,6 @@ export class LoginComponent {
     this.auth.login(this.loginForm.value).subscribe({
       next: (value) => {
         const res = value as any;
-        console.log('Login successful', value);
         localStorage.setItem('token', res.JWT);
         localStorage.setItem('userId', res.id);
         localStorage.setItem('username', res.username);

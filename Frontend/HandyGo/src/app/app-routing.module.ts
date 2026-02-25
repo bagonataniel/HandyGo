@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { TestComponent } from './test/test.component';
 import { MainComponent } from './pages/main/main.component';
 import { loginGuard } from './guards/login.guard';
 import { authGuard } from './guards/auth.guard';
@@ -16,7 +15,6 @@ import { AboutComponent } from './pages/about/about.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { ChatSideNavComponent } from './layout/chat-side-nav/chat-side-nav.component';
 import { TermsComponent } from './pages/terms/terms.component';
 import { RightsComponent } from './pages/rights/rights.component';
 import { ChatPanelComponent } from './layout/chat-panel/chat-panel.component';
@@ -32,7 +30,6 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [loginGuard]},
-  { path: 'test', component: TestComponent },
   { path: 'home', component: MainComponent, canActivate: [authGuard, isVerifiedGuard] },
   { path: 'verification', component: VerificationComponent, canActivate: [authGuard] },
   { path: 'about', component: AboutComponent },

@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { authServiceMock } from '../../testing/test-setup';
 import { AuthService } from './auth.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -9,7 +10,7 @@ describe('AuthService', () => {
     localStorage.clear();
     TestBed.configureTestingModule({
       providers: [authServiceMock],
-
+      imports: [ HttpClientTestingModule]
     });
     service = TestBed.inject(AuthService);
   });
