@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
+import { NavbarComponent } from '../../layout/navbar/navbar.component';
 import { ServiceCreatorComponent } from './service-creator.component';
 
 describe('ServiceCreatorComponent', () => {
@@ -9,7 +9,7 @@ describe('ServiceCreatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ServiceCreatorComponent],
+      declarations: [ServiceCreatorComponent, NavbarComponent],
       imports: [HttpClientTestingModule]
     })
     .compileComponents();

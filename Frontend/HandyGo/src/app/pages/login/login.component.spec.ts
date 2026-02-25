@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { authServiceMock } from '../../../testing/test-setup';
 import { LoginComponent } from './login.component';
+import { NavbarComponent } from '../../layout/navbar/navbar.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -8,8 +13,13 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoginComponent],
-      providers: [authServiceMock]
+      declarations: [LoginComponent, NavbarComponent],
+      providers: [
+        authServiceMock,
+        MatFormFieldModule,
+        MatIconModule,
+        FormsModule
+      ]
     })
     .compileComponents();
 

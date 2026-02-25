@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { MyServicesComponent } from './my-services.component';
+import { NavbarComponent } from '../../layout/navbar/navbar.component';
 
 describe('MyServicesComponent', () => {
   let component: MyServicesComponent;
@@ -9,7 +10,7 @@ describe('MyServicesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MyServicesComponent],
+      declarations: [MyServicesComponent, NavbarComponent],
       imports: [HttpClientTestingModule]
     })
     .compileComponents();
