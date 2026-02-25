@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../app'); // your app.js
+const app = require('../app');
 
 describe('Services API', () => {
     let token = "";
@@ -61,6 +61,4 @@ describe('Services API', () => {
             .delete("/users/removeaccount/")
             .set("x-auth-token", token)
     })
-    // PUT /service/update/:id
-    // DELETE /service/delete/:id
 })

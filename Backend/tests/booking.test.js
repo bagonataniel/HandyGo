@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../app'); // your app.js
+const app = require('../app');
 
 describe('Booking API', () => {
     let token = "";
@@ -83,6 +83,4 @@ describe('Booking API', () => {
         expect(res.statusCode).toBe(200);
         });
     });
-
-// booking/:id/status (PUT) – Change booking status.
 })

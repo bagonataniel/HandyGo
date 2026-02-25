@@ -24,10 +24,8 @@ describe('Admin API', () => {
         });
 
         it('should fail if name already exists', async () => {
-            // register the user once
             await request(app).post('/admin/register').set('x-admin-auth-token', token).send({ username: "testuser", password: testUser.password });
 
-            // try registering again
             const res = await request(app)
                 .post('/admin/register')
                 .set('x-admin-auth-token', token)

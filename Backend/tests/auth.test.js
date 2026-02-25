@@ -19,22 +19,19 @@ describe('Auth API', () => {
     });
 
     it('should fail if email already exists', async () => {
-      // register the user once
       await request(app).post('/auth/register').send(testUser);
 
-      // try registering again
       const res = await request(app)
         .post('/auth/register')
         .send(testUser);
 
-      expect(res.statusCode).toBe(400); // depending on your API
+      expect(res.statusCode).toBe(400);
       expect(res.body).toHaveProperty('error');
     });
   });
 
   describe('POST /auth/login', () => {
     beforeEach(async () => {
-      // Ensure user exists
       await request(app).post('/auth/register').send(testUser);
     });
 
@@ -61,7 +58,7 @@ describe('Auth API', () => {
         .post('/auth/login')
         .send({ email: 'notfound@example.com', password: '123456' });
 
-      expect(res.statusCode).toBe(404); // or 401 based on your API
+      expect(res.statusCode).toBe(404);
       expect(res.body).toHaveProperty('error');
     });
   });
