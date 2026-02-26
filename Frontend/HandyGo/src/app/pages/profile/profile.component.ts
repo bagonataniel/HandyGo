@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { HeroComponent } from '../../sections/hero/hero.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +15,7 @@ export class ProfileComponent implements OnInit {
   isLoading = true;
   errorMessage: string | null = null;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -37,6 +41,16 @@ export class ProfileComponent implements OnInit {
         console.error('Hiba:', err);
       }
     });
+  }
+
+  deleteAccount(){
+    if (confirm('Biztos, hogy törölni szeretnéd a fiókod?')) {
+      this.usersService.deleteAccount();
+      localStorage.clear();
+      this.router.navigate([""])
+    } else {
+      return;
+    }
   }
 
   getSkillsArray(): string[] {

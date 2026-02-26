@@ -37,7 +37,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error('Login failed', err.error);
-        this._snackBar.open(`❌ Hiba a bejelentkezés során`, 'Close', { duration: 3000 });
+        this._snackBar.open(`❌ Hiba a bejelentkezés során`, 'Bezár', { duration: 3000 });
       }
     });
 

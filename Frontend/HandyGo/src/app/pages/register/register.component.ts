@@ -43,32 +43,32 @@ export class RegisterComponent {
     
     const valid = hasLowerCase && hasNumeric && hasUpperCase;
 
-    return !valid ? { passwordStrength: 'A jelszónak tartalmaznia kell legalább egy kisbetűt, egy nagybetűt és egy számot.' } : null;
+    return !valid ? { passwordStrength: 'A jelszónak legalább 8 karakter hosszúnak kell lennie, és tartalmaznia kell kis- és nagybetűt, valamint számot.' } : null;
 
   }
 
   onRegister() {
     if (this.confirmPassword !== this.registerForm.value.password) {
-      this._snackBar.open('A jelszavak nem egyeznek meg', 'Close', { duration: 3000 });
+      this._snackBar.open('A jelszavak nem egyeznek meg', 'Bezár', { duration: 3000 });
       return;
     }
     if (this.registerForm.get('password')?.errors?.['passwordStrength']){
-      this._snackBar.open(this.registerForm.get('password')?.errors?.['passwordStrength'], 'Close', { duration: 3000 });
+      this._snackBar.open(this.registerForm.get('password')?.errors?.['passwordStrength'], 'Bezár', { duration: 3000 });
       return;
     }
     if (this.registerForm.invalid) {
-      this._snackBar.open('Kérem töltse ki a mezőket helyesen', 'Close', { duration: 3000 });
+      this._snackBar.open('Kérem töltse ki a mezőket helyesen', 'Bezár', { duration: 3000 });
       return;
     }
     
     this.auth.register(this.registerForm.value).subscribe({
       next: (value) => {
         console.log('Registration successful', value);
-        this._snackBar.open("✅ Regisztráció sikeres! Kattints az e-mailben lévő linkre a fiók aktiválásához. 📧", 'Close', { duration: 3000 });
+        this._snackBar.open("✅ Regisztráció sikeres! Kattints az e-mailben lévő linkre a fiók aktiválásához. 📧", 'Bezár', { duration: 3000 });
       },
       error: (err) => {
-        console.error('Login failed', err.error);
-        this._snackBar.open(`❌ Hiba a regisztráció során`, 'Close', { duration: 3000 });
+        console.error('Login failed', err);
+        this._snackBar.open(`❌ Hiba a regisztráció során`, 'Bezár', { duration: 3000 });
       }
     })
   }
