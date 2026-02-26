@@ -13,7 +13,7 @@ const sendEmail = async (to, subject, html) => {
   });
 
   await transporter.sendMail({
-    from: `"Your App" <${process.env.SMTP_USER}>`,
+    from: `"HandyGo" <${process.env.SMTP_USER}>`,
     to,
     subject,
     html,
