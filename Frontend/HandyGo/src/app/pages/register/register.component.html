@@ -31,6 +31,9 @@
                 <mat-icon>{{passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
+        <p *ngIf="confirmPassword && confirmPassword !== registerForm.get('password')!.value" class="invalid">A jelszavak nem egyeznek meg.</p>
+        <p *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="invalid">A jelszónak tartalmaznia kell legalább 8 karaktert ami tartalmazza a kisbetűket, nagybetűket és számokat</p>
+        <p *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="invalid">A felhasználónévnek legalább 5 karakterből kell állnia</p>
         <button mat-raised-button color="primary" (click)="onRegister()">Regisztráció</button>
         <a [routerLink]="['/login']">Van Fiókja? Jelentkezzen be!</a>
     </form>
